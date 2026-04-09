@@ -28,7 +28,7 @@ export default function Navigation() {
 
   return (
     <nav className={`fixed w-full top-0 z-[100] transition-all duration-1000 ease-out
-      ${scrolled ? 'py-4 translate-y-0 opacity-100' : 'py-10 translate-y-0'}`}>
+      ${scrolled ? 'py-4 translate-y-0 opacity-100' : 'py-10 translate-y-[-100%] opacity-0 pointer-events-none'}`}>
       
       <div className={`mx-4 md:mx-14 px-8 md:px-12 py-5 rounded-full border transition-all duration-1000 flex justify-between items-center max-w-screen-2xl xl:mx-auto relative overflow-hidden group/nav
         ${scrolled ? 'bg-black/40 backdrop-blur-3xl border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.5)] scale-[1.02]' : 'bg-transparent border-transparent'}`}>

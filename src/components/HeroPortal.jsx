@@ -56,14 +56,14 @@ const HeroPortal = () => {
         <div 
           className="relative flex items-center justify-center z-30 px-4 will-change-transform transform-gpu"
           style={{ 
-            opacity: 1 - progress * 1.5,
-            transform: `scale(${1 + progress * 2}) translate3d(${mouse.x * 20}px, ${mouse.y * 20}px, 0)`,
+            opacity: 1 - Math.pow(progress, 2) * 1.8,
+            transform: `scale(${1 + progress * 2.5}) translate3d(${mouse.x * 25}px, ${mouse.y * 25}px, 0)`,
           }}
         >
           <img 
             src="/hero-lockup.png" 
             alt="The Social Box" 
-            className="w-full h-auto max-w-[90vw] md:max-w-[85vw] lg:max-w-screen-xl object-contain drop-shadow-[0_0_100px_rgba(242,236,36,0.3)]"
+            className="w-full h-auto max-w-[90vw] md:max-w-[85vw] lg:max-w-screen-xl object-contain drop-shadow-[0_0_120px_rgba(242,236,36,0.25)]"
             style={{ 
                imageRendering: 'high-quality',
                WebkitBackfaceVisibility: 'hidden'
@@ -71,10 +71,10 @@ const HeroPortal = () => {
           />
         </div>
 
-        {/* Cinematic Background Glow */}
+        {/* Cinematic Background Glow - Seamless Handover */}
         <div 
-          className="absolute inset-0 bg-radial-gradient from-[#F2EC24]/10 to-transparent pointer-events-none mix-blend-screen"
-          style={{ opacity: 1 - progress }}
+          className="absolute inset-0 bg-radial-gradient from-[#F2EC24]/15 to-transparent pointer-events-none mix-blend-screen transition-opacity duration-1000"
+          style={{ opacity: 1 - Math.pow(progress, 3) }}
         ></div>
       </section>
     </div>
