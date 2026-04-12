@@ -12,9 +12,9 @@ const PersistentParticles = () => {
 
   const pageParams = useMemo(() => {
     switch(location.pathname) {
-      case '/': return { color: '#F2EC24', speed: 1.0, scale: 0.05 };
+      case '/': return { color: '#E2FF00', speed: 1.0, scale: 0.05 };
       case '/services': return { color: '#ffffff', speed: 1.2, scale: 0.04 };
-      default: return { color: '#F2EC24', speed: 0.8, scale: 0.03 };
+      default: return { color: '#E2FF00', speed: 0.8, scale: 0.03 };
     }
   }, [location.pathname]);
 
@@ -81,10 +81,10 @@ export default function GlobalScene() {
         <Suspense fallback={null}>
           <PerspectiveCamera makeDefault position={[0, 0, 40]} fov={50} />
           <ambientLight intensity={1.5} />
-          <pointLight position={[10, 10, 10]} intensity={2} color="#F2EC24" />
+          <pointLight position={[10, 10, 10]} intensity={2} color="#E2FF00" />
           
           <PersistentParticles />
-          <Sparkles count={40} scale={40} size={1} speed={0.4} color="#F2EC24" />
+          <Sparkles count={40} scale={40} size={1} speed={0.4} color="#E2FF00" />
           
           <Environment preset="night" />
         </Suspense>

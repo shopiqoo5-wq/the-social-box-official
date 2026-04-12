@@ -49,29 +49,24 @@ export default function App() {
       infinite: false,
     });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
     // Sync with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const gsapTicker = (time) => {
       lenis.raf(time * 1000);
-    });
+    };
+
+    gsap.ticker.add(gsapTicker);
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove(lenis.raf);
+      gsap.ticker.remove(gsapTicker);
     };
   }, []);
 
   return (
     <ContactProvider>
-      <div className="bg-black text-white selection:bg-[#F2EC24] selection:text-black min-h-screen relative">
+      <div className="bg-black text-white selection:bg-[#E2FF00] selection:text-black min-h-screen relative">
         <ScrollToTop />
         <CustomCursor />
         <Navigation />

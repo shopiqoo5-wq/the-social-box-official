@@ -56,11 +56,11 @@ export default function ContactModal() {
         {/* Left Side: Branding/Success State */}
         <div className="w-full md:w-2/5 bg-[#111] p-12 text-white flex flex-col justify-between relative overflow-hidden">
           <div className="relative z-10">
-             <div className="w-12 h-12 bg-[#F2EC24] rounded-2xl mb-8 flex items-center justify-center">
+             <div className="w-12 h-12 bg-[#E2FF00] rounded-2xl mb-8 flex items-center justify-center">
                 <Zap className="w-6 h-6 text-black fill-current" />
              </div>
-             <h2 className="font-oswald text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-4">
-                Let's Make <br/> <span className="text-[#F2EC24]">History</span>.
+             <h2 className="font-space text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-4">
+                Let's Make <br/> <span className="text-[#E2FF00]">History</span>.
              </h2>
              <p className="text-zinc-400 font-light italic leading-relaxed">
                 Tell us about your brand vision, and our experts will craft a high-impact strategy tailored specifically for you.
@@ -70,20 +70,20 @@ export default function ContactModal() {
           <div className="relative z-10 mt-12 grid gap-6">
              <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center">
-                   <Mail className="w-5 h-5 text-[#F2EC24]" />
+                   <Mail className="w-5 h-5 text-[#E2FF00]" />
                 </div>
                 <p className="text-sm font-bold tracking-widest uppercase">hello@thesocialbox.in</p>
              </div>
              <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center">
-                   <Phone className="w-5 h-5 text-[#F2EC24]" />
+                   <Phone className="w-5 h-5 text-[#E2FF00]" />
                 </div>
                 <p className="text-sm font-bold tracking-widest uppercase">+91 97XXXX 4XXX</p>
              </div>
           </div>
 
           {/* Decorative Elements */}
-          <div className="absolute top-[-10%] right-[-10%] font-oswald text-white/5 text-[15vw] font-black leading-none pointer-events-none select-none">
+          <div className="absolute top-[-10%] right-[-10%] font-space text-white/5 text-[15vw] font-black leading-none pointer-events-none select-none">
              SBX
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function ContactModal() {
         <div className="w-full md:w-3/5 p-10 md:p-16 relative bg-white flex flex-col justify-center">
           <button 
             onClick={closeContact}
-            className="absolute top-8 right-8 w-12 h-12 rounded-full bg-zinc-100 hover:bg-[#F2EC24] transition-colors flex items-center justify-center"
+            className="absolute top-8 right-8 w-12 h-12 rounded-full bg-zinc-100 hover:bg-[#E2FF00] transition-colors flex items-center justify-center"
           >
             <X className="w-5 h-5 text-black" />
           </button>
@@ -108,7 +108,7 @@ export default function ContactModal() {
                            type="text" 
                            required
                            placeholder="John Doe"
-                           className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#F2EC24] focus:border-transparent outline-none transition-all placeholder:text-zinc-300"
+                           className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#E2FF00] focus:border-transparent outline-none transition-all placeholder:text-zinc-300"
                         />
                      </div>
                   </div>
@@ -120,7 +120,7 @@ export default function ContactModal() {
                            type="email" 
                            required
                            placeholder="john@example.com"
-                           className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#F2EC24] focus:border-transparent outline-none transition-all placeholder:text-zinc-300"
+                           className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#E2FF00] focus:border-transparent outline-none transition-all placeholder:text-zinc-300"
                         />
                      </div>
                   </div>
@@ -130,7 +130,7 @@ export default function ContactModal() {
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-2 ml-1">Project Type</p>
                   <select 
                      required
-                     className="w-full px-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#F2EC24] focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
+                     className="w-full px-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#E2FF00] focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
                   >
                      <option value="">Select Service</option>
                      <option value="smm">Social Media Management</option>
@@ -149,14 +149,14 @@ export default function ContactModal() {
                         rows="3"
                         required
                         placeholder="I want to scale my brand through..."
-                        className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#F2EC24] focus:border-transparent outline-none transition-all placeholder:text-zinc-300 resize-none"
+                        className="w-full pl-12 pr-4 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#E2FF00] focus:border-transparent outline-none transition-all placeholder:text-zinc-300 resize-none"
                      ></textarea>
                   </div>
                </div>
 
                <button 
                   disabled={isSubmitting}
-                  className="w-full py-6 bg-zinc-900 text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#F2EC24] hover:text-black transition-all duration-500 shadow-2xl flex items-center justify-center gap-4 disabled:opacity-50 disabled:cursor-not-allowed group"
+                  className="w-full py-6 bg-zinc-900 text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#E2FF00] hover:text-black transition-all duration-500 shadow-2xl flex items-center justify-center gap-4 disabled:opacity-50 disabled:cursor-not-allowed group"
                >
                   {isSubmitting ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -173,10 +173,10 @@ export default function ContactModal() {
             </form>
           ) : (
             <div className="text-center py-20 px-8">
-               <div className="w-24 h-24 bg-[#F2EC24] rounded-[2.5rem] mx-auto mb-10 flex items-center justify-center shadow-glow animate-bounce">
+               <div className="w-24 h-24 bg-[#E2FF00] rounded-[2.5rem] mx-auto mb-10 flex items-center justify-center shadow-glow animate-bounce">
                   <CheckCircle className="w-12 h-12 text-black" />
                </div>
-               <h3 className="font-oswald text-5xl font-black uppercase mb-6 leading-tight">MOMENTUM<br/>STARTED.</h3>
+               <h3 className="font-space text-5xl font-black uppercase mb-6 leading-tight">MOMENTUM<br/>STARTED.</h3>
                <p className="text-zinc-500 text-lg font-light leading-relaxed mb-6">
                   Thank you! Our strategists are analyzing your brand already. We'll be in touch within 24 hours.
                </p>
