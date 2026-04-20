@@ -53,11 +53,11 @@ export default function CustomCursor() {
     <>
       <div 
         ref={cursorRef}
-        className="fixed top-0 left-0 w-12 h-12 border border-[#E2FF00] rounded-full pointer-events-none z-[9999] flex items-center justify-center transition-all duration-500 will-change-transform mix-blend-difference"
+        className="fixed top-0 left-0 w-12 h-12 border border-[#FFC107] rounded-full pointer-events-none z-[9999] flex items-center justify-center transition-all duration-500 will-change-transform mix-blend-difference"
         style={{ 
           transform: `scale(${isHovering ? 2.5 : 1})`,
           backgroundColor: isHovering ? 'white' : 'transparent',
-          borderColor: isHovering ? 'white' : '#E2FF00'
+          borderColor: isHovering ? 'white' : '#FFC107'
         }}
       >
         <span 
@@ -73,7 +73,7 @@ export default function CustomCursor() {
       </div>
       <div 
         ref={dotRef}
-        className="fixed top-0 left-0 w-1 h-1 bg-[#E2FF00] rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        className="fixed top-0 left-0 w-1 h-1 bg-[#FFC107] rounded-full pointer-events-none z-[10000] mix-blend-difference"
       />
     </>
   );

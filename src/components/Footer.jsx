@@ -13,7 +13,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#E2FF00] text-black py-32 md:py-64 px-6 md:px-12 mt-40 rounded-t-[5rem] md:rounded-t-[10rem] relative overflow-hidden shadow-[0_-50px_100px_rgba(0,0,0,0.2)]">
+    <footer className="bg-[#FFC107] text-black py-32 md:py-64 px-6 md:px-12 mt-40 rounded-t-[5rem] md:rounded-t-[10rem] relative overflow-hidden shadow-[0_-50px_100px_rgba(0,0,0,0.2)]">
       
       {/* 🔮 Background Atmospheric Effects */}
       <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none opacity-50"></div>
@@ -48,16 +48,7 @@ export default function Footer() {
           </Reveal>
         </div>
 
-        {/* SECTION 2: THE ENERGY LOOP */}
-        <div className="border-y-[3px] border-black/10 py-12 mb-32 -mx-12 overflow-hidden">
-           <div className="flex animate-marquee-fast whitespace-nowrap">
-              {[...footMarquee, ...footMarquee].map((text, i) => (
-                <span key={i} className="mx-16 md:mx-32 font-space text-3xl md:text-5xl font-black uppercase tracking-tighter italic opacity-20 hover:opacity-100 transition-opacity cursor-default">
-                  {text} <span className="text-black/5 mx-4">•</span>
-                </span>
-              ))}
-           </div>
-        </div>
+
         
         {/* SECTION 3: DEEP FOOTPRINT */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 py-20 border-y border-black/5 mb-20 animate-in fade-in duration-1000">
@@ -67,7 +58,7 @@ export default function Footer() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="font-space text-4xl tracking-tighter font-black flex items-center gap-3 text-black hover:italic transition-all"
             >
-              TSB <span className="text-[10px] bg-black text-[#E2FF00] px-3 py-1.5 rounded-lg">v2.0</span>
+              TSB <span className="text-[10px] bg-black text-[#FFC107] px-3 py-1.5 rounded-lg">v2.0</span>
             </Link>
             <p className="text-sm md:text-base font-medium leading-relaxed max-w-xs opacity-70 italic">
               Engineering the future of social culture through high-performance digital architecture and narrative technology.

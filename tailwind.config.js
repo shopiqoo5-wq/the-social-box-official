@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        'space': ['Space Grotesk', 'sans-serif'],
         'oswald': ['Oswald', 'sans-serif'],
         'bebas': ['Bebas Neue', 'sans-serif'],
         'manrope': ['Manrope', 'sans-serif'],

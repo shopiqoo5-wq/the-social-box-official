@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Oswald:wght@300;400;500;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --social-yellow: #F2EC24;
+  --social-yellow: #FFC107;
 }
 
 * {
@@ -87,14 +85,28 @@ body::-webkit-scrollbar {
 /* Cinematic Grain Effect */
 .grain-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   pointer-events: none;
   z-index: 9999;
   background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.03;
+  opacity: 0.05;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform:translate(0, 0); }
+  10% { transform:translate(-5%, -10%); }
+  20% { transform:translate(-15%, 5%); }
+  30% { transform:translate(7%, -25%); }
+  40% { transform:translate(-5%, 25%); }
+  50% { transform:translate(-15%, 10%); }
+  60% { transform:translate(15%, 0%); }
+  70% { transform:translate(0%, 15%); }
+  80% { transform:translate(3%, 35%); }
+  90% { transform:translate(-10%, 10%); }
 }
 
 /* GSAP Reveal Overrides */
@@ -106,3 +118,38 @@ body::-webkit-scrollbar {
 .page-transition {
   transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 40px rgba(255, 193, 7, 0.2);
+}
+
+/* ======= Brand Logo Wall ======= */
+@keyframes brand-marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.brand-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+              box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+              transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.brand-card:hover {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 30px var(--brand-glow), 0 8px 32px var(--brand-glow);
+  transform: scale(1.06) translateY(-4px);
+}
+
+/* Pause scrolling row when hovering over cards */
+.brand-row-wrapper:hover .brand-row {
+  animation-play-state: paused;
+}
+

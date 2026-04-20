@@ -1,20 +1,21 @@
-import React, { useRef, useMemo, Suspense } from 'react';
+import React, { useRef, useMemo, Suspense, memo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { PerspectiveCamera, Sparkles, Environment } from '@react-three/drei';
+import { PerspectiveCamera, Sparkles, Environment, AdaptiveDpr, AdaptiveEvents } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
 import * as THREE from 'three';
 
 const PersistentParticles = () => {
-  const count = 600; // Calibrated for performance depth
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const count = isMobile ? 300 : 600; // Calibrated for performance depth
   const mesh = useRef();
   const { viewport } = useThree();
   const location = useLocation();
 
   const pageParams = useMemo(() => {
     switch(location.pathname) {
-      case '/': return { color: '#E2FF00', speed: 1.0, scale: 0.05 };
+      case '/': return { color: '#FFC107', speed: 1.0, scale: 0.05 };
       case '/services': return { color: '#ffffff', speed: 1.2, scale: 0.04 };
-      default: return { color: '#E2FF00', speed: 0.8, scale: 0.03 };
+      default: return { color: '#FFC107', speed: 0.8, scale: 0.03 };
     }
   }, [location.pathname]);
 
@@ -67,7 +68,7 @@ const PersistentParticles = () => {
   );
 };
 
-export default function GlobalScene() {
+const GlobalScene = memo(function GlobalScene() {
   return (
     <div className="w-full h-full pointer-events-none opacity-40">
       <Canvas 
@@ -81,14 +82,18 @@ export default function GlobalScene() {
         <Suspense fallback={null}>
           <PerspectiveCamera makeDefault position={[0, 0, 40]} fov={50} />
           <ambientLight intensity={1.5} />
-          <pointLight position={[10, 10, 10]} intensity={2} color="#E2FF00" />
+          <pointLight position={[10, 10, 10]} intensity={2} color="#FFC107" />
           
           <PersistentParticles />
-          <Sparkles count={40} scale={40} size={1} speed={0.4} color="#E2FF00" />
+          <Sparkles count={40} scale={40} size={1} speed={0.4} color="#FFC107" />
           
           <Environment preset="night" />
+          <AdaptiveDpr pixelated />
+          <AdaptiveEvents />
         </Suspense>
       </Canvas>
     </div>
   );
-}
+});
+
+export default GlobalScene;
