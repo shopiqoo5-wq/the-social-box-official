@@ -14,32 +14,34 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const RollingDigit = ({ value, delay = 0 }) => {
-  const ref = useRef(null);
+  const containerRef = useRef(null);
+  const [inView, setInView] = useState(false);
   
   useEffect(() => {
-    if (!ref.current) return;
-    
-    // Slight delay to ensure Section reveal has started
-    gsap.fromTo(ref.current, {
-      yPercent: 0,
-      filter: "blur(5px)"
-    }, {
-      yPercent: -(value * 10),
-      filter: "blur(0px)",
-      duration: 3,
-      delay: delay + 0.5,
-      ease: "power4.inOut",
-      scrollTrigger: {
-        trigger: ref.current,
-        start: "top 85%",
-        toggleActions: "restart none none none"
-      }
-    });
-  }, [value, delay]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
+    );
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="h-[1em] overflow-hidden inline-flex flex-col leading-none">
-      <div ref={ref} className="flex flex-col will-change-transform h-[10em]">
+    <div ref={containerRef} className="h-[1em] overflow-hidden inline-flex flex-col leading-none">
+      <div 
+        className="flex flex-col will-change-transform"
+        style={{
+          transform: inView ? `translateY(-${value}em)` : 'translateY(0)',
+          filter: inView ? 'blur(0px)' : 'blur(4px)',
+          transition: `transform 3s cubic-bezier(0.19, 1, 0.22, 1) ${delay + 0.2}s, filter 3s cubic-bezier(0.19, 1, 0.22, 1) ${delay + 0.2}s`
+        }}
+      >
         {[0,1,2,3,4,5,6,7,8,9].map(n => (
           <span key={n} className="h-[1em] w-full flex items-center justify-center">{n}</span>
         ))}
@@ -68,6 +70,17 @@ export default function HomePage() {
   const bridgeContentRef = useRef(null);
   const bridgeClipRef = useRef(null);
   const portalBezelRef = useRef(null);
+
+  // Services horizontal scroll
+  const servicesWrapperRef = useRef(null);
+  const servicesRef = useRef(null);
+  const servicesPhysics = useRef({
+    currentX: 0,
+    targetX: 0,
+    isDragging: false,
+    startX: 0,
+    startScrollLeft: 0,
+  });
   
   // Physics State for the cinematic reel
   const physics = useRef({
@@ -95,22 +108,48 @@ export default function HomePage() {
     if (trackRef.current) trackRef.current.style.cursor = 'grab';
   };
 
+  // ── Services drag / wheel helpers ──────────────────────────────────────
+  const getServicePoint = (e) => e.touches ? e.touches[0].pageX : e.pageX;
+
+  const onServicesDragStart = (e) => {
+    const sp = servicesPhysics.current;
+    sp.isDragging = true;
+    sp.startX = getServicePoint(e);
+    sp.startScrollLeft = sp.targetX;
+    if (servicesRef.current) servicesRef.current.style.cursor = 'grabbing';
+  };
+
+  const onServicesDragMove = (e) => {
+    const sp = servicesPhysics.current;
+    if (!sp.isDragging) return;
+    const delta = getServicePoint(e) - sp.startX;
+    sp.targetX = sp.startScrollLeft + delta;
+  };
+
+  const onServicesDragEnd = () => {
+    servicesPhysics.current.isDragging = false;
+    if (servicesRef.current) servicesRef.current.style.cursor = 'grab';
+  };
+
+  const onServicesWheel = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    servicesPhysics.current.targetX -= delta * 1.5;
+  };
+
   useEffect(() => {
-
-    let animationFrameId;
-    const updateAnimation = () => {
+    // ── Reel RAF loop ────────────────────────────────────────────────────
+    let reelRaf;
+    const updateReel = () => {
       if (!trackRef.current) return;
-      
       if (!physics.current.isDragging) {
-        physics.current.targetX -= 1.5; // Smooth slow auto-scroll
+        physics.current.targetX -= 1.5;
       }
-      
       const prevX = physics.current.currentX;
-      physics.current.currentX += (physics.current.targetX - physics.current.currentX) * 0.08; // Slightly Snappier
-
+      physics.current.currentX += (physics.current.targetX - physics.current.currentX) * 0.08;
       const trackWidth = trackRef.current.scrollWidth;
       const halfWidth = trackWidth / 2;
-      
       if (physics.current.currentX <= -halfWidth) {
         physics.current.currentX += halfWidth;
         physics.current.targetX += halfWidth;
@@ -118,34 +157,47 @@ export default function HomePage() {
         physics.current.currentX -= halfWidth;
         physics.current.targetX -= halfWidth;
       }
-      
       const velocity = physics.current.currentX - prevX;
-      const tilt = Math.max(-15, Math.min(15, velocity * 1.5)); 
-      const blur = (window.innerWidth > 1024) ? Math.min(8, Math.abs(velocity) * 0.5) : 0;
-      
+      const tilt = Math.max(-15, Math.min(15, velocity * 1.5));
+      const blur = window.innerWidth > 1024 ? Math.min(8, Math.abs(velocity) * 0.5) : 0;
       trackRef.current.style.transform = `translate3d(${physics.current.currentX}px, 0, 0) skewX(${tilt}deg)`;
-      if (blur > 0) {
-        trackRef.current.style.filter = `blur(${blur}px)`;
-      } else {
-        trackRef.current.style.filter = 'none';
-      }
-
-      
-      animationFrameId = requestAnimationFrame(updateAnimation);
+      trackRef.current.style.filter = blur > 0 ? `blur(${blur}px)` : 'none';
+      reelRaf = requestAnimationFrame(updateReel);
     };
-    updateAnimation();
+    updateReel();
 
+    // ── Services RAF loop ────────────────────────────────────────────────
+    let servicesRaf;
+    const updateServices = () => {
+      const sp = servicesPhysics.current;
+      const el = servicesRef.current;
+      if (!el) { servicesRaf = requestAnimationFrame(updateServices); return; }
+
+      const maxScroll = -(el.scrollWidth - el.parentElement.clientWidth);
+      sp.targetX = Math.min(0, Math.max(maxScroll, sp.targetX));
+      sp.currentX += (sp.targetX - sp.currentX) * 0.1;
+
+      el.style.transform = `translate3d(${sp.currentX}px, 0, 0)`;
+      servicesRaf = requestAnimationFrame(updateServices);
+    };
+    updateServices();
+
+    // wheel listener (passive: false so we can preventDefault)
+    const wheelEl = servicesWrapperRef.current;
+    if (wheelEl) wheelEl.addEventListener('wheel', onServicesWheel, { passive: false });
 
     return () => {
-       cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(reelRaf);
+      cancelAnimationFrame(servicesRaf);
+      if (wheelEl) wheelEl.removeEventListener('wheel', onServicesWheel);
     };
   }, []);
 
   const services = [
-    { num: "01", title: "Social Media", icon: <Radio className="w-8 h-8" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
-    { num: "02", title: "Influencer Marketing", icon: <Users className="w-8 h-8" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
-    { num: "03", title: "Meme Marketing", icon: <Zap className="w-8 h-8" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
-    { num: "04", title: "Web", icon: <Globe className="w-8 h-8" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { num: "01", title: "Web", icon: <Globe className="w-8 h-8" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { num: "02", title: "Social Media", icon: <Radio className="w-8 h-8" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
+    { num: "03", title: "Influencer Marketing", icon: <Users className="w-8 h-8" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
+    { num: "04", title: "Meme Marketing", icon: <Zap className="w-8 h-8" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
     { num: "05", title: "UGC", icon: <Video className="w-8 h-8" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { num: "06", title: "Personal Branding", icon: <Sparkles className="w-8 h-8" />, desc: "Positioning individuals as strong, credible voices in their space." },
     { num: "07", title: "Production", icon: <Palette className="w-8 h-8" />, desc: "From ideation to execution — high-quality content built for digital-first platforms." },
@@ -316,31 +368,43 @@ export default function HomePage() {
                 </div>
               </Reveal>
               
-              <div className="overflow-hidden -mx-6 md:-mx-12 py-10">
-                <div 
-                  className="flex flex-nowrap items-stretch gap-8 md:gap-12 w-max animate-marquee-slow hover:[animation-play-state:paused] px-6 md:px-12"
-                  style={{ animationDuration: '40s' }}
+              {/* Draggable horizontal scroll track */}
+              <div
+                ref={servicesWrapperRef}
+                data-lenis-prevent
+                className="overflow-hidden -mx-6 md:-mx-12 py-10 select-none"
+                onMouseDown={onServicesDragStart}
+                onMouseMove={onServicesDragMove}
+                onMouseUp={onServicesDragEnd}
+                onMouseLeave={onServicesDragEnd}
+                onTouchStart={onServicesDragStart}
+                onTouchMove={onServicesDragMove}
+                onTouchEnd={onServicesDragEnd}
+              >
+                <div
+                  ref={servicesRef}
+                  className="flex flex-nowrap items-stretch gap-6 md:gap-8 w-max will-change-transform px-6 md:px-12 cursor-grab active:cursor-grabbing"
                 >
-                  {[...services, ...services].map((service, index) => (
-                    <div key={index} className="w-[85vw] md:w-[450px] flex-shrink-0 group">
-                      <div className="h-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[4rem] p-12 md:p-16 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-700 hover:bg-[#FFC107] hover:scale-[1.02] hover:-rotate-1 active:scale-95 group shadow-2xl">
+                  {services.map((service, index) => (
+                    <div key={index} className="w-[85vw] md:w-[320px] flex-shrink-0 group">
+                      <div className="h-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-500 ease-out hover:bg-[#FFC107] hover:scale-[1.02] hover:-translate-y-4 hover:-rotate-1 active:scale-95 group shadow-2xl hover:shadow-[0_32px_80px_rgba(255,193,7,0.25)]">
                         {/* Glassmorphic Background Glow */}
-                        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#FFC107]/10 rounded-full blur-[80px] group-hover:bg-black/10 transition-colors"></div>
+                        <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-[#FFC107]/10 rounded-full blur-[60px] group-hover:bg-black/10 transition-colors"></div>
                         
-                        <div className="relative z-10 h-full flex flex-col justify-between min-h-[400px]">
+                        <div className="relative z-10 h-full flex flex-col justify-between min-h-[300px]">
                           <div>
-                            <div className="mb-12 inline-flex p-6 bg-white/5 rounded-3xl text-[#FFC107] group-hover:bg-black/5 group-hover:text-black transition-all transform group-hover:rotate-12 duration-700">
+                            <div className="mb-8 inline-flex p-4 bg-white/5 rounded-2xl text-[#FFC107] group-hover:bg-black/5 group-hover:text-black transition-all transform group-hover:rotate-12 duration-700">
                               {service.icon}
                             </div>
-                            <h3 className="font-space text-3xl md:text-5xl font-black uppercase mb-6 text-white group-hover:text-black transition-colors leading-none tracking-tighter">
+                            <h3 className="font-space text-2xl md:text-4xl font-black uppercase mb-4 text-white group-hover:text-black transition-colors leading-none tracking-tighter">
                               {service.title}
                             </h3>
                           </div>
                           <div>
-                            <p className="font-medium text-zinc-400 group-hover:text-black/70 text-xl md:text-2xl leading-tight max-w-sm transition-colors italic mb-4">
+                            <p className="font-medium text-zinc-400 group-hover:text-black/70 text-lg md:text-xl leading-tight max-w-sm transition-colors italic mb-4">
                               {service.desc}
                             </p>
-                            <div className="text-[10px] font-black tracking-[0.4em] uppercase text-[#FFC107]/40 group-hover:text-black/40 transition-colors">
+                            <div className="text-[9px] font-black tracking-[0.4em] uppercase text-[#FFC107]/40 group-hover:text-black/40 transition-colors">
                               Explore Methodology +
                             </div>
                           </div>

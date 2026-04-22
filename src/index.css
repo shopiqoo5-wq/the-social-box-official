@@ -134,18 +134,27 @@ body::-webkit-scrollbar {
 }
 
 .brand-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: border-color 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-              box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-              transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .brand-card:hover {
   border-color: var(--brand-color);
   box-shadow: 0 0 30px var(--brand-glow), 0 8px 32px var(--brand-glow);
-  transform: scale(1.06) translateY(-4px);
+  transform: scale(1.15) translateY(-4px);
+  z-index: 50; /* Bring above peers */
+  opacity: 1 !important;
+  filter: grayscale(0%) !important;
+}
+
+/* Peer Dimming Effect */
+.group\/wall:hover .brand-card:not(:hover) {
+  opacity: 0.35;
+  transform: scale(0.95);
+  filter: grayscale(100%);
+  border-color: rgba(255, 255, 255, 0.02);
 }
 
 /* Pause scrolling row when hovering over cards */

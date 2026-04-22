@@ -82,8 +82,32 @@ const BRAND_ROWS = [
 ];
 
 export default function BrandLogoWall() {
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <section className="py-24 md:py-40 bg-[#050505] relative overflow-hidden">
+    <section 
+      className="py-24 md:py-40 bg-[#050505] relative overflow-hidden group/wall"
+      onMouseMove={handleMouseMove}
+      style={{
+        '--mouse-x': `${mousePos.x}px`,
+        '--mouse-y': `${mousePos.y}px`
+      }}
+    >
+      {/* Dynamic Cursor Spotlight */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-700 opacity-0 group-hover/wall:opacity-100"
+        style={{
+          background: 'radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,193,7,0.08), transparent 40%)'
+        }}
+      />
       {/* Section Header */}
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 mb-16 md:mb-24">
         <Reveal type="fade-3d">
@@ -101,9 +125,6 @@ export default function BrandLogoWall() {
 
       {/* Horizontal Scrolling Logo Card Rows */}
       <div className="space-y-3 md:space-y-4 relative">
-        {/* Gradient fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
 
         {BRAND_ROWS.map((row, rowIndex) => (
           <div key={rowIndex} className="overflow-hidden brand-row-wrapper">
@@ -139,6 +160,9 @@ export default function BrandLogoWall() {
           </div>
         ))}
       </div>
+      {/* Gradient fade edges - adjusted z-index so they sit above cards but below interaction */}
+      <div className="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-[#050505] to-transparent z-[60] pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-[#050505] to-transparent z-[60] pointer-events-none" />
     </section>
   );
 }

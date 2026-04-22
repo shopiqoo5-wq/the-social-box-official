@@ -4,10 +4,10 @@ import Reveal from '../components/Reveal';
 
 export default function ServicesPage() {
   const services = [
-    { num: "01", title: "Social Media", icon: <Radio className="w-10 h-10" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
-    { num: "02", title: "Influencer Marketing", icon: <Users className="w-10 h-10" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
-    { num: "03", title: "Meme Marketing", icon: <Zap className="w-10 h-10" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
-    { num: "04", title: "Web", icon: <Globe className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { num: "01", title: "Web", icon: <Globe className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { num: "02", title: "Social Media", icon: <Radio className="w-10 h-10" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
+    { num: "03", title: "Influencer Marketing", icon: <Users className="w-10 h-10" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
+    { num: "04", title: "Meme Marketing", icon: <Zap className="w-10 h-10" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
     { num: "05", title: "UGC", icon: <Video className="w-10 h-10" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { num: "06", title: "Personal Branding", icon: <Sparkles className="w-10 h-10" />, desc: "Positioning individuals as strong, credible voices in their space." },
     { num: "07", title: "Production", icon: <Palette className="w-10 h-10" />, desc: "From ideation to execution — high-quality content built for digital-first platforms." },
