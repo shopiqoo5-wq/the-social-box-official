@@ -10,10 +10,13 @@ gsap.registerPlugin(ScrollTrigger);
  */
 const getClipPath = (isMobile) => {
   if (isMobile) {
-    // Aggressive "Full Screen" feel for mobile
+    // Aggressive "Full Screen" feel for mobile (holeX=4, holeY=18, holeW=92, holeH=48)
+    // top=18, right=4 (100-4-92), bottom=34 (100-18-48), left=4
     return 'inset(18dvh 4vw 34dvh 4vw round 0px)';
   }
-  return 'inset(23vh 29vw 41vh 29vw round 0px)';
+  // Desktop hole: x=31, y=24, w=38, h=30
+  // top=24, right=31 (100-31-38), bottom=46 (100-24-30), left=31
+  return 'inset(24vh 31vw 46vh 31vw round 0px)';
 };
 
 const CLIP_FULL = 'inset(0vh 0vw 0vh 0vw round 0px)';
@@ -409,12 +412,11 @@ const HeroSequenceAnimation = ({ bridgeContentRef, bridgeClipRef, portalBezelRef
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.35)_72%,rgba(0,0,0,0.85)_100%)] pointer-events-none" />
         </div>
 
-        {/* Transitional Void Text */}
         <div 
           id="void-text"
-          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none opacity-0"
+          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none opacity-0 px-4"
         >
-          <div className="font-space text-[2.5vw] md:text-[0.9vw] font-black uppercase tracking-[2.5em] text-[#FFC107] opacity-60">
+          <div className="font-space text-[4vw] sm:text-[3vw] md:text-[0.9vw] font-black uppercase tracking-[0.3em] md:tracking-[1.5em] lg:tracking-[2.5em] text-[#FFC107] opacity-60 text-center break-words">
             STAY RELEVANT, NOT JUST VISIBLE
           </div>
         </div>

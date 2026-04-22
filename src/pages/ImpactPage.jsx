@@ -21,7 +21,7 @@ export default function ImpactPage() {
       <section className="mb-64">
         <div className="max-w-screen-2xl mx-auto">
           <Reveal type="fade-3d">
-            <h1 className="font-space text-[18vw] md:text-[14vw] leading-[0.75] tracking-tighter uppercase mb-24">
+            <h1 className="font-space text-[14vw] md:text-[10vw] leading-[0.75] tracking-tighter uppercase mb-24 break-words">
                MASSIVE <br/>
                <span className="text-[#FFC107] italic">IMPACT</span>
             </h1>

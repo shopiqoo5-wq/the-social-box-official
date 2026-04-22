@@ -18,7 +18,7 @@ export default function ServicesPage() {
       
       <div className="max-w-screen-2xl mx-auto mb-56 flex flex-col md:flex-row justify-between items-end gap-12">
         <Reveal type="fade-3d">
-          <h1 className="font-space text-[18vw] md:text-[12vw] leading-[0.8] tracking-tighter uppercase">
+          <h1 className="font-space text-[12vw] md:text-[9vw] leading-[0.8] tracking-tighter uppercase break-words">
              OUR <br/>
              <span className="text-[#FFC107] italic">CAPABILITIES</span>
           </h1>

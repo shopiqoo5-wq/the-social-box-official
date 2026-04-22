@@ -226,7 +226,7 @@ export default function HomePage() {
         style={{ 
           clipPath: (typeof window !== 'undefined' && window.innerWidth < 768) 
             ? 'inset(18dvh 4vw 34dvh 4vw round 0px)' 
-            : 'inset(23vh 29vw 41vh 29vw round 0px)' 
+            : 'inset(24vh 31vw 46vh 31vw round 0px)' 
         }}
       >
         <div ref={bridgeContentRef} id="main-content" className="relative group/main opacity-0 will-change-transform">
@@ -238,7 +238,7 @@ export default function HomePage() {
             <div className="w-full max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10">
               <Reveal delay={100} type="fade-3d" className="mb-32">
                  <div className="flex flex-col md:flex-row gap-12 items-baseline justify-between border-b border-white/10 pb-20">
-                    <h2 className="font-space text-[15vw] md:text-[13vw] leading-[0.75] tracking-tighter uppercase max-w-5xl">
+                    <h2 className="font-space text-[11vw] md:text-[8vw] lg:text-[7vw] leading-[0.85] tracking-tighter uppercase max-w-5xl break-words">
                        SOCIAL <br/>
                        <span className="text-[#FFC107] italic drop-shadow-[0_0_80px_rgba(255,193,7,0.2)]">DEVELOPMENT</span>
                     </h2>
@@ -358,7 +358,7 @@ export default function HomePage() {
             <div className="max-w-screen-2xl mx-auto relative z-10">
               <Reveal type="fade-3d">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-32 border-b border-white/5 pb-20">
-                   <h2 className="font-space text-[12vw] md:text-[9vw] leading-[0.8] tracking-[-0.05em] uppercase">
+                   <h2 className="font-space text-[10vw] md:text-[7.5vw] lg:text-[6.5vw] leading-[0.85] tracking-[-0.05em] uppercase break-words">
                       PROJECT<br/>
                       <span className="text-[#FFC107] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)]">CAPABILITIES</span>
                    </h2>

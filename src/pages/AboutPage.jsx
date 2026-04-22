@@ -27,7 +27,7 @@ export default function AboutPage() {
       <section className="mb-64">
         <div className="max-w-screen-2xl mx-auto">
           <Reveal delay={100} type="fade-3d">
-            <h1 className="font-space text-[18vw] md:text-[14vw] leading-[0.8] tracking-tighter uppercase mb-24">
+            <h1 className="font-space text-[11vw] md:text-[9vw] leading-[0.8] tracking-tighter uppercase mb-24 break-words">
                DEVELOPMENT <br/>
                <span className="text-[#FFC107] italic">STUDIO</span>
             </h1>
@@ -116,7 +116,7 @@ export default function AboutPage() {
                   <div key={i} className="py-16 md:py-24 flex items-center justify-between group cursor-pointer transition-all hover:px-12">
                      <div className="flex items-center gap-12 md:gap-24">
                         <span className="text-[#FFC107] font-space text-2xl md:text-3xl font-black opacity-20 group-hover:opacity-100 transition-opacity italic">{p.label}</span>
-                        <h3 className="font-space text-4xl md:text-[8vw] font-black uppercase leading-none tracking-tighter text-zinc-800 group-hover:text-white transition-colors">
+                        <h3 className="font-space text-4xl md:text-[5vw] lg:text-[4vw] font-black uppercase leading-none tracking-tighter text-zinc-800 group-hover:text-white transition-colors break-words max-w-[80vw]">
                            {p.text}
                         </h3>
                      </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
       <section className="py-64 border-t border-white/10">
          <div className="max-w-screen-2xl mx-auto flex flex-col items-center justify-center text-center">
             <Reveal type="fade-3d">
-               <h2 className="font-space text-7xl md:text-[14vw] leading-[0.85] tracking-tighter uppercase mb-20 italic">
+               <h2 className="font-space text-[14vw] md:text-[10vw] leading-[0.85] tracking-tighter uppercase mb-20 italic break-words">
                   LET’S <br/>
                   <span className="text-[#FFC107] not-italic drop-shadow-[0_0_60px_rgba(255,193,7,0.3)]">INTERFACE</span>
                </h2>

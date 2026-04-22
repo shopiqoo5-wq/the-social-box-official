@@ -15,7 +15,7 @@ const LaptopPortalBezel = memo(function LaptopPortalBezel() {
     <svg
       className="h-full w-full"
       viewBox="0 0 100 100"
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
