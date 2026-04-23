@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import { ContactProvider } from './context/ContactContext';
 import ContactModal from './components/ContactModal';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
