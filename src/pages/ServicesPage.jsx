@@ -46,12 +46,8 @@ export default function ServicesPage() {
                     {service.title}
                   </h3>
                 </div>
-                <p className="font-medium text-zinc-500 group-hover:text-black/70 text-2xl leading-snug max-w-sm transition-colors">
-                  {service.desc}
-                </p>
-                <div className="mt-8 transform translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 flex items-center gap-4 font-black uppercase text-[10px] tracking-[0.4em] text-black">
-                   LEARN ARCHITECTURE <ArrowUpRight className="w-5 h-5" />
-                </div>
+
+
               </div>
             </div>
           </Reveal>

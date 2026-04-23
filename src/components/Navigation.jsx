@@ -84,22 +84,7 @@ export default function Navigation() {
           ))}
         </div>
 
-        {/* Global Access Interface */}
-        <div className="hidden lg:block relative z-10">
-          <Magnetic>
-             <button 
-              onClick={openContact}
-              aria-label="Open contact form"
-              className="group relative px-10 py-3.5 bg-white text-black rounded-full font-black text-[10px] uppercase tracking-[0.4em] transition-all overflow-hidden active:scale-95"
-             >
-                <div className="absolute inset-0 bg-[#FFC107] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <span className="relative z-10 flex items-center gap-4">
-                   SOCIAL ACCESS 
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-            </button>
-          </Magnetic>
-        </div>
+
 
         {/* Mobile Command Toggle */}
         <button 

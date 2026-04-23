@@ -398,27 +398,24 @@ export default function HomePage() {
               >
                 <div
                   ref={servicesRef}
-                  className="flex flex-nowrap items-stretch gap-6 md:gap-8 w-max will-change-transform px-6 md:px-12 cursor-grab active:cursor-grabbing"
+                  className="flex flex-nowrap items-stretch gap-4 md:gap-6 w-max will-change-transform px-6 md:px-12 cursor-grab active:cursor-grabbing"
                 >
                   {services.map((service, index) => (
-                    <div key={index} className="w-[85vw] md:w-[320px] flex-shrink-0 group">
-                      <div className="h-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-500 ease-out hover:bg-[#FFC107] hover:scale-[1.02] hover:-translate-y-4 hover:-rotate-1 active:scale-95 group shadow-2xl hover:shadow-[0_32px_80px_rgba(255,193,7,0.25)]">
+                    <div key={index} className="w-[70vw] md:w-[240px] flex-shrink-0 group">
+                      <div className="h-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[1.8rem] p-6 md:p-7 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-500 ease-out hover:bg-[#FFC107] hover:scale-[1.02] hover:-translate-y-4 hover:-rotate-1 active:scale-95 group shadow-2xl hover:shadow-[0_32px_80px_rgba(255,193,7,0.25)]">
                         {/* Glassmorphic Background Glow */}
                         <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-[#FFC107]/10 rounded-full blur-[60px] group-hover:bg-black/10 transition-colors"></div>
                         
-                        <div className="relative z-10 h-full flex flex-col justify-between min-h-[300px]">
+                        <div className="relative z-10 h-full flex flex-col justify-between min-h-[200px]">
                           <div>
-                            <div className="mb-8 inline-flex p-4 bg-white/5 rounded-2xl text-[#FFC107] group-hover:bg-black/5 group-hover:text-black transition-all transform group-hover:rotate-12 duration-700">
+                            <div className="mb-6 inline-flex p-3 bg-white/5 rounded-xl text-[#FFC107] group-hover:bg-black/5 group-hover:text-black transition-all transform group-hover:rotate-12 duration-700">
                               {service.icon}
                             </div>
-                            <h3 className="font-space text-2xl md:text-4xl font-black uppercase mb-4 text-white group-hover:text-black transition-colors leading-none tracking-tighter">
+                            <h3 className="font-space text-xl md:text-2xl font-black uppercase mb-3 text-white group-hover:text-black transition-colors leading-none tracking-tighter">
                               {service.title}
                             </h3>
                           </div>
                           <div>
-                            <p className="font-medium text-zinc-400 group-hover:text-black/70 text-lg md:text-xl leading-tight max-w-sm transition-colors italic mb-4">
-                              {service.desc}
-                            </p>
                             <div className="text-[9px] font-black tracking-[0.4em] uppercase text-[#FFC107]/40 group-hover:text-black/40 transition-colors">
                               Explore Methodology +
                             </div>

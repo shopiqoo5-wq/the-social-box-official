@@ -75,39 +75,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 3: THE TEAM MATRIX */}
-      <section className="mb-64 py-32 border-y border-white/10">
-         <div className="max-w-screen-2xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-32">
-               <Reveal type="fade-3d">
-                  <h2 className="font-space text-6xl md:text-[10vw] font-black uppercase leading-none tracking-tighter">
-                     THE <span className="text-zinc-700 italic">MATRIX</span>
-                  </h2>
-               </Reveal>
-               <Reveal className="max-w-md text-right">
-                  <p className="text-zinc-500 text-xl font-light italic leading-tight uppercase tracking-widest">[ 12 Core Engineers + 2M Creators ]</p>
-               </Reveal>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-               {[
-                 { role: "CREATIVE TECH", icon: <Cpu />, team: "ENGINEERING" },
-                 { role: "CULTURE STRATEGY", icon: <Users />, team: "DATA" },
-                 { role: "VISUAL NARRATIVE", icon: <Sparkles />, team: "PRODUCTION" },
-                 { role: "GLOBAL OPS", icon: <Globe />, team: "STRATEGY" },
-               ].map((t, i) => (
-                  <Reveal key={i} delay={i * 150} type="fade-3d">
-                     <div className="px-12 py-16 rounded-[2.5rem] bg-zinc-900/50 border border-white/5 group hover:border-[#FFC107]/50 transition-all duration-700">
-                        <div className="text-[#FFC107] mb-8">{t.icon}</div>
-                        <h4 className="font-space text-2xl font-black text-white uppercase tracking-tighter mb-2">{t.role}</h4>
-                        <div className="text-[10px] font-black tracking-[0.4em] text-zinc-600 uppercase">{t.team}</div>
-                     </div>
-                  </Reveal>
-               ))}
-            </div>
-         </div>
-      </section>
-
       {/* SECTION 4: MANIFESTO */}
       <section className="mb-64">
          <div className="max-w-screen-2xl mx-auto">
@@ -120,7 +87,7 @@ export default function AboutPage() {
                            {p.text}
                         </h3>
                      </div>
-                     <ArrowUpRight className="w-12 h-12 md:w-24 md:h-24 text-[#FFC107] opacity-0 group-hover:opacity-100 transition-all transform scale-50 group-hover:scale-100" />
+
                   </div>
                ))}
             </div>

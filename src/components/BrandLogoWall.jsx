@@ -10,7 +10,7 @@ const BrandLogo = ({ brand }) => {
 
   if (!brand.slug || failed) {
     return (
-      <span className="relative z-10 font-space font-bold text-[11px] md:text-xs text-white/70 group-hover:text-black/80 transition-colors duration-500 select-none uppercase tracking-tight">
+      <span className="relative z-10 font-space font-bold text-sm md:text-base text-white/70 group-hover:text-black/80 transition-colors duration-500 select-none uppercase tracking-tight">
         {brand.initial}
       </span>
     );
@@ -20,9 +20,9 @@ const BrandLogo = ({ brand }) => {
     <img
       src={`https://cdn.simpleicons.org/${brand.slug}/ffffff`}
       alt={brand.name}
-      width={28}
-      height={28}
-      className="relative z-10 w-6 h-6 md:w-7 md:h-7 object-contain transition-all duration-500 group-hover:brightness-0"
+      width={40}
+      height={40}
+      className="relative z-10 w-8 h-8 md:w-10 md:h-10 object-contain transition-all duration-500 group-hover:brightness-0"
       loading="lazy"
       draggable={false}
       onError={() => setFailed(true)}
@@ -139,7 +139,7 @@ export default function BrandLogoWall() {
               {[...row.brands, ...row.brands].map((brand, i) => (
                 <div
                   key={`${rowIndex}-${i}`}
-                  className="brand-card group flex-shrink-0 w-14 h-14 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl md:rounded-[1.2rem] flex items-center justify-center relative overflow-hidden cursor-default"
+                  className="brand-card group flex-shrink-0 w-[4.5rem] h-[4.5rem] md:w-24 md:h-24 rounded-2xl md:rounded-[1.4rem] flex items-center justify-center relative overflow-hidden cursor-default"
                   style={{
                     '--brand-color': brand.color,
                     '--brand-glow': `${brand.color}50`,
