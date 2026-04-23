@@ -22,10 +22,10 @@ export default function Navigation() {
   }, [location.pathname]);
 
   const navLinks = [
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Case Study", path: "/case-studies" },
-    { name: "Contact", path: "#", onClick: openContact },
+    { name: "ABOUT", path: "/about" },
+    { name: "SERVICES", path: "/services" },
+    { name: "CASE STUDY", path: "/case-studies" },
+    { name: "CONTACT", path: "#", onClick: openContact },
   ];
 
   return (
