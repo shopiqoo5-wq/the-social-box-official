@@ -8,10 +8,7 @@ export default {
     extend: {
       fontFamily: {
         'space': ['Space Grotesk', 'sans-serif'],
-        'oswald': ['Oswald', 'sans-serif'],
-        'bebas': ['Bebas Neue', 'sans-serif'],
         'manrope': ['Manrope', 'sans-serif'],
-        'vt323': ['VT323', 'monospace'],
       },
     },
   },

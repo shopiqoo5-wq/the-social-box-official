@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpRight, MousePointer2, Sparkles, Box, Radio, Globe, Zap, Megaphone, Palette, Play, Info, ChevronDown, Users, Video } from 'lucide-react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { ArrowUpRight, Sparkles, Radio, Globe, Zap, Palette, Users, Video } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import HeroSequenceAnimation from '../components/HeroSequenceAnimation';
 import LaptopPortalBezel from '../components/LaptopPortalBezel';
@@ -208,7 +208,7 @@ export default function HomePage() {
     };
   }, []);
 
-  const services = [
+  const services = useMemo(() => [
     { num: "01", title: "Web", icon: <Globe className="w-8 h-8" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
     { num: "02", title: "Social Media", icon: <Radio className="w-8 h-8" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
     { num: "03", title: "Influencer Marketing", icon: <Users className="w-8 h-8" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
@@ -216,7 +216,7 @@ export default function HomePage() {
     { num: "05", title: "UGC", icon: <Video className="w-8 h-8" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { num: "06", title: "Personal Branding", icon: <Sparkles className="w-8 h-8" />, desc: "Positioning individuals as strong, credible voices in their space." },
     { num: "07", title: "Production", icon: <Palette className="w-8 h-8" />, desc: "From ideation to execution — high-quality content built for digital-first platforms." },
-  ];
+  ], []);
 
   return (
     <div className="min-h-[100dvh] bg-[#0A0A0A] text-white font-manrope selection:bg-[#FFC107] selection:text-black overflow-x-hidden relative">

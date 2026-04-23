@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useCallback } from 'react';
 import Reveal from './Reveal';
 
 /* ─── Brand Logo Icon ────────────────────────────────────────────────
@@ -82,24 +82,22 @@ const BRAND_ROWS = [
 ];
 
 export default function BrandLogoWall() {
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const sectionRef = useRef(null);
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
+  // Update CSS custom properties directly on the DOM — no React re-renders
+  const handleMouseMove = useCallback((e) => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    el.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  }, []);
 
   return (
     <section 
+      ref={sectionRef}
       className="py-24 md:py-40 bg-[#050505] relative overflow-hidden group/wall"
       onMouseMove={handleMouseMove}
-      style={{
-        '--mouse-x': `${mousePos.x}px`,
-        '--mouse-y': `${mousePos.y}px`
-      }}
     >
       {/* Dynamic Cursor Spotlight */}
       <div 

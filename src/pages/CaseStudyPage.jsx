@@ -1,7 +1,7 @@
 import React from 'react';
 import Reveal from '../components/Reveal';
 import LazyVideo from '../components/LazyVideo';
-import { Play, ArrowUpRight, Zap, Box, Globe, ChevronRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function CaseStudyPage() {
   const cases = [
