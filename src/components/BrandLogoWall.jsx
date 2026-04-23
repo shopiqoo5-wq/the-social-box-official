@@ -32,52 +32,90 @@ const BrandLogo = ({ brand }) => {
 
 /* ─── Brand Data ──────────────────────────────────────────────────── */
 const ALL_BRANDS = [
-  { name: 'Netflix', slug: 'netflix', color: '#E50914', initial: 'N' },
-  { name: 'Google', slug: 'google', color: '#4285F4', initial: 'G' },
-  { name: 'Spotify', slug: 'spotify', color: '#1DB954', initial: 'S' },
-  { name: 'Snapchat', slug: 'snapchat', color: '#FFFC00', initial: 'Sc' },
-  { name: 'Tinder', slug: 'tinder', color: '#FF6B6B', initial: 'T' },
-  { name: 'Audible', slug: 'audible', color: '#F8991D', initial: 'Au' },
-  { name: 'Bumble', slug: 'bumble', color: '#FFC629', initial: 'Bb' },
-  { name: 'Nike', slug: 'nike', color: '#F5F5F5', initial: 'Nk' },
-  { name: 'Krafton', slug: 'krafton', color: '#F7C948', initial: 'BK' },
-  { name: 'Lego', slug: 'lego', color: '#D01012', initial: 'LG' },
+  // Row 1 — Beauty & Personal Care
+  { name: 'WOW Skin Science', slug: null, color: '#2C2C2C', initial: 'WOW' },
+  { name: "Pond's", slug: null, color: '#003087', initial: "PD" },
+  { name: 'Lakme', slug: null, color: '#000000', initial: 'LK' },
+  { name: 'Nykaa', slug: null, color: '#FC2779', initial: 'NK' },
+  { name: 'Glow & Lovely', slug: null, color: '#D4A5D8', initial: 'GL' },
+  { name: 'Veet', slug: null, color: '#00A651', initial: 'VT' },
+  { name: 'Nivea', slug: null, color: '#003DA5', initial: 'NV' },
+  { name: 'Epigamia', slug: null, color: '#E84393', initial: 'EP' },
+  { name: 'Dabur', slug: null, color: '#007A33', initial: 'DB' },
+  { name: 'Emami', slug: null, color: '#D4AF37', initial: 'EM' },
+
+  // Row 2 — Fashion & Lifestyle
+  { name: 'Go Colors', slug: null, color: '#FF6B6B', initial: 'GC' },
+  { name: 'Lifestyle', slug: null, color: '#E31837', initial: 'LS' },
+  { name: 'Van Heusen', slug: null, color: '#1A1A1A', initial: 'VH' },
+  { name: 'Myntra', slug: null, color: '#FF3F6C', initial: 'MY' },
+  { name: 'Enamor', slug: null, color: '#C71585', initial: 'EN' },
+  { name: 'Soktas', slug: null, color: '#1C3F60', initial: 'SK' },
+  { name: 'Jockey', slug: null, color: '#003DA5', initial: 'JK' },
+  { name: 'Mochi', slug: null, color: '#FF9900', initial: 'MC' },
+
+  // Row 3 — Food & Beverage
+  { name: 'Alpenliebe', slug: null, color: '#FFD700', initial: 'AL' },
+  { name: 'Burger King', slug: 'burgerking', color: '#D62300', initial: 'BK' },
+  { name: 'Coca-Cola', slug: 'cocacola', color: '#E61A27', initial: 'CC' },
+  { name: 'Kingfisher', slug: null, color: '#E31837', initial: 'KF' },
+  { name: 'Britannia', slug: null, color: '#003DA5', initial: 'BR' },
+  { name: 'Mentos', slug: null, color: '#00A651', initial: 'MT' },
+  { name: 'Center Fresh', slug: null, color: '#00B4D8', initial: 'CF' },
+  { name: 'Tedhe Medhe', slug: null, color: '#FF6B00', initial: 'TM' },
+
+  // Row 4 — Digital & Entertainment
   { name: 'Instagram', slug: 'instagram', color: '#E4405F', initial: 'Ig' },
-  { name: 'Swiggy', slug: 'swiggy', color: '#FC8019', initial: 'Sw' },
-  { name: 'Disney+', slug: 'disneyplus', color: '#1F80E0', initial: 'D+' },
-  { name: 'OnePlus', slug: 'oneplus', color: '#EB0028', initial: '1+' },
-  { name: 'Air India', slug: null, color: '#E31837', initial: 'AI' },
+  { name: 'Snapchat', slug: 'snapchat', color: '#FFFC00', initial: 'Sc' },
+  { name: 'YouTube', slug: 'youtube', color: '#FF0000', initial: 'YT' },
+  { name: 'SonyLIV', slug: null, color: '#1A1A1A', initial: 'SL' },
+  { name: 'Prime Video', slug: 'primevideo', color: '#00A8E1', initial: 'PV' },
+  { name: 'Amazon MiniTV', slug: null, color: '#FF9900', initial: 'mTV' },
+  { name: 'Netflix', slug: 'netflix', color: '#E50914', initial: 'N' },
+  { name: 'Tata Neu', slug: null, color: '#5C2D91', initial: 'TN' },
   { name: 'Flipkart', slug: 'flipkart', color: '#2874F0', initial: 'Fk' },
-  { name: 'Red Bull', slug: 'redbull', color: '#DB0A40', initial: 'RB' },
-  { name: 'Puma', slug: 'puma', color: '#86B049', initial: 'Pm' },
-  { name: 'Amazon', slug: 'amazon', color: '#FF9900', initial: 'Az' },
-  { name: 'ZEE5', slug: 'zee5', color: '#8230C6', initial: 'Z5' },
-  { name: 'Adidas', slug: 'adidas', color: '#FFFFFF', initial: 'Ad' },
-  { name: 'Lollapalooza', slug: null, color: '#00B4D8', initial: 'LL' },
-  { name: 'Reliance', slug: null, color: '#003DA5', initial: 'RL' },
+
+  // Row 5 — Tech & Electronics
+  { name: 'Samsung', slug: 'samsung', color: '#1428A0', initial: 'SM' },
+  { name: 'Eureka Forbes', slug: null, color: '#003DA5', initial: 'EF' },
+  { name: 'Philips', slug: null, color: '#0B5ED7', initial: 'PH' },
+  { name: 'Croma', slug: null, color: '#00A651', initial: 'CR' },
+  { name: 'Imagine Apple', slug: null, color: '#555555', initial: 'IA' },
+  { name: 'Sony Music', slug: null, color: '#E31837', initial: 'SoM' },
+  { name: 'Warner Music India', slug: null, color: '#1A1A1A', initial: 'WM' },
+  { name: 'Canon', slug: 'canon', color: '#BC0024', initial: 'Ca' },
+
+  // Row 6 — Others
+  { name: 'Skoda', slug: 'skoda', color: '#4BA82E', initial: 'ŠK' },
+  { name: 'Lego', slug: 'lego', color: '#D01012', initial: 'LG' },
+  { name: 'P&G', slug: null, color: '#003DA5', initial: 'P&G' },
+  { name: 'Kamiliant', slug: null, color: '#FF6B00', initial: 'KM' },
+  { name: 'Zomato', slug: 'zomato', color: '#E23744', initial: 'Zm' },
+  { name: 'Huggies', slug: null, color: '#E31837', initial: 'HG' },
+  { name: 'Sleepwell', slug: null, color: '#0066B2', initial: 'Sw' },
 ];
 
-// Build 4 rows by slicing & shuffling brands — each row has plenty of cards
+// Build 4 rows — distribute brands across rows for variety
 const BRAND_ROWS = [
   {
-    duration: 30,
+    duration: 35,
     reverse: false,
-    brands: [ALL_BRANDS[0], ALL_BRANDS[1], ALL_BRANDS[2], ALL_BRANDS[3], ALL_BRANDS[4], ALL_BRANDS[5], ALL_BRANDS[6], ALL_BRANDS[7], ALL_BRANDS[8], ALL_BRANDS[9], ALL_BRANDS[10], ALL_BRANDS[11], ALL_BRANDS[12], ALL_BRANDS[13]],
+    brands: [ALL_BRANDS[0], ALL_BRANDS[1], ALL_BRANDS[2], ALL_BRANDS[3], ALL_BRANDS[4], ALL_BRANDS[5], ALL_BRANDS[6], ALL_BRANDS[7], ALL_BRANDS[8], ALL_BRANDS[9], ALL_BRANDS[18], ALL_BRANDS[19], ALL_BRANDS[20]],
+  },
+  {
+    duration: 40,
+    reverse: true,
+    brands: [ALL_BRANDS[10], ALL_BRANDS[11], ALL_BRANDS[12], ALL_BRANDS[13], ALL_BRANDS[14], ALL_BRANDS[15], ALL_BRANDS[16], ALL_BRANDS[17], ALL_BRANDS[21], ALL_BRANDS[22], ALL_BRANDS[23], ALL_BRANDS[24], ALL_BRANDS[25]],
   },
   {
     duration: 38,
-    reverse: true,
-    brands: [ALL_BRANDS[14], ALL_BRANDS[15], ALL_BRANDS[16], ALL_BRANDS[17], ALL_BRANDS[18], ALL_BRANDS[19], ALL_BRANDS[20], ALL_BRANDS[21], ALL_BRANDS[22], ALL_BRANDS[0], ALL_BRANDS[3], ALL_BRANDS[6], ALL_BRANDS[9], ALL_BRANDS[12]],
-  },
-  {
-    duration: 34,
     reverse: false,
-    brands: [ALL_BRANDS[2], ALL_BRANDS[5], ALL_BRANDS[8], ALL_BRANDS[11], ALL_BRANDS[14], ALL_BRANDS[17], ALL_BRANDS[20], ALL_BRANDS[1], ALL_BRANDS[4], ALL_BRANDS[7], ALL_BRANDS[10], ALL_BRANDS[13], ALL_BRANDS[16], ALL_BRANDS[19]],
+    brands: [ALL_BRANDS[26], ALL_BRANDS[27], ALL_BRANDS[28], ALL_BRANDS[29], ALL_BRANDS[30], ALL_BRANDS[31], ALL_BRANDS[32], ALL_BRANDS[33], ALL_BRANDS[34], ALL_BRANDS[35], ALL_BRANDS[36], ALL_BRANDS[37], ALL_BRANDS[38]],
   },
   {
     duration: 42,
     reverse: true,
-    brands: [ALL_BRANDS[6], ALL_BRANDS[0], ALL_BRANDS[18], ALL_BRANDS[3], ALL_BRANDS[15], ALL_BRANDS[9], ALL_BRANDS[21], ALL_BRANDS[1], ALL_BRANDS[12], ALL_BRANDS[7], ALL_BRANDS[20], ALL_BRANDS[4], ALL_BRANDS[17], ALL_BRANDS[10]],
+    brands: [ALL_BRANDS[39], ALL_BRANDS[40], ALL_BRANDS[41], ALL_BRANDS[42], ALL_BRANDS[43], ALL_BRANDS[44], ALL_BRANDS[45], ALL_BRANDS[46], ALL_BRANDS[47], ALL_BRANDS[48], ALL_BRANDS[49], ALL_BRANDS[0], ALL_BRANDS[32]],
   },
 ];
 
