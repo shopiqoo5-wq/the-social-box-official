@@ -3,9 +3,10 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import GlobalScene from './components/GlobalScene';
 import { ContactProvider } from './context/ContactContext';
 import ContactModal from './components/ContactModal';
-import Lenis from 'lenis';
+import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -30,9 +31,6 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ImpactPage = lazy(() => import('./pages/ImpactPage'));
 const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
-
-// Lazy-load Three.js scene — 925KB vendor chunk deferred until after initial paint
-const GlobalScene = lazy(() => import('./components/GlobalScene'));
 
 export default function App() {
   const { pathname } = useLocation();
@@ -98,11 +96,9 @@ export default function App() {
         <Navigation />
         <ContactModal />
         
-        {/* Persistent Cinematic Backdrop — lazy-loaded */}
+        {/* Persistent Cinematic Backdrop */}
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <Suspense fallback={null}>
-            <GlobalScene />
-          </Suspense>
+          <GlobalScene />
         </div>
 
         {/* Cinematic Grain Overlay */}

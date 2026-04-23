@@ -1,6 +1,6 @@
 import React from 'react';
 import Reveal from '../components/Reveal';
-import { Globe, Target, TrendingUp } from 'lucide-react';
+import { ArrowUpRight, Zap, Globe, Target, TrendingUp } from 'lucide-react';
 
 export default function ImpactPage() {
   const stats = [

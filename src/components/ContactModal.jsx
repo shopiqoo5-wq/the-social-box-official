@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, User, MessageSquare, X, Zap, ArrowRight, CheckCircle } from 'lucide-react';
+import { Mail, Phone, User, MessageSquare, Send, X, Globe, Zap, ArrowRight, CheckCircle } from 'lucide-react';
 import { useContact } from '../context/ContactContext';
 
 export default function ContactModal() {
