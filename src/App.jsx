@@ -6,7 +6,7 @@ import CustomCursor from './components/CustomCursor';
 import GlobalScene from './components/GlobalScene';
 import { ContactProvider } from './context/ContactContext';
 import ContactModal from './components/ContactModal';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
