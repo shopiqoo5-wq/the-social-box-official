@@ -14,15 +14,24 @@ export default function ContactModal() {
     };
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
-  }, []);
+  }, [closeContact]);
+
+  // Reset success state when modal re-opens
+  useEffect(() => {
+    if (isOpen) {
+      setIsSuccess(false);
+    }
+  }, [isOpen]);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
+    // Always restore on unmount
+    return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
   if (!isOpen) return null;

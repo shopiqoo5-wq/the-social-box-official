@@ -22,6 +22,14 @@ const LazyVideo = ({ src, className, ...props }) => {
     return () => observer.disconnect();
   }, []);
 
+  // Once source becomes available, trigger playback
+  useEffect(() => {
+    if (isIntersecting && videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.play().catch(() => {});
+    }
+  }, [isIntersecting]);
+
   return (
     <video
       ref={videoRef}

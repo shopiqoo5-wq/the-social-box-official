@@ -13,6 +13,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Responsive mobile detection hook
+const useIsMobile = (breakpoint = 768) => {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < breakpoint : false
+  );
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+    const handler = (e) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, [breakpoint]);
+  return isMobile;
+};
+
 const RollingDigit = ({ value, delay = 0 }) => {
   const containerRef = useRef(null);
   const [inView, setInView] = useState(false);
@@ -65,6 +79,7 @@ const RollingNumber = ({ end, suffix = "" }) => {
 export default function HomePage() {
   const { openContact } = useContact();
   const trackRef = useRef(null);
+  const isMobile = useIsMobile();
   
   // Refs for the high-fidelity portal sequence
   const bridgeContentRef = useRef(null);
@@ -224,7 +239,7 @@ export default function HomePage() {
         ref={bridgeClipRef}
         className="relative z-30 bg-black"
         style={{ 
-          clipPath: (typeof window !== 'undefined' && window.innerWidth < 768) 
+          clipPath: isMobile 
             ? 'inset(18dvh 4vw 34dvh 4vw round 0px)' 
             : 'inset(24vh 31vw 46vh 31vw round 0px)' 
         }}

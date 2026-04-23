@@ -4,20 +4,17 @@ import { PerspectiveCamera, Sparkles, Environment, AdaptiveDpr, AdaptiveEvents }
 import { useLocation } from 'react-router-dom';
 import * as THREE from 'three';
 
-const PersistentParticles = () => {
+/**
+ * PersistentParticles now receives pageParams as a prop instead of
+ * calling useLocation() inside <Canvas>. R3F renders in a separate
+ * React reconciler and does NOT share the react-router context tree,
+ * so useLocation() would throw (or return stale data) inside Canvas.
+ */
+const PersistentParticles = ({ pageParams }) => {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const count = isMobile ? 300 : 600; // Calibrated for performance depth
+  const count = isMobile ? 300 : 600;
   const mesh = useRef();
   const { viewport } = useThree();
-  const location = useLocation();
-
-  const pageParams = useMemo(() => {
-    switch(location.pathname) {
-      case '/': return { color: '#FFC107', speed: 1.0, scale: 0.05 };
-      case '/services': return { color: '#ffffff', speed: 1.2, scale: 0.04 };
-      default: return { color: '#FFC107', speed: 0.8, scale: 0.03 };
-    }
-  }, [location.pathname]);
 
   const dummy = useMemo(() => new THREE.Object3D(), []);
   const particles = useMemo(() => {
@@ -38,7 +35,6 @@ const PersistentParticles = () => {
   useFrame((state) => {
     if (!mesh.current) return;
     
-    // Smooth mouse follow easing
     const mouseX = state.mouse.x * (viewport.width / 4);
     const mouseY = state.mouse.y * (viewport.height / 4);
 
@@ -69,6 +65,18 @@ const PersistentParticles = () => {
 };
 
 const GlobalScene = memo(function GlobalScene() {
+  // useLocation MUST be called outside <Canvas> because R3F uses its own
+  // React reconciler that doesn't share react-router's context.
+  const location = useLocation();
+
+  const pageParams = useMemo(() => {
+    switch (location.pathname) {
+      case '/': return { color: '#FFC107', speed: 1.0, scale: 0.05 };
+      case '/services': return { color: '#ffffff', speed: 1.2, scale: 0.04 };
+      default: return { color: '#FFC107', speed: 0.8, scale: 0.03 };
+    }
+  }, [location.pathname]);
+
   return (
     <div className="w-full h-full pointer-events-none opacity-40">
       <Canvas 
@@ -84,7 +92,7 @@ const GlobalScene = memo(function GlobalScene() {
           <ambientLight intensity={1.5} />
           <pointLight position={[10, 10, 10]} intensity={2} color="#FFC107" />
           
-          <PersistentParticles />
+          <PersistentParticles pageParams={pageParams} />
           <Sparkles count={40} scale={40} size={1} speed={0.4} color="#FFC107" />
           
           <Environment preset="night" />

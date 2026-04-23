@@ -32,7 +32,7 @@ export default function ServicesPage() {
 
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <Reveal key={index} delay={index * 100} type="fade-3d" className={`${service.size}`}>
+          <Reveal key={index} delay={index * 100} type="fade-3d">
             <div className="h-full bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[4rem] p-16 group hover:bg-[#FFC107] transition-all duration-[1.2s] cursor-pointer overflow-hidden relative shadow-2xl will-change-transform">
               <div className="absolute top-10 right-10 text-white/5 group-hover:text-black/10 font-space text-[15vw] md:text-[10vw] font-black leading-none transition-colors select-none pointer-events-none">
                 {service.num}

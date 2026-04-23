@@ -81,9 +81,10 @@ export default function App() {
     });
 
     return () => {
-      ScrollTrigger.scrollerProxy(document.body, {});
       lenis.destroy();
       gsap.ticker.remove(gsapTicker);
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.clearScrollMemory();
     };
   }, []);
 

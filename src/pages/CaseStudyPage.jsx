@@ -39,7 +39,7 @@ export default function CaseStudyPage() {
                 <div className="lg:col-span-7 relative h-[30rem] md:h-[45rem] rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/5 transition-all duration-1000 group-hover:scale-[1.02] active:scale-95 shadow-2xl group-hover:border-[#FFC107]/50 will-change-transform">
                     <LazyVideo 
                       src={cs.video} 
-                      className="w-full h-full object-cover scale-[1.05] group-hover:scale-100 transition-transform duration-[2s] opacity-60 group-hover:opacity-100 transition-opacity" 
+                      className="w-full h-full object-cover scale-[1.05] group-hover:scale-100 group-hover:opacity-100 transition-all duration-[2s] opacity-60" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity"></div>
                     <div className="absolute top-12 left-12 inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-black/40 backdrop-blur-xl text-[10px] font-black tracking-widest uppercase text-white transition-all transform group-hover:scale-110">

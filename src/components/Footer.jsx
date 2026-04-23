@@ -95,10 +95,10 @@ export default function Footer() {
           <div className="space-y-10">
             <h4 className="text-[10px] font-black tracking-[0.5em] uppercase opacity-30">Connect Pipeline</h4>
             <div className="flex flex-col gap-6 text-sm font-bold uppercase tracking-widest">
-              <a href="https://instagram.com/thesocialbox.in" className="group flex items-center gap-2 hover:line-through transition-all">
+              <a href="https://instagram.com/thesocialbox.in" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 hover:line-through transition-all">
                 Instagram <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100" />
               </a>
-              <a href="https://linkedin.com/company/the-social-boxin" className="group flex items-center gap-2 hover:line-through transition-all">
+              <a href="https://linkedin.com/company/the-social-boxin" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 hover:line-through transition-all">
                 LinkedIn <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100" />
               </a>
               <a href="mailto:hello@thesocialbox.in" className="group flex items-center gap-2 hover:line-through transition-all">

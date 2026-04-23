@@ -16,9 +16,10 @@ export default function Navigation() {
       const threshold = isHomePage ? window.innerHeight * 3 : 200;
       setScrolled(window.scrollY > threshold);
     };
+    handleScroll(); // Re-evaluate immediately on route change
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const navLinks = [
     { name: "About", path: "/about" },
@@ -45,9 +46,11 @@ export default function Navigation() {
           }}
           className="font-space text-2xl md:text-3xl tracking-tighter font-black flex items-center gap-3 relative z-50 group/logo"
         >
-          <div className="w-8 h-8 rounded-full border-2 border-[#FFC107] flex items-center justify-center group-hover/logo:bg-[#FFC107] transition-all">
-            <div className="w-2 h-2 bg-[#FFC107] rounded-full group-hover/logo:bg-black"></div>
-          </div>
+          <img 
+            src="/logo-icon.png" 
+            alt="The Social Box" 
+            className="w-9 h-9 object-contain group-hover/logo:scale-110 transition-transform duration-500"
+          />
           <span className="text-white uppercase group-hover/logo:tracking-widest transition-all duration-700">THE SOCIAL BOX</span>
         </Link>
         

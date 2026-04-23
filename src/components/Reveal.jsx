@@ -30,7 +30,7 @@ const Reveal = ({ children, delay = 0, className = "", type = "fade-up" }) => {
   const [ref, isVisible] = useScrollReveal();
   
   // High-End Studio Easing (ExpoOut)
-  const baseClasses = "transition-all duration-[1.4s] cubic-bezier(0.19, 1, 0.22, 1) transform-gpu will-change-transform";
+  const baseClasses = "transition-all duration-[1.4s] transform-gpu will-change-transform";
   
   const getVariantStyles = () => {
     switch (type) {

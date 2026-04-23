@@ -13,6 +13,7 @@ export default function Magnetic({ children }) {
 
         const handleMouseMove = (e) => {
             const { clientX, clientY } = e;
+            if (!magnetic.current) return;
             const {height, width, left, top} = magnetic.current.getBoundingClientRect();
             
             // Subtle magnetic pull (reduced intensity for premium feel)
@@ -38,5 +39,11 @@ export default function Magnetic({ children }) {
         };
     }, []);
 
-    return React.cloneElement(children, {ref: magnetic})
+    // Wrap in a div so the ref is always attachable (cloneElement may
+    // silently drop ref on function components that don't forwardRef)
+    return (
+        <div ref={magnetic} className="inline-block">
+            {children}
+        </div>
+    );
 }

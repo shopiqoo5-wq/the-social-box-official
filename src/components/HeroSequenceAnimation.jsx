@@ -369,7 +369,7 @@ const HeroSequenceAnimation = ({ bridgeContentRef, bridgeClipRef, portalBezelRef
     };
     window.addEventListener('scroll', reveal, { passive: true });
     return () => window.removeEventListener('scroll', reveal);
-  }, [loadDone, bridgeContentRef, bridgeClipRef, portalBezelRef, CLIP_FULL]);
+  }, [loadDone, bridgeContentRef, bridgeClipRef, portalBezelRef]);
 
   const sectionScrollHeight = useCanvasSequence ? 'min-h-[420vh]' : 'min-h-[320vh]';
 
