@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HeroSequenceAnimation from '../components/HeroSequenceAnimation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,10 +76,15 @@ const RollingNumber = ({ end, suffix = "" }) => {
   );
 };
 
-export default function HomePage() {
+export default function HomePage({ navbarRef }) {
   const { openContact } = useContact();
   const trackRef = useRef(null);
   const isMobile = useIsMobile();
+
+  // Refs for Hero Animation
+  const bridgeContentRef = useRef(null);
+  const bridgeClipRef = useRef(null);
+  const portalBezelRef = useRef(null);
 
   // Services horizontal scroll
   const servicesWrapperRef = useRef(null);
@@ -214,7 +220,23 @@ export default function HomePage() {
 
   return (
     <div className="min-h-[100dvh] bg-[#0A0A0A] text-white font-manrope selection:bg-[#FFC107] selection:text-black overflow-x-hidden relative">
-      <div id="main-content" className="relative group/main">
+      <HeroSequenceAnimation 
+        bridgeContentRef={bridgeContentRef}
+        bridgeClipRef={bridgeClipRef}
+        portalBezelRef={portalBezelRef}
+        navbarRef={navbarRef}
+      />
+
+      <div 
+        ref={bridgeClipRef}
+        className="relative w-full overflow-hidden"
+        style={{ clipPath: 'inset(100% 0% 0% 0%)' }}
+      >
+        <div 
+          ref={bridgeContentRef}
+          id="main-content" 
+          className="relative group/main will-change-transform"
+        >
 
           {/* ── HERO SECTION ── */}
           <section className="relative min-h-[100dvh] w-full matte-surface flex flex-col justify-center items-center text-center px-6">
@@ -471,6 +493,7 @@ export default function HomePage() {
 
           {/* 🏁 Footer: The Final Impression */}
           <Footer />
+        </div>
       </div>
     </div>
   );
