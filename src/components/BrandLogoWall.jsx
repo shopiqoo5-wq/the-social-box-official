@@ -20,9 +20,9 @@ const BrandLogo = ({ brand }) => {
     <img
       src={`https://cdn.simpleicons.org/${brand.slug}/ffffff`}
       alt={brand.name}
-      width={28}
-      height={28}
-      className="relative z-10 w-6 h-6 md:w-7 md:h-7 object-contain transition-all duration-500 group-hover:brightness-0"
+      width={48}
+      height={48}
+      className="relative z-10 w-10 h-10 md:w-12 md:h-12 object-contain transition-all duration-500 group-hover:brightness-0"
       loading="lazy"
       draggable={false}
       onError={() => setFailed(true)}
@@ -117,7 +117,7 @@ export default function BrandLogoWall() {
               <span className="text-[#FFC107] italic">PARTNERS</span>
             </h2>
             <div className="text-zinc-600 font-mono text-[10px] tracking-[0.6em] uppercase pb-4">
-              [ Brands We've Powered ]
+              Brands We've Powered
             </div>
           </div>
         </Reveal>
@@ -129,7 +129,7 @@ export default function BrandLogoWall() {
         {BRAND_ROWS.map((row, rowIndex) => (
           <div key={rowIndex} className="overflow-hidden brand-row-wrapper">
             <div
-              className="brand-row flex flex-nowrap items-center gap-3 md:gap-4 w-max"
+              className="brand-row flex flex-nowrap items-center gap-6 md:gap-8 w-max"
               style={{
                 animation: `brand-marquee ${row.duration}s linear infinite`,
                 animationDirection: row.reverse ? 'reverse' : 'normal',
@@ -139,7 +139,7 @@ export default function BrandLogoWall() {
               {[...row.brands, ...row.brands].map((brand, i) => (
                 <div
                   key={`${rowIndex}-${i}`}
-                  className="brand-card group flex-shrink-0 w-14 h-14 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl md:rounded-[1.2rem] flex items-center justify-center relative overflow-hidden cursor-default"
+                  className="brand-card group flex-shrink-0 w-20 h-20 md:w-[6rem] md:h-[6rem] rounded-2xl md:rounded-[1.5rem] flex items-center justify-center relative overflow-hidden cursor-default"
                   style={{
                     '--brand-color': brand.color,
                     '--brand-glow': `${brand.color}50`,

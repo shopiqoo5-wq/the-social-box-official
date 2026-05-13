@@ -1,6 +1,6 @@
 import React from 'react';
 import Reveal from '../components/Reveal';
-import { ArrowUpRight, Zap, Globe, Target, TrendingUp } from 'lucide-react';
+import { Zap, Globe, Target } from 'lucide-react';
 
 export default function ImpactPage() {
   const stats = [
@@ -34,15 +34,12 @@ export default function ImpactPage() {
                 </p>
              </Reveal>
              <div className="grid grid-cols-2 gap-8">
-               {stats.map((stat, i) => (
-                  <Reveal key={i} delay={i * 100} type="fade-3d" className="bg-white/5 border border-white/10 rounded-[3rem] p-12 transition-all hover:bg-[#FFC107] group cursor-pointer overflow-hidden relative shadow-xl will-change-transform">
-                    <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-100 transition-opacity">
-                       <TrendingUp className="w-8 h-8 text-[#FFC107] group-hover:text-black" />
-                    </div>
-                    <div className="font-space text-4xl md:text-6xl font-black text-[#FFC107] group-hover:text-black mb-2 leading-none">{stat.val}</div>
-                    <div className="text-[10px] tracking-[0.4em] font-black text-zinc-500 group-hover:text-black/60 uppercase">{stat.label}</div>
-                  </Reveal>
-               ))}
+                {stats.map((stat, i) => (
+                   <Reveal key={i} delay={i * 100} type="fade-3d" className="bg-white/5 border border-white/10 rounded-[3rem] p-12 transition-all hover:bg-[#FFC107] group cursor-pointer overflow-hidden relative shadow-xl will-change-transform">
+                     <div className="font-space text-4xl md:text-6xl font-black text-[#FFC107] group-hover:text-black mb-2 leading-none">{stat.val}</div>
+                     <div className="text-[10px] tracking-[0.4em] font-black text-zinc-500 group-hover:text-black/60 uppercase">{stat.label}</div>
+                   </Reveal>
+                ))}
              </div>
           </div>
         </div>
@@ -63,20 +60,28 @@ export default function ImpactPage() {
       <section className="mb-64">
          <div className="max-w-screen-2xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
-               <Reveal type="fade-3d" className="bg-zinc-900 rounded-[4rem] p-20 border border-white/5 hover:border-[#FFC107]/50 transition-all duration-700">
-                  <Target className="w-16 h-16 text-[#FFC107] mb-12" />
-                  <h3 className="font-space text-5xl font-black uppercase text-white mb-8 italic">VIRAL <br/> ENGINEERING</h3>
-                  <p className="text-zinc-500 text-2xl font-light leading-relaxed italic">
-                     Building content that bypasses algorithms and lands directly in the cultural zeitgeist. We don't guess; we engineer.
-                  </p>
+               <Reveal type="fade-3d" className="bg-[#111111] rounded-[3rem] p-16 border border-white/5 hover:bg-[#1A1A1A] hover:border-[#FFC107]/40 transition-all duration-700 overflow-hidden relative shadow-2xl group cursor-pointer">
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-[#FFC107] group-hover:bg-[#FFC107] group-hover:text-black transition-all duration-500 mb-12">
+                       <Target className="w-10 h-10" />
+                    </div>
+                    <h3 className="font-space text-5xl font-black uppercase text-white group-hover:text-[#FFC107] transition-colors mb-8 italic">VIRAL <br/> ENGINEERING</h3>
+                    <p className="text-zinc-500 text-2xl font-light leading-relaxed italic group-hover:text-zinc-300 transition-colors">
+                       Building content that bypasses algorithms and lands directly in the cultural zeitgeist. We don't guess; we engineer.
+                    </p>
+                  </div>
                </Reveal>
 
-               <Reveal delay={200} type="fade-3d" className="bg-zinc-900 rounded-[4rem] p-20 border border-white/5 hover:border-[#FFC107]/50 transition-all duration-700">
-                  <Globe className="w-16 h-16 text-[#FFC107] mb-12" />
-                  <h3 className="font-space text-5xl font-black uppercase text-white mb-8 italic">GLOBAL <br/> ALLIANCES</h3>
-                  <p className="text-zinc-500 text-2xl font-light leading-relaxed italic">
-                     Plugging brands into hand-picked creator nodes across North America, Europe, and Asia-Pacific. A single interface for world-wide reach.
-                  </p>
+               <Reveal delay={200} type="fade-3d" className="bg-[#111111] rounded-[3rem] p-16 border border-white/5 hover:bg-[#1A1A1A] hover:border-[#FFC107]/40 transition-all duration-700 overflow-hidden relative shadow-2xl group cursor-pointer">
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-[#FFC107] group-hover:bg-[#FFC107] group-hover:text-black transition-all duration-500 mb-12">
+                       <Globe className="w-10 h-10" />
+                    </div>
+                    <h3 className="font-space text-5xl font-black uppercase text-white group-hover:text-[#FFC107] transition-colors mb-8 italic">GLOBAL <br/> ALLIANCES</h3>
+                    <p className="text-zinc-500 text-2xl font-light leading-relaxed italic group-hover:text-zinc-300 transition-colors">
+                       Plugging brands into hand-picked creator nodes across North America, Europe, and Asia-Pacific. A single interface for world-wide reach.
+                    </p>
+                  </div>
                </Reveal>
             </div>
          </div>

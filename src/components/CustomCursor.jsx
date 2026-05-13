@@ -43,9 +43,12 @@ export default function CustomCursor() {
       });
 
       const target = e.target;
-      const isInteractive = target.closest('a, button, .portfolio-card, video, .group, .cursor-pointer');
+      const cursorData = target.closest('[data-cursor]')?.getAttribute('data-cursor');
+      const isInteractive = target.closest('a, button, .portfolio-card, video, .group, .cursor-pointer, [data-cursor]');
       
-      if (target.closest('.portfolio-card')) {
+      if (cursorData) {
+        setCursorText(cursorData.toUpperCase());
+      } else if (target.closest('.portfolio-card')) {
         setCursorText("VIEW");
       } else if (target.closest('a, button')) {
         setCursorText("CLICK");

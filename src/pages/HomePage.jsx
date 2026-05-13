@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpRight, MousePointer2, Sparkles, Box, Radio, Globe, Zap, Megaphone, Palette, Play, Info, ChevronDown, Users, Video } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Sparkles, Radio, Globe, Zap, Users, Video, Palette } from 'lucide-react';
 import Reveal from '../components/Reveal';
-import HeroSequenceAnimation from '../components/HeroSequenceAnimation';
-import LaptopPortalBezel from '../components/LaptopPortalBezel';
 import { useContact } from '../context/ContactContext';
-import Magnetic from '../components/Magnetic';
 import LazyVideo from '../components/LazyVideo';
 import BrandLogoWall from '../components/BrandLogoWall';
+import Footer from '../components/Footer';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -80,11 +79,6 @@ export default function HomePage() {
   const { openContact } = useContact();
   const trackRef = useRef(null);
   const isMobile = useIsMobile();
-  
-  // Refs for the high-fidelity portal sequence
-  const bridgeContentRef = useRef(null);
-  const bridgeClipRef = useRef(null);
-  const portalBezelRef = useRef(null);
 
   // Services horizontal scroll
   const servicesWrapperRef = useRef(null);
@@ -209,44 +203,65 @@ export default function HomePage() {
   }, []);
 
   const services = [
-    { num: "01", title: "Web", icon: <Globe className="w-8 h-8" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
-    { num: "02", title: "Social Media", icon: <Radio className="w-8 h-8" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
-    { num: "03", title: "Influencer Marketing", icon: <Users className="w-8 h-8" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
-    { num: "04", title: "Meme Marketing", icon: <Zap className="w-8 h-8" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
-    { num: "05", title: "UGC", icon: <Video className="w-8 h-8" />, desc: "Authentic, creator-led content that builds trust and relatability." },
-    { num: "06", title: "Personal Branding", icon: <Sparkles className="w-8 h-8" />, desc: "Positioning individuals as strong, credible voices in their space." },
-    { num: "07", title: "Production", icon: <Palette className="w-8 h-8" />, desc: "From ideation to execution — high-quality content built for digital-first platforms." },
+    { title: "Social Media", icon: <Radio className="w-6 h-6" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
+    { title: "Influencer Marketing", icon: <Users className="w-6 h-6" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
+    { title: "Meme Marketing", icon: <Zap className="w-6 h-6" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
+    { title: "Web", icon: <Globe className="w-6 h-6" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { title: "UGC (User-Generated Content)", icon: <Video className="w-6 h-6" />, desc: "Authentic, creator-led content that builds trust and relatability." },
+    { title: "Personal Brand Building", icon: <Sparkles className="w-6 h-6" />, desc: "Positioning individuals as strong, credible voices in their space." },
+    { title: "Production", icon: <Palette className="w-6 h-6" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
   ];
 
   return (
     <div className="min-h-[100dvh] bg-[#0A0A0A] text-white font-manrope selection:bg-[#FFC107] selection:text-black overflow-x-hidden relative">
-      
-      <HeroSequenceAnimation 
-        bridgeContentRef={bridgeContentRef}
-        bridgeClipRef={bridgeClipRef}
-        portalBezelRef={portalBezelRef}
-      />
+      <div id="main-content" className="relative group/main">
 
-      {/* Fixed Bezel Overlay */}
-      <div 
-        ref={portalBezelRef}
-        className="fixed inset-0 z-[60] pointer-events-none opacity-0 will-change-transform"
-      >
-        <LaptopPortalBezel />
-      </div>
+          {/* ── HERO SECTION ── */}
+          <section className="relative min-h-[100dvh] w-full matte-surface flex flex-col justify-center items-center text-center px-6">
 
-      <div 
-        ref={bridgeClipRef}
-        className="relative z-30 bg-black"
-        style={{ 
-          clipPath: isMobile 
-            ? 'inset(18dvh 4vw 34dvh 4vw round 0px)' 
-            : 'inset(24vh 31vw 46vh 31vw round 0px)' 
-        }}
-      >
-        <div ref={bridgeContentRef} id="main-content" className="relative group/main opacity-0 will-change-transform">
+            {/* Ambient glow layers */}
+            <div className="cinematic-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--gold)]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--gold)]/10 to-transparent" />
+            </div>
+
+            {/* Noise grain overlay */}
+            <div
+              className="absolute inset-0 opacity-[0.03] pointer-events-none"
+              style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundSize: '200px 200px' }}
+            />
+
+
+            {/* Main tagline */}
+            <h1 className="relative z-10 font-space font-black uppercase leading-[0.85] tracking-[-0.04em] text-[13vw] sm:text-[11vw] md:text-[9vw] lg:text-[8vw] max-w-6xl">
+              <span
+                className="block text-white"
+                style={{ textShadow: '0 0 120px rgba(255,193,7,0.06)' }}
+              >
+                We Make
+              </span>
+              <span
+                className="block text-[#FFC107] italic"
+                style={{ textShadow: '0 0 120px rgba(255,193,7,0.25)' }}
+              >
+                Brands Loud.
+              </span>
+            </h1>
+
+
+
+            {/* Scroll indicator */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10">
+              <span className="text-zinc-600 font-mono text-[9px] tracking-[0.4em] uppercase">Scroll</span>
+              <div className="w-px h-12 bg-gradient-to-b from-[#FFC107]/40 to-transparent animate-pulse" />
+            </div>
+
+          </section>
+
           {/* 🔮 Narrative Chapter: The Social Architecture */}
-          <section className="relative min-h-[100dvh] w-full bg-[#080808] flex flex-col justify-center py-32 md:py-48 overflow-hidden border-t border-white/5">
+          <section id="about" className="relative min-h-[100dvh] w-full bg-[#080808] flex flex-col justify-center py-32 md:py-48 overflow-hidden border-t border-white/5">
             {/* Atmospheric Depth Layer */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,193,7,0.03),_transparent_70%)] pointer-events-none"></div>
 
@@ -254,11 +269,11 @@ export default function HomePage() {
               <Reveal delay={100} type="fade-3d" className="mb-32">
                  <div className="flex flex-col md:flex-row gap-12 items-baseline justify-between border-b border-white/10 pb-20">
                     <h2 className="font-space text-[11vw] md:text-[8vw] lg:text-[7vw] leading-[0.85] tracking-tighter uppercase max-w-5xl break-words">
-                       SOCIAL <br/>
-                       <span className="text-[#FFC107] italic drop-shadow-[0_0_80px_rgba(255,193,7,0.2)]">DEVELOPMENT</span>
+                       DEVELOPMENT STUDIO <br/>
+                       <span className="text-[#FFC107] italic drop-shadow-[0_0_80px_rgba(255,193,7,0.2)]">THE CREATIVE KIDS WHO GREW UP</span>
                     </h2>
                     <div className="max-w-md text-[#FFC107]/40 font-black text-sm md:text-base italic leading-relaxed uppercase tracking-[0.5em] text-right mb-6">
-                       [ THE NEW DIGITAL PARADIGM ]
+                       THE NEW DIGITAL PARADIGM
                     </div>
                  </div>
               </Reveal>
@@ -276,7 +291,7 @@ export default function HomePage() {
                  <div className="flex flex-col gap-16 pt-10">
                     <Reveal delay={300} className="space-y-10">
                        <p className="text-zinc-500 text-xl md:text-2xl font-medium leading-relaxed max-w-xl">
-                          We operate where high-end technology meets raw internet culture. A Social Development Studio bridging the gap between brand ambition and geometric reality.
+                          Not Just an Agency, but an Extension of your brand. Operating where high-end technology meets raw internet culture.
                        </p>
                        <div className="flex flex-col gap-4">
                           <div className="flex items-center gap-6 group cursor-default">
@@ -314,6 +329,7 @@ export default function HomePage() {
                 onTouchStart={handleDragStart}
                 onTouchMove={handleDragMove}
                 onTouchEnd={handleDragEnd}
+                data-cursor="drag"
               >
                 <div 
                   ref={trackRef} 
@@ -334,8 +350,10 @@ export default function HomePage() {
                     { src: "/videos/reel-4.mp4", brand: "Netflix", reach: "11M Views" },
                   ].map((reel, i) => (
                     <div key={i} className="px-2 flex-shrink-0">
-                      <div 
-                        className="relative overflow-hidden bg-black border border-white/5 group hover:border-[#FFC107]/60 transition-all duration-700 will-change-transform"
+                      <Link 
+                        to="/case-study"
+                        className="relative block overflow-hidden bg-black border border-white/5 group hover:border-[var(--gold)]/60 transition-all duration-700 will-change-transform"
+                        data-cursor="view"
                         style={{
                           width: '175px',
                           height: '310px',
@@ -356,7 +374,7 @@ export default function HomePage() {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -373,12 +391,12 @@ export default function HomePage() {
             <div className="max-w-screen-2xl mx-auto relative z-10">
               <Reveal type="fade-3d">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-32 border-b border-white/5 pb-20">
-                   <h2 className="font-space text-[10vw] md:text-[7.5vw] lg:text-[6.5vw] leading-[0.85] tracking-[-0.05em] uppercase break-words">
+                   <h2 className="font-space text-[10vw] md:text-[7.5vw] lg:text-[6.5vw] leading-[0.75] tracking-[-0.05em] uppercase break-words">
                       PROJECT<br/>
-                      <span className="text-[#FFC107] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)]">CAPABILITIES</span>
+                      <span className="text-[#FFC107] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)] inline-block -mt-2 md:-mt-4">CAPABILITIES</span>
                    </h2>
                    <div className="max-w-xs text-zinc-500 font-mono text-[10px] tracking-[0.6em] uppercase leading-relaxed pb-4">
-                      [ Scaling digital influence through geometric precision ]
+                      Scaling digital influence through geometric precision
                    </div>
                 </div>
               </Reveal>
@@ -401,31 +419,45 @@ export default function HomePage() {
                   className="flex flex-nowrap items-stretch gap-6 md:gap-8 w-max will-change-transform px-6 md:px-12 cursor-grab active:cursor-grabbing"
                 >
                   {services.map((service, index) => (
-                    <div key={index} className="w-[85vw] md:w-[320px] flex-shrink-0 group">
-                      <div className="h-full bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-500 ease-out hover:bg-[#FFC107] hover:scale-[1.02] hover:-translate-y-4 hover:-rotate-1 active:scale-95 group shadow-2xl hover:shadow-[0_32px_80px_rgba(255,193,7,0.25)]">
-                        {/* Glassmorphic Background Glow */}
-                        <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-[#FFC107]/10 rounded-full blur-[60px] group-hover:bg-black/10 transition-colors"></div>
+                    <Link key={index} to="/services" className="w-[85vw] md:w-[380px] flex-shrink-0 group block">
+                      <div className="h-[480px] bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-700 ease-out hover:border-[#FFC107]/30 hover:scale-[1.01] shadow-2xl">
                         
-                        <div className="relative z-10 h-full flex flex-col justify-between min-h-[300px]">
-                          <div>
-                            <div className="mb-8 inline-flex p-4 bg-white/5 rounded-2xl text-[#FFC107] group-hover:bg-black/5 group-hover:text-black transition-all transform group-hover:rotate-12 duration-700">
-                              {service.icon}
-                            </div>
-                            <h3 className="font-space text-2xl md:text-4xl font-black uppercase mb-4 text-white group-hover:text-black transition-colors leading-none tracking-tighter">
-                              {service.title}
-                            </h3>
-                          </div>
-                          <div>
-                            <p className="font-medium text-zinc-400 group-hover:text-black/70 text-lg md:text-xl leading-tight max-w-sm transition-colors italic mb-4">
-                              {service.desc}
-                            </p>
-                            <div className="text-[9px] font-black tracking-[0.4em] uppercase text-[#FFC107]/40 group-hover:text-black/40 transition-colors">
-                              Explore Methodology +
-                            </div>
+                        {/* 🎨 Luxury Layers: Reflections & Glow */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+                        
+                        {/* Bottom Right Amber Glow */}
+                        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#FFC107]/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-[#FFC107]/20 transition-all duration-700"></div>
+
+                        {/* Top Header: Glass Icon */}
+                        <div className="relative z-10 flex justify-between items-start">
+                          <div className="w-20 h-20 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl flex items-center justify-center text-[#FFC107] group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+                             <div className="w-12 h-12 flex items-center justify-center">
+                               {React.cloneElement(service.icon, { className: "w-10 h-10" })}
+                             </div>
                           </div>
                         </div>
+
+                        {/* Main Typography: Centered & Bold */}
+                        <div className="relative z-10 flex-grow flex items-center">
+                          <h3 className="font-space text-5xl md:text-6xl font-black uppercase text-white group-hover:text-[#FFC107] transition-all duration-500 leading-[0.85] tracking-[-0.06em] italic drop-shadow-2xl">
+                            {service.title}
+                          </h3>
+                        </div>
+                        
+                        {/* Bottom Metadata: Divider & Methodology */}
+                        <div className="relative z-10 space-y-6">
+                          <div className="w-full h-px bg-white/5 group-hover:bg-[#FFC107]/20 transition-colors"></div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-[10px] font-black tracking-[0.5em] uppercase text-zinc-500 group-hover:text-[#FFC107] transition-colors">
+                              METHODOLOGY +
+                            </span>
+                            <div className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-[#FFC107] transition-colors"></div>
+                          </div>
+                        </div>
+
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -433,8 +465,12 @@ export default function HomePage() {
           </section>
 
           {/* 🏆 Brand Logo Wall: Social Proof */}
-          <BrandLogoWall />
-        </div>
+          <div id="work">
+            <BrandLogoWall />
+          </div>
+
+          {/* 🏁 Footer: The Final Impression */}
+          <Footer />
       </div>
     </div>
   );

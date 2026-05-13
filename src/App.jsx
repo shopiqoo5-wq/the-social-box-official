@@ -1,125 +1,95 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
-import GlobalScene from './components/GlobalScene';
-import { ContactProvider } from './context/ContactContext';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import CaseStudyPage from './pages/CaseStudyPage';
+import ContactPage from './pages/ContactPage';
 import ContactModal from './components/ContactModal';
-import Lenis from '@studio-freight/lenis';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ContactProvider } from './context/ContactContext';
 
-gsap.registerPlugin(ScrollTrigger);
+function AppContent() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
-// Manual scroll restoration
-if (typeof window !== 'undefined') {
-  window.history.scrollRestoration = 'manual';
-}
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
-
-// High-fidelity page lazy loading
-const HomePage = lazy(() => import('./pages/HomePage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ServicesPage = lazy(() => import('./pages/ServicesPage'));
-const ImpactPage = lazy(() => import('./pages/ImpactPage'));
-const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
-
-export default function App() {
-  const { pathname } = useLocation();
+  // preloader states — only run on home
+  const [tvFading, setTvFading]         = useState(false);
+  const [preloaderHidden, setPreloaderHidden] = useState(!isHome);
+  const [logoState, setLogoState]       = useState('');
+  const [isScrolled, setIsScrolled]     = useState(false);
+  const [mountHomePage, setMountHomePage] = useState(!isHome);
+  const [contentVisible, setContentVisible] = useState(!isHome);
 
   useEffect(() => {
-    // Initialize Lenis Smooth Scroll for "Butter Smooth" momentum
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
+    if (!isHome) return;
 
-    ScrollTrigger.scrollerProxy(document.body, {
-      scrollTop(value) {
-        if (arguments.length) {
-          lenis.scrollTo(value, { immediate: true });
-        }
-        return lenis.scroll;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      pinType: document.body.style.transform ? "transform" : "fixed"
-    });
+    const timers = [
+      setTimeout(() => setTvFading(true),         1800),
+      setTimeout(() => setLogoState('reveal'),     2200),
+      setTimeout(() => setPreloaderHidden(true),   2400),
+      setTimeout(() => setLogoState('move-up'),    3200),
+      setTimeout(() => setMountHomePage(true),     3600),
+      setTimeout(() => setContentVisible(true),    3900),
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [isHome]);
 
-    // Sync with GSAP ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-
-    const gsapTicker = (time) => {
-      lenis.raf(time * 1000);
-    };
-
-    gsap.ticker.add(gsapTicker);
-
-    requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
-    });
-
-    return () => {
-      lenis.destroy();
-      gsap.ticker.remove(gsapTicker);
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      ScrollTrigger.clearScrollMemory();
-    };
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <ContactProvider>
-      <div className="bg-black text-white selection:bg-[#FFC107] selection:text-black min-h-screen relative">
-        <ScrollToTop />
-        <CustomCursor />
-        <Navigation />
-        <ContactModal />
-        
-        {/* Persistent Cinematic Backdrop */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <GlobalScene />
-        </div>
+    <div className="App">
+      {/* Preloader — only on home */}
+      {isHome && !preloaderHidden && <Preloader tvFading={tvFading} />}
 
-        {/* Cinematic Grain Overlay */}
-        <div className="grain-overlay pointer-events-none opacity-5"></div>
+      {/* Floating logo — only on home, hide when content revealed */}
+      {isHome && !contentVisible && (
+        <a
+          href="/"
+          id="main-logo"
+          className={`${logoState} ${isScrolled ? 'scrolled' : ''}`}
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
+          <img src="/assets/logo.png" alt="THE SOCIAL BOX" />
+        </a>
+      )}
 
-        {/* Narratives Layer */}
-        <main className="relative z-10">
+      {/* Navigation — always visible on sub-pages, animated on home */}
+      <Navigation isVisible={contentVisible} isHome={isHome} isScrolled={isScrolled} />
 
-          <Suspense fallback={null}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/impact" element={<ImpactPage />} />
-              <Route path="/case-studies" element={<CaseStudyPage />} />
-            </Routes>
-          </Suspense>
-        </main>
-
-        <Footer />
+      {/* Page routes */}
+      <div
+        style={{
+          opacity: contentVisible ? 1 : 0,
+          transition: 'opacity 0.6s ease',
+        }}
+      >
+        <Routes>
+          <Route path="/" element={mountHomePage ? <HomePage /> : null} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/case-study" element={<CaseStudyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <ContactProvider>
+      <AppContent />
     </ContactProvider>
   );
 }
+
+export default App;

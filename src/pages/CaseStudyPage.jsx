@@ -1,7 +1,7 @@
 import React from 'react';
 import Reveal from '../components/Reveal';
 import LazyVideo from '../components/LazyVideo';
-import { Play, ArrowUpRight, Zap, Box, Globe, ChevronRight } from 'lucide-react';
+import { Play, Zap, Box, Globe, ChevronRight } from 'lucide-react';
 
 export default function CaseStudyPage() {
   const cases = [
@@ -60,8 +60,8 @@ export default function CaseStudyPage() {
                         <div className="text-zinc-500 font-black uppercase text-[10px] tracking-[0.4em]">{cs.label}</div>
                       </div>
                       <div className="flex items-end justify-end">
-                         <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#FFC107] group-hover:text-black transition-all duration-700 hover:scale-110 active:scale-90 shadow-xl cursor-none">
-                            <ArrowUpRight className="w-8 h-8" />
+                         <div className="group-hover:text-[#FFC107] transition-all duration-700 font-black uppercase text-[10px] tracking-[0.4em] text-zinc-600">
+                            Methodology +
                          </div>
                       </div>
                    </div>
@@ -69,11 +69,6 @@ export default function CaseStudyPage() {
                    <p className="text-zinc-500 text-xl font-light italic leading-snug">
                       We engineered a seamless cross-platform narrative that drove authentic brand sentiment and measurable growth in under 30 days.
                    </p>
-                </div>
-
-                {/* Numbering Overlay */}
-                <div className="absolute -left-12 top-1/2 -translate-y-1/2 text-white/5 font-space text-[20vw] font-black select-none pointer-events-none group-hover:text-[#FFC107]/10 transition-colors hidden lg:block">
-                   {cs.id}
                 </div>
              </div>
           </Reveal>
@@ -84,8 +79,8 @@ export default function CaseStudyPage() {
       <div className="mt-32 pt-32 border-t border-white/10 text-center">
          <Reveal delay={200} type="fade-3d">
             <h2 className="font-space text-[10vw] md:text-[7vw] font-black text-[#FFC107] uppercase tracking-tighter shadow-2xl hover:italic transition-all duration-500 leading-none">
-               READY TO <br/>
-               <span className="text-white underline decoration-[#FFC107]">Synergize?</span>
+               WE'RE THE <br/>
+               <span className="text-white underline decoration-[#FFC107]">PLOT TWIST</span>
             </h2>
          </Reveal>
       </div>
