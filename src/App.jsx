@@ -1,67 +1,96 @@
-import React, { Suspense, lazy, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import CaseStudyPage from './pages/CaseStudyPage';
+import ContactPage from './pages/ContactPage';
 import ContactModal from './components/ContactModal';
-import CustomCursor from './components/CustomCursor';
-import GlobalScene from './components/GlobalScene';
-import Footer from './components/Footer';
 import { ContactProvider } from './context/ContactContext';
 
-// High-fidelity page lazy loading
-const HomePage = lazy(() => import('./pages/HomePage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ServicesPage = lazy(() => import('./pages/ServicesPage'));
-const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
+function AppContent() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+  // preloader states — only run on home
+  const [tvFading, setTvFading]         = useState(false);
+  const [preloaderHidden, setPreloaderHidden] = useState(!isHome);
+  const [logoState, setLogoState]       = useState('');
+  const [isScrolled, setIsScrolled]     = useState(false);
+  const [mountHomePage, setMountHomePage] = useState(!isHome);
+  const [contentVisible, setContentVisible] = useState(!isHome);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
+    if (!isHome) return;
 
-export default function App() {
-  const navbarRef = useRef(null);
+    // Sequence for homepage entrance
+    const timers = [
+      setTimeout(() => setTvFading(true),         1800),
+      setTimeout(() => setLogoState('reveal'),     2200),
+      setTimeout(() => setPreloaderHidden(true),   2400),
+      setTimeout(() => setLogoState('move-up'),    3200),
+      setTimeout(() => setMountHomePage(true),     3600),
+      setTimeout(() => setContentVisible(true),    3900),
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [isHome]);
 
-  // Manual scroll restoration
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.history.scrollRestoration = 'manual';
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <ContactProvider>
-      <div className="bg-black text-white selection:bg-[#FFC107] selection:text-black min-h-screen relative">
-        <ScrollToTop />
-        <CustomCursor />
-        
-        {/* Navigation is persistent and globally standardized */}
-        <Navigation ref={navbarRef} />
-        
-        <ContactModal />
-        
-        {/* Persistent Cinematic Backdrop */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <GlobalScene />
-        </div>
+    <div className="App">
+      {/* Preloader — only on home */}
+      {isHome && !preloaderHidden && <Preloader tvFading={tvFading} />}
 
-        <main className="relative z-10">
-          <Suspense fallback={null}>
-            <Routes>
-              <Route path="/" element={<HomePage navbarRef={navbarRef} />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/case-studies" element={<CaseStudyPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </Suspense>
-        </main>
+      {/* Floating logo — only on home, hide when content revealed to handoff to Navigation */}
+      {isHome && !contentVisible && (
+        <a
+          href="/"
+          id="main-logo"
+          className={`${logoState} ${isScrolled ? 'scrolled' : ''}`}
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
+          <img src="/assets/logo.png" alt="THE SOCIAL BOX" />
+        </a>
+      )}
 
-        <Footer />
+      {/* Navigation — always visible on sub-pages, animated on home */}
+      <Navigation isVisible={contentVisible} isHome={isHome} isScrolled={isScrolled} />
+
+      {/* Page routes */}
+      <div
+        style={{
+          opacity: contentVisible ? 1 : 0,
+          transition: 'opacity 0.6s ease',
+        }}
+      >
+        <Routes>
+          <Route path="/" element={mountHomePage ? <HomePage /> : null} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/case-study" element={<CaseStudyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <ContactProvider>
+      <AppContent />
     </ContactProvider>
   );
 }
+
+export default App;
