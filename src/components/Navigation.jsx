@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Magnetic from './Magnetic';
 import { useContact } from '../context/ContactContext';
 
-export default function Navigation() {
+const Navigation = React.forwardRef((props, ref) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -13,10 +13,11 @@ export default function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       const isHomePage = location.pathname === '/';
-      const threshold = isHomePage ? window.innerHeight * 3 : 200;
+      // Adjust threshold slightly to be exactly after the zoom
+      const threshold = isHomePage ? window.innerHeight * 3.1 : 200;
       setScrolled(window.scrollY > threshold);
     };
-    handleScroll(); // Re-evaluate immediately on route change
+    handleScroll(); 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
@@ -29,7 +30,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className={`fixed w-full top-0 z-[100] transition-all duration-1000 ease-out
+    <nav ref={ref} className={`fixed w-full top-0 z-[100] transition-all duration-1000 ease-out
       ${scrolled ? 'py-4 translate-y-0 opacity-100' : 'py-10 translate-y-[-100%] opacity-0 pointer-events-none'}`}>
       
       <div className={`mx-4 md:mx-14 px-8 md:px-12 py-5 rounded-full border transition-all duration-1000 flex justify-between items-center max-w-screen-2xl xl:mx-auto relative overflow-hidden group/nav
@@ -156,4 +157,6 @@ export default function Navigation() {
       </div>
     </nav>
   );
-}
+});
+
+export default Navigation;

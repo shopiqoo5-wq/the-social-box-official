@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, lazy, useEffect, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -6,7 +6,7 @@ import CustomCursor from './components/CustomCursor';
 import GlobalScene from './components/GlobalScene';
 import { ContactProvider } from './context/ContactContext';
 import ContactModal from './components/ContactModal';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -34,6 +34,7 @@ const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
 
 export default function App() {
   const { pathname } = useLocation();
+  const navbarRef = useRef(null);
 
   useEffect(() => {
     // Initialize Lenis Smooth Scroll for "Butter Smooth" momentum
@@ -93,7 +94,7 @@ export default function App() {
       <div className="bg-black text-white selection:bg-[#FFC107] selection:text-black min-h-screen relative">
         <ScrollToTop />
         <CustomCursor />
-        <Navigation />
+        <Navigation ref={navbarRef} />
         <ContactModal />
         
         {/* Persistent Cinematic Backdrop */}
@@ -109,7 +110,7 @@ export default function App() {
 
           <Suspense fallback={null}>
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<HomePage navbarRef={navbarRef} />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/impact" element={<ImpactPage />} />

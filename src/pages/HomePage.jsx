@@ -76,7 +76,7 @@ const RollingNumber = ({ end, suffix = "" }) => {
   );
 };
 
-export default function HomePage() {
+export default function HomePage({ navbarRef }) {
   const { openContact } = useContact();
   const trackRef = useRef(null);
   const isMobile = useIsMobile();
@@ -225,6 +225,7 @@ export default function HomePage() {
         bridgeContentRef={bridgeContentRef}
         bridgeClipRef={bridgeClipRef}
         portalBezelRef={portalBezelRef}
+        navbarRef={navbarRef}
       />
 
       {/* Fixed Bezel Overlay */}
