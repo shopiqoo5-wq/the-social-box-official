@@ -23,10 +23,6 @@ function AppContent() {
   const [contentVisible, setContentVisible] = useState(!isHome);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  useEffect(() => {
     if (!isHome) return;
 
     // Sequence for homepage entrance
