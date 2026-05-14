@@ -57,7 +57,7 @@ function AppContent() {
         <a
           href="/"
           id="main-logo"
-          className={`${logoState} ${isScrolled ? 'scrolled' : ''}`}
+          className={`${logoState} ${isScrolled ? 'scrolled' : ''} hidden md:flex`}
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
           <img src="/assets/logo.png" alt="THE SOCIAL BOX" />
