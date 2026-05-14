@@ -32,7 +32,6 @@ export default function AboutPage() {
         <div className="max-w-screen-2xl mx-auto">
           <Reveal delay={100} type="fade-3d">
             <h1 className="font-space text-[11vw] md:text-[9vw] leading-[0.8] tracking-tighter uppercase mb-24 break-words">
-               DEVELOPMENT STUDIO <br/>
                <span className="text-[var(--gold)] italic">THE CREATIVE KIDS WHO GREW UP</span>
             </h1>
           </Reveal>

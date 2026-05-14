@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Radio, Globe, Zap, Users, Video, Palette } from 'lucide-react';
+import { Sparkles, Radio, Globe, Zap, Users, Video, Palette, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import { useContact } from '../context/ContactContext';
 import LazyVideo from '../components/LazyVideo';
@@ -45,18 +45,23 @@ const RollingDigit = ({ value, delay = 0 }) => {
     return () => observer.disconnect();
   }, []);
 
+  // Create a sequence of digits for the slot machine effect (3 sets of 0-9)
+  const digitsSequence = [...Array(30)].map((_, i) => i % 10);
+  // Target index in the last set
+  const targetIndex = 20 + value;
+
   return (
     <div ref={containerRef} className="h-[1em] overflow-hidden inline-flex flex-col leading-none">
       <div 
         className="flex flex-col will-change-transform"
         style={{
-          transform: inView ? `translateY(-${value}em)` : 'translateY(0)',
-          filter: inView ? 'blur(0px)' : 'blur(4px)',
-          transition: `transform 3s cubic-bezier(0.19, 1, 0.22, 1) ${delay + 0.2}s, filter 3s cubic-bezier(0.19, 1, 0.22, 1) ${delay + 0.2}s`
+          transform: inView ? `translateY(-${targetIndex}em)` : 'translateY(0)',
+          filter: inView ? 'blur(0px)' : 'blur(8px)',
+          transition: `transform 4.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, filter 4.5s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`
         }}
       >
-        {[0,1,2,3,4,5,6,7,8,9].map(n => (
-          <span key={n} className="h-[1em] w-full flex items-center justify-center">{n}</span>
+        {digitsSequence.map((n, i) => (
+          <span key={i} className="h-[1em] w-full flex items-center justify-center font-black">{n}</span>
         ))}
       </div>
     </div>
@@ -79,6 +84,23 @@ export default function HomePage() {
   const { openContact } = useContact();
   const trackRef = useRef(null);
   const isMobile = useIsMobile();
+
+  const scrollServices = (direction) => {
+    const scrollAmount = isMobile ? (window.innerWidth * 0.85 + 24) : (window.innerWidth * 0.4); 
+    if (isMobile && servicesWrapperRef.current) {
+      servicesWrapperRef.current.scrollBy({ 
+        left: direction === 'left' ? -scrollAmount : scrollAmount, 
+        behavior: 'smooth' 
+      });
+    } else {
+      const sp = servicesPhysics.current;
+      if (direction === 'left') {
+        sp.targetX += scrollAmount;
+      } else {
+        sp.targetX -= scrollAmount;
+      }
+    }
+  };
 
   // Services horizontal scroll
   const servicesWrapperRef = useRef(null);
@@ -182,6 +204,12 @@ export default function HomePage() {
       const el = servicesRef.current;
       if (!el) { servicesRaf = requestAnimationFrame(updateServices); return; }
 
+      if (isMobile) {
+        el.style.transform = 'none';
+        servicesRaf = requestAnimationFrame(updateServices);
+        return;
+      }
+
       const maxScroll = -(el.scrollWidth - el.parentElement.clientWidth);
       sp.targetX = Math.min(0, Math.max(maxScroll, sp.targetX));
       sp.currentX += (sp.targetX - sp.currentX) * 0.1;
@@ -207,7 +235,7 @@ export default function HomePage() {
     { title: "Influencer Marketing", icon: <Users className="w-6 h-6" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
     { title: "Meme Marketing", icon: <Zap className="w-6 h-6" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
     { title: "Web", icon: <Globe className="w-6 h-6" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
-    { title: "UGC (User-Generated Content)", icon: <Video className="w-6 h-6" />, desc: "Authentic, creator-led content that builds trust and relatability." },
+    { title: "UGC", subtitle: "(User-Generated Content)", icon: <Video className="w-6 h-6" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { title: "Personal Brand Building", icon: <Sparkles className="w-6 h-6" />, desc: "Positioning individuals as strong, credible voices in their space." },
     { title: "Production", icon: <Palette className="w-6 h-6" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
   ];
@@ -266,7 +294,6 @@ export default function HomePage() {
               <Reveal delay={100} type="fade-3d" className="mb-32">
                  <div className="flex flex-col md:flex-row gap-12 items-baseline justify-between border-b border-white/10 pb-20">
                     <h2 className="font-space text-[11vw] md:text-[8vw] lg:text-[7vw] leading-[0.85] tracking-tighter uppercase max-w-5xl break-words">
-                       DEVELOPMENT STUDIO <br/>
                        <span className="text-[#FFC107] italic drop-shadow-[0_0_80px_rgba(255,193,7,0.2)]">THE CREATIVE KIDS WHO GREW UP</span>
                     </h2>
                     <div className="max-w-md text-[#FFC107]/40 font-black text-sm md:text-base italic leading-relaxed uppercase tracking-[0.5em] text-right mb-6">
@@ -279,7 +306,7 @@ export default function HomePage() {
                  <Reveal delay={200} type="fade-3d">
                     <div className="space-y-12">
                        <p className="text-zinc-200 text-3xl md:text-6xl font-light leading-[1] max-w-3xl tracking-tighter italic">
-                          Engineering <span className="text-white font-black">Viral Culture</span> through <span className="text-[#FFC107] font-black underline decoration-[4px] underline-offset-[1.5rem]">Digital Architecture</span>.
+                          Helping brands <span className="text-white font-black">Go Viral</span> through <span className="text-[#FFC107] font-black underline decoration-[4px] underline-offset-[0.2em]">Creative Strategy</span>.
                        </p>
                        <div className="h-px w-40 bg-[#FFC107]/30"></div>
                     </div>
@@ -388,10 +415,12 @@ export default function HomePage() {
             <div className="max-w-screen-2xl mx-auto relative z-10">
               <Reveal type="fade-3d">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-32 border-b border-white/5 pb-20">
-                   <h2 className="font-space text-[10vw] md:text-[7.5vw] lg:text-[6.5vw] leading-[0.75] tracking-[-0.05em] uppercase break-words">
-                      PROJECT<br/>
-                      <span className="text-[#FFC107] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)] inline-block -mt-2 md:-mt-4">CAPABILITIES</span>
-                   </h2>
+                   <div className="flex flex-col gap-10">
+                      <h2 className="font-space text-[10vw] md:text-[7.5vw] lg:text-[6.5vw] leading-[0.75] tracking-[-0.05em] uppercase break-words">
+                         PROJECT<br/>
+                         <span className="text-[#FFC107] drop-shadow-[0_0_40px_rgba(255,193,7,0.15)] inline-block -mt-2 md:-mt-4">CAPABILITIES</span>
+                      </h2>
+                   </div>
                    <div className="max-w-xs text-zinc-500 font-mono text-[10px] tracking-[0.6em] uppercase leading-relaxed pb-4">
                       Scaling digital influence through geometric precision
                    </div>
@@ -401,22 +430,23 @@ export default function HomePage() {
               {/* Draggable horizontal scroll track */}
               <div
                 ref={servicesWrapperRef}
-                data-lenis-prevent
-                className="overflow-hidden -mx-6 md:-mx-12 py-10 select-none"
-                onMouseDown={onServicesDragStart}
-                onMouseMove={onServicesDragMove}
-                onMouseUp={onServicesDragEnd}
-                onMouseLeave={onServicesDragEnd}
-                onTouchStart={onServicesDragStart}
-                onTouchMove={onServicesDragMove}
-                onTouchEnd={onServicesDragEnd}
+                data-lenis-prevent={!isMobile ? true : undefined}
+                className={`overflow-hidden -mx-6 md:-mx-12 py-10 select-none ${isMobile ? 'overflow-x-auto snap-x snap-mandatory scroll-smooth' : ''}`}
+                style={isMobile ? { touchAction: 'pan-y' } : {}}
+                onMouseDown={!isMobile ? onServicesDragStart : undefined}
+                onMouseMove={!isMobile ? onServicesDragMove : undefined}
+                onMouseUp={!isMobile ? onServicesDragEnd : undefined}
+                onMouseLeave={!isMobile ? onServicesDragEnd : undefined}
+                onTouchStart={!isMobile ? onServicesDragStart : undefined}
+                onTouchMove={!isMobile ? onServicesDragMove : undefined}
+                onTouchEnd={!isMobile ? onServicesDragEnd : undefined}
               >
                 <div
                   ref={servicesRef}
-                  className="flex flex-nowrap items-stretch gap-6 md:gap-8 w-max will-change-transform px-6 md:px-12 cursor-grab active:cursor-grabbing"
+                  className={`flex flex-nowrap items-stretch gap-6 md:gap-8 w-max px-6 md:px-12 ${!isMobile ? 'will-change-transform cursor-grab active:cursor-grabbing' : ''}`}
                 >
                   {services.map((service, index) => (
-                    <Link key={index} to="/services" className="w-[85vw] md:w-[380px] flex-shrink-0 group block">
+                    <div key={index} onClick={openContact} className="w-[85vw] md:w-[380px] flex-shrink-0 group block cursor-pointer snap-center">
                       <div className="h-[480px] bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-700 ease-out hover:border-[#FFC107]/30 hover:scale-[1.01] shadow-2xl">
                         
                         {/* 🎨 Luxury Layers: Reflections & Glow */}
@@ -435,29 +465,62 @@ export default function HomePage() {
                           </div>
                         </div>
 
-                        {/* Main Typography: Centered & Bold */}
-                        <div className="relative z-10 flex-grow flex items-center">
+                        {/* Main Content: Title & Description */}
+                        <div className="relative z-10 flex-grow flex flex-col justify-center">
                           <h3 className="font-space text-5xl md:text-6xl font-black uppercase text-white group-hover:text-[#FFC107] transition-all duration-500 leading-[0.85] tracking-[-0.06em] italic drop-shadow-2xl">
                             {service.title}
+                            {service.subtitle && (
+                              <span className="block text-[0.4em] font-medium opacity-50 mt-4 tracking-wider normal-case not-italic">
+                                {service.subtitle}
+                              </span>
+                            )}
                           </h3>
+                          <p className="mt-8 text-zinc-500 font-medium text-sm md:text-base leading-relaxed max-w-[280px] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                             {service.desc}
+                          </p>
                         </div>
                         
-                        {/* Bottom Metadata: Divider & Methodology */}
-                        <div className="relative z-10 space-y-6">
-                          <div className="w-full h-px bg-white/5 group-hover:bg-[#FFC107]/20 transition-colors"></div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-[10px] font-black tracking-[0.5em] uppercase text-zinc-500 group-hover:text-[#FFC107] transition-colors">
-                              METHODOLOGY +
-                            </span>
-                            <div className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-[#FFC107] transition-colors"></div>
-                          </div>
+                        {/* Bottom CTA: Luxury Footer */}
+                        <div className="relative z-10 pt-8 border-t border-white/5">
+                           <div className="flex items-center justify-between">
+                              <span className="text-[10px] font-black tracking-[0.4em] uppercase text-zinc-500 group-hover:text-[#FFC107] transition-colors">
+                                 GET IN TOUCH
+                              </span>
+                              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 group-hover:bg-[#FFC107] group-hover:text-black group-hover:border-[#FFC107] transition-all duration-500">
+                                 <ArrowRight className="w-5 h-5" />
+                              </div>
+                           </div>
                         </div>
 
                       </div>
-                    </Link>
+                    </div>
                   ))}
-                </div>
-              </div>
+                 </div>
+               </div>
+
+               {/* Navigation Arrows at Bottom */}
+               <div className="flex items-center justify-between mt-12 border-t border-white/5 pt-12">
+                  <div className="flex items-center gap-6">
+                     <button 
+                       onClick={() => scrollServices('left')}
+                       className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-[#FFC107] bg-white/5 hover:bg-[#FFC107] hover:text-black active:scale-90 transition-all duration-500"
+                       aria-label="Previous services"
+                     >
+                        <ChevronLeft className="w-8 h-8" />
+                     </button>
+                     <button 
+                       onClick={() => scrollServices('right')}
+                       className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-[#FFC107] bg-white/5 hover:bg-[#FFC107] hover:text-black active:scale-90 transition-all duration-500"
+                       aria-label="Next services"
+                     >
+                        <ChevronRight className="w-8 h-8" />
+                     </button>
+                  </div>
+                  <div className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-500 flex items-center gap-4">
+                     <span className="w-12 h-px bg-white/10"></span>
+                     EXPLORE CAPABILITIES
+                  </div>
+               </div>
             </div>
           </section>
 

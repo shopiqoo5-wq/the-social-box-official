@@ -10,8 +10,8 @@ const BrandLogo = ({ brand }) => {
 
   if (!brand.slug || failed) {
     return (
-      <span className="relative z-10 font-space font-bold text-[11px] md:text-xs text-white/70 group-hover:text-black/80 transition-colors duration-500 select-none uppercase tracking-tight">
-        {brand.initial}
+      <span className="relative z-10 font-space font-black text-[10px] md:text-[13px] text-white group-hover:text-black transition-colors duration-500 select-none uppercase tracking-[0.1em] whitespace-nowrap px-4 text-center leading-tight">
+        {brand.name}
       </span>
     );
   }
@@ -32,29 +32,34 @@ const BrandLogo = ({ brand }) => {
 
 /* ─── Brand Data ──────────────────────────────────────────────────── */
 const ALL_BRANDS = [
+  { name: 'WOW Skin Science', slug: null, color: '#000000', initial: 'WOW' },
+  { name: 'Ponds', slug: null, color: '#2D2D2D', initial: 'PND' },
+  { name: 'Lakme', slug: null, color: '#000000', initial: 'LKM' },
+  { name: 'Nykaa', slug: null, color: '#E80071', initial: 'NYK' },
+  { name: 'Glow & Lovely', slug: null, color: '#C92127', initial: 'G&L' },
+  { name: 'Veet', slug: null, color: '#D6005E', initial: 'VT' },
+  { name: 'Nivea', slug: 'nivea', color: '#003399', initial: 'NV' },
+  { name: 'Dabur', slug: null, color: '#006B3F', initial: 'DBR' },
+  { name: 'Myntra', slug: 'myntra', color: '#FF3F6C', initial: 'M' },
+  { name: 'Van Heusen', slug: null, color: '#000000', initial: 'VH' },
+  { name: 'Jockey', slug: null, color: '#000000', initial: 'JKY' },
+  { name: 'Mochi', slug: null, color: '#00B4D8', initial: 'MCH' },
+  { name: 'Burger King', slug: 'burgerking', color: '#DA291C', initial: 'BK' },
+  { name: 'Coca-Cola', slug: 'cocacola', color: '#F40009', initial: 'CC' },
+  { name: 'Britannia', slug: null, color: '#E31837', initial: 'BTN' },
+  { name: 'Center Fresh', slug: null, color: '#00A1DE', initial: 'CF' },
   { name: 'Netflix', slug: 'netflix', color: '#E50914', initial: 'N' },
-  { name: 'Google', slug: 'google', color: '#4285F4', initial: 'G' },
-  { name: 'Spotify', slug: 'spotify', color: '#1DB954', initial: 'S' },
+  { name: 'Prime Video', slug: 'amazonprime', color: '#00A8E1', initial: 'PV' },
+  { name: 'YouTube', slug: 'youtube', color: '#FF0000', initial: 'YT' },
   { name: 'Snapchat', slug: 'snapchat', color: '#FFFC00', initial: 'Sc' },
-  { name: 'Tinder', slug: 'tinder', color: '#FF6B6B', initial: 'T' },
-  { name: 'Audible', slug: 'audible', color: '#F8991D', initial: 'Au' },
-  { name: 'Bumble', slug: 'bumble', color: '#FFC629', initial: 'Bb' },
-  { name: 'Nike', slug: 'nike', color: '#F5F5F5', initial: 'Nk' },
-  { name: 'Krafton', slug: 'krafton', color: '#F7C948', initial: 'BK' },
-  { name: 'Lego', slug: 'lego', color: '#D01012', initial: 'LG' },
   { name: 'Instagram', slug: 'instagram', color: '#E4405F', initial: 'Ig' },
-  { name: 'Swiggy', slug: 'swiggy', color: '#FC8019', initial: 'Sw' },
-  { name: 'Disney+', slug: 'disneyplus', color: '#1F80E0', initial: 'D+' },
-  { name: 'OnePlus', slug: 'oneplus', color: '#EB0028', initial: '1+' },
-  { name: 'Air India', slug: null, color: '#E31837', initial: 'AI' },
+  { name: 'Samsung', slug: 'samsung', color: '#1428A0', initial: 'SS' },
+  { name: 'Philips', slug: 'philips', color: '#0066A1', initial: 'PH' },
   { name: 'Flipkart', slug: 'flipkart', color: '#2874F0', initial: 'Fk' },
-  { name: 'Red Bull', slug: 'redbull', color: '#DB0A40', initial: 'RB' },
-  { name: 'Puma', slug: 'puma', color: '#86B049', initial: 'Pm' },
-  { name: 'Amazon', slug: 'amazon', color: '#FF9900', initial: 'Az' },
-  { name: 'ZEE5', slug: 'zee5', color: '#8230C6', initial: 'Z5' },
-  { name: 'Adidas', slug: 'adidas', color: '#FFFFFF', initial: 'Ad' },
-  { name: 'Lollapalooza', slug: null, color: '#00B4D8', initial: 'LL' },
-  { name: 'Reliance', slug: null, color: '#003DA5', initial: 'RL' },
+  { name: 'Skoda', slug: 'skoda', color: '#006B3F', initial: 'SK' },
+  { name: 'Lego', slug: 'lego', color: '#D01012', initial: 'LG' },
+  { name: 'Huggies', slug: null, color: '#E31E24', initial: 'HG' },
+  { name: 'Tata Neu', slug: null, color: '#542E91', initial: 'TN' },
 ];
 
 // Build 4 rows by slicing & shuffling brands — each row has plenty of cards
@@ -62,22 +67,22 @@ const BRAND_ROWS = [
   {
     duration: 30,
     reverse: false,
-    brands: [ALL_BRANDS[0], ALL_BRANDS[1], ALL_BRANDS[2], ALL_BRANDS[3], ALL_BRANDS[4], ALL_BRANDS[5], ALL_BRANDS[6], ALL_BRANDS[7], ALL_BRANDS[8], ALL_BRANDS[9], ALL_BRANDS[10], ALL_BRANDS[11], ALL_BRANDS[12], ALL_BRANDS[13]],
+    brands: [ALL_BRANDS[0], ALL_BRANDS[1], ALL_BRANDS[2], ALL_BRANDS[3], ALL_BRANDS[4], ALL_BRANDS[5], ALL_BRANDS[6], ALL_BRANDS[7], ALL_BRANDS[8]],
   },
   {
     duration: 38,
     reverse: true,
-    brands: [ALL_BRANDS[14], ALL_BRANDS[15], ALL_BRANDS[16], ALL_BRANDS[17], ALL_BRANDS[18], ALL_BRANDS[19], ALL_BRANDS[20], ALL_BRANDS[21], ALL_BRANDS[22], ALL_BRANDS[0], ALL_BRANDS[3], ALL_BRANDS[6], ALL_BRANDS[9], ALL_BRANDS[12]],
+    brands: [ALL_BRANDS[9], ALL_BRANDS[10], ALL_BRANDS[11], ALL_BRANDS[12], ALL_BRANDS[13], ALL_BRANDS[14], ALL_BRANDS[15], ALL_BRANDS[16], ALL_BRANDS[17]],
   },
   {
     duration: 34,
     reverse: false,
-    brands: [ALL_BRANDS[2], ALL_BRANDS[5], ALL_BRANDS[8], ALL_BRANDS[11], ALL_BRANDS[14], ALL_BRANDS[17], ALL_BRANDS[20], ALL_BRANDS[1], ALL_BRANDS[4], ALL_BRANDS[7], ALL_BRANDS[10], ALL_BRANDS[13], ALL_BRANDS[16], ALL_BRANDS[19]],
+    brands: [ALL_BRANDS[18], ALL_BRANDS[19], ALL_BRANDS[20], ALL_BRANDS[21], ALL_BRANDS[22], ALL_BRANDS[23], ALL_BRANDS[24], ALL_BRANDS[25], ALL_BRANDS[26], ALL_BRANDS[27]],
   },
   {
     duration: 42,
     reverse: true,
-    brands: [ALL_BRANDS[6], ALL_BRANDS[0], ALL_BRANDS[18], ALL_BRANDS[3], ALL_BRANDS[15], ALL_BRANDS[9], ALL_BRANDS[21], ALL_BRANDS[1], ALL_BRANDS[12], ALL_BRANDS[7], ALL_BRANDS[20], ALL_BRANDS[4], ALL_BRANDS[17], ALL_BRANDS[10]],
+    brands: [ALL_BRANDS[0], ALL_BRANDS[4], ALL_BRANDS[8], ALL_BRANDS[12], ALL_BRANDS[16], ALL_BRANDS[20], ALL_BRANDS[24], ALL_BRANDS[2], ALL_BRANDS[6], ALL_BRANDS[10]],
   },
 ];
 
@@ -139,7 +144,7 @@ export default function BrandLogoWall() {
               {[...row.brands, ...row.brands].map((brand, i) => (
                 <div
                   key={`${rowIndex}-${i}`}
-                  className="brand-card group flex-shrink-0 w-20 h-20 md:w-[6rem] md:h-[6rem] rounded-2xl md:rounded-[1.5rem] flex items-center justify-center relative overflow-hidden cursor-default"
+                  className="brand-card group flex-shrink-0 min-w-[100px] md:min-w-[160px] h-16 md:h-24 rounded-xl md:rounded-[1.5rem] flex items-center justify-center relative overflow-hidden cursor-default border border-white/5 px-6"
                   style={{
                     '--brand-color': brand.color,
                     '--brand-glow': `${brand.color}50`,

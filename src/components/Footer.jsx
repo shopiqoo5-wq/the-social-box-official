@@ -24,7 +24,7 @@ export default function Footer() {
                     <span className="title-talk">WE'LL HANDLE THE REST</span>
                   </h2>
                 </Magnetic>
-                <div className="footer-blue-dot"></div>
+
               </div>
             </Reveal>
           </div>
@@ -37,7 +37,7 @@ export default function Footer() {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="footer-logo"
               >
-                TSB <span className="footer-tag">v2.0</span>
+                TSB
               </Link>
               <p>
                 Engineering the future of social culture through high-performance digital architecture and narrative technology.
@@ -80,7 +80,7 @@ export default function Footer() {
           <div className="footer-bottom">
             <span>ALL RIGHTS RESERVED — 2026</span>
             <span className="footer-divider">///</span>
-            <span>.</span>
+
           </div>
         </div>
       </div>

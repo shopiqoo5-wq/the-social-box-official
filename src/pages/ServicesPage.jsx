@@ -1,16 +1,18 @@
 import React from 'react';
-import { Radio, Users, Zap, Globe, Video, Sparkles, Palette } from 'lucide-react';
+import { Radio, Users, Zap, Globe, Video, Sparkles, Palette, ArrowRight } from 'lucide-react';
 import Reveal from '../components/Reveal';
+import { useContact } from '../context/ContactContext';
 
 export default function ServicesPage() {
+  const { openContact } = useContact();
   const services = [
-    { num: "01", title: "Social Media", icon: <Radio className="w-10 h-10" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
-    { num: "02", title: "Influencer Marketing", icon: <Users className="w-10 h-10" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
-    { num: "03", title: "Meme Marketing", icon: <Zap className="w-10 h-10" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
-    { num: "04", title: "Web", icon: <Globe className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
-    { num: "05", title: "UGC (User-Generated Content)", icon: <Video className="w-10 h-10" />, desc: "Authentic, creator-led content that builds trust and relatability." },
-    { num: "06", title: "Personal Brand Building", icon: <Sparkles className="w-10 h-10" />, desc: "Positioning individuals as strong, credible voices in their space." },
-    { num: "07", title: "Production", icon: <Palette className="w-10 h-10" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
+    { title: "Social Media", icon: <Radio className="w-10 h-10" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
+    { title: "Influencer Marketing", icon: <Users className="w-10 h-10" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
+    { title: "Meme Marketing", icon: <Zap className="w-10 h-10" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
+    { title: "Web", icon: <Globe className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { title: "UGC", subtitle: "(User-Generated Content)", icon: <Video className="w-10 h-10" />, desc: "Authentic, creator-led content that builds trust and relatability." },
+    { title: "Personal Brand Building", icon: <Sparkles className="w-10 h-10" />, desc: "Positioning individuals as strong, credible voices in their space." },
+    { title: "Production", icon: <Palette className="w-10 h-10" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
   ];
 
   return (
@@ -37,8 +39,8 @@ export default function ServicesPage() {
         {services.map((service, index) => (
           <Reveal key={index} delay={index * 100} type="fade-3d">
             <div 
+              onClick={openContact}
               className="h-[550px] bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-12 group hover:border-[var(--gold)]/40 transition-all duration-700 cursor-pointer overflow-hidden relative shadow-2xl"
-              data-cursor="view"
             >
               {/* Luxury Layers */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
@@ -52,22 +54,28 @@ export default function ServicesPage() {
                 </div>
                 
                 <div className="flex-grow flex flex-col justify-center">
-                  <h3 className="font-space text-4xl md:text-5xl font-black uppercase text-white group-hover:text-[var(--gold)] transition-colors leading-[0.85] tracking-[-0.06em] italic mb-8">
+                  <h3 className="font-space text-4xl md:text-5xl font-black uppercase text-white group-hover:text-[var(--gold)] transition-colors leading-[0.85] tracking-[-0.06em] italic mb-6">
                     {service.title}
+                    {service.subtitle && (
+                      <span className="block text-[0.4em] font-medium opacity-50 mt-3 tracking-wider normal-case not-italic">
+                        {service.subtitle}
+                      </span>
+                    )}
                   </h3>
-                  <p className="font-medium text-zinc-500 group-hover:text-zinc-300 text-xl leading-snug max-w-sm transition-colors italic">
+                  <p className="font-medium text-zinc-500 group-hover:text-zinc-300 text-lg md:text-xl leading-snug max-w-sm transition-colors italic">
                     {service.desc}
                   </p>
                 </div>
 
-                <div className="space-y-6">
-                  <div className="w-full h-px bg-white/5 group-hover:bg-[var(--gold)]/20 transition-colors"></div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-technical group-hover:text-[var(--gold)] transition-colors">
-                      METHODOLOGY +
-                    </span>
-                    <div className="w-1 h-1 rounded-full bg-zinc-800 group-hover:bg-[var(--gold)] transition-colors"></div>
-                  </div>
+                <div className="pt-8 border-t border-white/5">
+                   <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-black tracking-[0.4em] uppercase text-zinc-500 group-hover:text-[var(--gold)] transition-colors">
+                         GET IN TOUCH
+                      </span>
+                      <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 group-hover:bg-[var(--gold)] group-hover:text-black group-hover:border-[var(--gold)] transition-all duration-500">
+                         <ArrowRight className="w-5 h-5" />
+                      </div>
+                   </div>
                 </div>
               </div>
             </div>

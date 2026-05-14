@@ -1421,11 +1421,7 @@ body.locked {
   }
 
   .nav-brand-logo {
-    position: absolute;
-    left: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10001;
+    display: none;
   }
 
   .header-center {
