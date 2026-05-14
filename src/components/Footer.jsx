@@ -8,14 +8,14 @@ import { Globe } from 'lucide-react';
 
 export default function Footer() {
   const { openContact } = useContact();
-  
+
   return (
     <footer id="site-footer">
       <div className="footer-overlay">
         <div className="footer-container">
           {/* SECTION 1: THE MISSION CALL */}
           <div className="footer-mission">
-            
+
             <Reveal delay={200} type="fade-3d">
               <div className="footer-mission-main">
                 <Magnetic>
@@ -32,8 +32,8 @@ export default function Footer() {
           {/* SECTION 2: DEEP FOOTPRINT */}
           <div className="footer-grid">
             <div className="footer-col">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="footer-logo"
               >
@@ -47,8 +47,8 @@ export default function Footer() {
             <div className="footer-col">
               <h4><Globe className="inline-icon" /> Mumbai Coordinate</h4>
               <div className="footer-address">
-                104, Mittal Estate, Bldg 2,<br/>
-                Andheri East, Mumbai,<br/>
+                104, Mittal Estate, Bldg 2,<br />
+                Andheri East, Mumbai,<br />
                 MH 400059, India
               </div>
             </div>
@@ -56,7 +56,7 @@ export default function Footer() {
             <div className="footer-col">
               <h4><Globe className="inline-icon" /> Dubai Coordinate</h4>
               <div className="footer-address">
-                Level 12, Business Bay,<br/>
+                Level 12, Business Bay,<br />
                 Dubai, United Arab Emirates
               </div>
             </div>
@@ -80,7 +80,7 @@ export default function Footer() {
           <div className="footer-bottom">
             <span>ALL RIGHTS RESERVED — 2026</span>
             <span className="footer-divider">///</span>
-            <span>ESTABLISHED IN THE VIRTUAL PARADIGM</span>
+            <span>.</span>
           </div>
         </div>
       </div>

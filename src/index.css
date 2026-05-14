@@ -1408,16 +1408,33 @@ body.locked {
   .mobile-menu-toggle {
     display: flex;
     position: absolute;
-    right: 0;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10001;
+    margin: 0;
+    padding: 8px;
+  }
+  
+  .mobile-menu-toggle:hover {
+    transform: translateY(-50%) scale(1.1);
   }
 
   .nav-brand-logo {
+<<<<<<< HEAD
     left: 20px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10001;
     transition: opacity 0.3s ease;
+=======
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10001;
+>>>>>>> 666a22158128d9b71fda0570e2301d83deadff65
   }
 
   .header-center {
@@ -1426,6 +1443,7 @@ body.locked {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 10001;
+<<<<<<< HEAD
     transition: opacity 0.3s ease;
   }
 
@@ -1433,6 +1451,8 @@ body.locked {
   #site-header.menu-open .header-center {
     opacity: 0;
     pointer-events: none;
+=======
+>>>>>>> 666a22158128d9b71fda0570e2301d83deadff65
   }
 
   .nav-box-icon {
@@ -1440,7 +1460,7 @@ body.locked {
   }
 
   .nav-logo-static img {
-    width: 120px;
+    width: 110px;
   }
 
   .nav-menu {
@@ -1456,14 +1476,19 @@ body.locked {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     opacity: 0;
     visibility: hidden;
     padding: 120px 20px 60px;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+<<<<<<< HEAD
     z-index: 9998;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+=======
+    z-index: 9999;
+    padding-top: 80px;
+>>>>>>> 666a22158128d9b71fda0570e2301d83deadff65
   }
 
   .nav-menu.active {
@@ -1473,9 +1498,10 @@ body.locked {
 
   .nav-section {
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     width: 100%;
     align-items: center;
+<<<<<<< HEAD
     flex: initial;
   }
 
@@ -1483,6 +1509,14 @@ body.locked {
   .nav-section.right {
     flex: initial; /* Force sections to only take needed space */
     margin-bottom: 0;
+=======
+    flex: none !important;
+  }
+
+  .nav-section.left, .nav-section.right {
+    flex: none;
+    justify-content: center;
+>>>>>>> 666a22158128d9b71fda0570e2301d83deadff65
   }
 
   .nav-text {
@@ -1491,7 +1525,8 @@ body.locked {
     font-weight: 900;
   }
 
-  .nav-box-icon {
+  /* Icons inside the open mobile menu */
+  .nav-menu .nav-box-icon {
     width: 60px;
     margin-bottom: 10px;
   }
@@ -1501,6 +1536,7 @@ body.locked {
     text-align: center;
   }
 
+<<<<<<< HEAD
   .nav-logo-static img {
     width: 110px;
   }
@@ -1512,6 +1548,8 @@ body.locked {
     z-index: 10001;
   }
 
+=======
+>>>>>>> 666a22158128d9b71fda0570e2301d83deadff65
   #main-logo.move-up {
     width: 110px;
     top: 35px;
