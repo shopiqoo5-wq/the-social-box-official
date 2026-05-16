@@ -33,9 +33,7 @@ const RollingDigit = ({ value, delay = 0 }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        }
+        setInView(entry.isIntersecting);
       },
       { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
     );
@@ -267,13 +265,13 @@ export default function HomePage() {
                 className="block text-white"
                 style={{ textShadow: '0 0 120px rgba(255,193,7,0.06)' }}
               >
-                We Make
+                The
               </span>
               <span
                 className="block text-[#FFC107] italic"
                 style={{ textShadow: '0 0 120px rgba(255,193,7,0.25)' }}
               >
-                Brands Loud.
+                Social Box
               </span>
             </h1>
 
@@ -296,9 +294,6 @@ export default function HomePage() {
                     <h2 className="font-space text-[11vw] md:text-[8vw] lg:text-[7vw] leading-[0.85] tracking-tighter uppercase max-w-5xl break-words">
                        <span className="text-[#FFC107] italic drop-shadow-[0_0_80px_rgba(255,193,7,0.2)]">THE CREATIVE KIDS WHO GREW UP</span>
                     </h2>
-                    <div className="max-w-md text-[#FFC107]/40 font-black text-sm md:text-base italic leading-relaxed uppercase tracking-[0.5em] text-right mb-6">
-                       THE NEW DIGITAL PARADIGM
-                    </div>
                  </div>
               </Reveal>
               
@@ -343,7 +338,7 @@ export default function HomePage() {
             </div>
 
             {/* Cinematic Reels Section - Full Screen Width */}
-            <Reveal delay={400} className="relative w-full mt-24 pb-32 [perspective:2500px]">
+            <Reveal delay={400} className="relative w-full mt-24 pb-12 [perspective:2500px]">
               <div 
                 className="w-full relative"
                 onMouseDown={handleDragStart}
@@ -407,7 +402,7 @@ export default function HomePage() {
           </section>
 
           {/* 🏗️ Services Architecture: The Bento Blueprint */}
-          <section id="services" className="py-32 md:py-48 px-6 md:px-12 relative overflow-hidden bg-[#050505]">
+          <section id="services" className="pt-12 pb-12 md:pt-16 md:pb-20 px-6 md:px-12 relative overflow-hidden bg-[#050505]">
             {/* Cinematic Light Leaks */}
             <div className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-[#FFC107]/5 rounded-full blur-[180px] pointer-events-none opacity-40 animate-pulse"></div>
             <div className="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#FFC107]/3 rounded-full blur-[150px] pointer-events-none opacity-20"></div>
@@ -428,94 +423,100 @@ export default function HomePage() {
               </Reveal>
               
               {/* Draggable horizontal scroll track */}
-              <div
-                ref={servicesWrapperRef}
-                data-lenis-prevent={!isMobile ? true : undefined}
-                className={`overflow-hidden -mx-6 md:-mx-12 py-10 select-none ${isMobile ? 'overflow-x-auto snap-x snap-mandatory scroll-smooth' : ''}`}
-                style={isMobile ? { touchAction: 'pan-y' } : {}}
-                onMouseDown={!isMobile ? onServicesDragStart : undefined}
-                onMouseMove={!isMobile ? onServicesDragMove : undefined}
-                onMouseUp={!isMobile ? onServicesDragEnd : undefined}
-                onMouseLeave={!isMobile ? onServicesDragEnd : undefined}
-                onTouchStart={!isMobile ? onServicesDragStart : undefined}
-                onTouchMove={!isMobile ? onServicesDragMove : undefined}
-                onTouchEnd={!isMobile ? onServicesDragEnd : undefined}
-              >
-                <div
-                  ref={servicesRef}
-                  className={`flex flex-nowrap items-stretch gap-6 md:gap-8 w-max px-6 md:px-12 ${!isMobile ? 'will-change-transform cursor-grab active:cursor-grabbing' : ''}`}
-                >
-                  {services.map((service, index) => (
-                    <div key={index} onClick={openContact} className="w-[85vw] md:w-[380px] flex-shrink-0 group block cursor-pointer snap-center">
-                      <div className="h-[480px] bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-700 ease-out hover:border-[#FFC107]/30 hover:scale-[1.01] shadow-2xl">
-                        
-                        {/* 🎨 Luxury Layers: Reflections & Glow */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
-                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
-                        
-                        {/* Bottom Right Amber Glow */}
-                        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#FFC107]/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-[#FFC107]/20 transition-all duration-700"></div>
+              <div className="relative group/services-nav">
+                {/* Side Navigation Buttons - Desktop Only */}
+                {!isMobile && (
+                  <>
+                    <button 
+                      onClick={() => scrollServices('left')}
+                      className="absolute -left-6 md:-left-12 top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/10 flex items-center justify-center text-[#FFC107] bg-[#0A0A0A]/80 backdrop-blur-xl hover:bg-[#FFC107] hover:text-black active:scale-90 transition-all duration-500 z-30 shadow-2xl"
+                      aria-label="Previous services"
+                    >
+                       <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+                    </button>
+                    <button 
+                      onClick={() => scrollServices('right')}
+                      className="absolute -right-6 md:-right-12 top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/10 flex items-center justify-center text-[#FFC107] bg-[#0A0A0A]/80 backdrop-blur-xl hover:bg-[#FFC107] hover:text-black active:scale-90 transition-all duration-500 z-30 shadow-2xl"
+                      aria-label="Next services"
+                    >
+                       <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+                    </button>
+                  </>
+                )}
 
-                        {/* Top Header: Glass Icon */}
-                        <div className="relative z-10 flex justify-between items-start">
-                          <div className="w-20 h-20 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl flex items-center justify-center text-[#FFC107] group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
-                             <div className="w-12 h-12 flex items-center justify-center">
-                               {React.cloneElement(service.icon, { className: "w-10 h-10" })}
+                <div
+                  ref={servicesWrapperRef}
+                  data-lenis-prevent={!isMobile ? true : undefined}
+                  className={`overflow-hidden -mx-6 md:-mx-12 py-10 select-none ${isMobile ? 'overflow-x-auto snap-x snap-mandatory scroll-smooth' : ''}`}
+                  style={isMobile ? { touchAction: 'pan-y' } : {}}
+                  onMouseDown={!isMobile ? onServicesDragStart : undefined}
+                  onMouseMove={!isMobile ? onServicesDragMove : undefined}
+                  onMouseUp={!isMobile ? onServicesDragEnd : undefined}
+                  onMouseLeave={!isMobile ? onServicesDragEnd : undefined}
+                  onTouchStart={!isMobile ? onServicesDragStart : undefined}
+                  onTouchMove={!isMobile ? onServicesDragMove : undefined}
+                  onTouchEnd={!isMobile ? onServicesDragEnd : undefined}
+                >
+                  <div
+                    ref={servicesRef}
+                    className={`flex flex-nowrap items-stretch gap-6 md:gap-8 w-max px-6 md:px-12 ${!isMobile ? 'will-change-transform cursor-grab active:cursor-grabbing' : ''}`}
+                  >
+                    {services.map((service, index) => (
+                      <div key={index} onClick={openContact} className="w-[85vw] md:w-[380px] flex-shrink-0 group block cursor-pointer snap-center">
+                        <div className="h-[480px] bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 flex flex-col justify-between cursor-pointer overflow-hidden relative transition-all duration-700 ease-out hover:border-[#FFC107]/30 hover:scale-[1.01] shadow-2xl">
+                          
+                          {/* 🎨 Luxury Layers: Reflections & Glow */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
+                          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+                          
+                          {/* Bottom Right Amber Glow */}
+                          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#FFC107]/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-[#FFC107]/20 transition-all duration-700"></div>
+
+                          {/* Top Header: Glass Icon */}
+                          <div className="relative z-10 flex justify-between items-start">
+                            <div className="w-20 h-20 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl flex items-center justify-center text-[#FFC107] group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+                               <div className="w-12 h-12 flex items-center justify-center">
+                                 {React.cloneElement(service.icon, { className: "w-10 h-10" })}
+                               </div>
+                            </div>
+                          </div>
+
+                          {/* Main Content: Title & Description */}
+                          <div className="relative z-10 flex-grow flex flex-col justify-center">
+                            <h3 className="font-space text-5xl md:text-6xl font-black uppercase text-white group-hover:text-[#FFC107] transition-all duration-500 leading-[0.85] tracking-[-0.06em] italic drop-shadow-2xl">
+                              {service.title}
+                              {service.subtitle && (
+                                <span className="block text-[0.4em] font-medium opacity-50 mt-4 tracking-wider normal-case not-italic">
+                                  {service.subtitle}
+                                </span>
+                              )}
+                            </h3>
+                            <p className="mt-8 text-zinc-500 font-medium text-sm md:text-base leading-relaxed max-w-[280px] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                               {service.desc}
+                            </p>
+                          </div>
+                          
+                          {/* Bottom CTA: Luxury Footer */}
+                          <div className="relative z-10 pt-8 border-t border-white/5">
+                             <div className="flex items-center justify-between">
+                                <span className="text-[10px] font-black tracking-[0.4em] uppercase text-zinc-500 group-hover:text-[#FFC107] transition-colors">
+                                   GET IN TOUCH
+                                </span>
+                                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 group-hover:bg-[#FFC107] group-hover:text-black group-hover:border-[#FFC107] transition-all duration-500">
+                                   <ArrowRight className="w-5 h-5" />
+                                </div>
                              </div>
                           </div>
-                        </div>
 
-                        {/* Main Content: Title & Description */}
-                        <div className="relative z-10 flex-grow flex flex-col justify-center">
-                          <h3 className="font-space text-5xl md:text-6xl font-black uppercase text-white group-hover:text-[#FFC107] transition-all duration-500 leading-[0.85] tracking-[-0.06em] italic drop-shadow-2xl">
-                            {service.title}
-                            {service.subtitle && (
-                              <span className="block text-[0.4em] font-medium opacity-50 mt-4 tracking-wider normal-case not-italic">
-                                {service.subtitle}
-                              </span>
-                            )}
-                          </h3>
-                          <p className="mt-8 text-zinc-500 font-medium text-sm md:text-base leading-relaxed max-w-[280px] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                             {service.desc}
-                          </p>
                         </div>
-                        
-                        {/* Bottom CTA: Luxury Footer */}
-                        <div className="relative z-10 pt-8 border-t border-white/5">
-                           <div className="flex items-center justify-between">
-                              <span className="text-[10px] font-black tracking-[0.4em] uppercase text-zinc-500 group-hover:text-[#FFC107] transition-colors">
-                                 GET IN TOUCH
-                              </span>
-                              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 group-hover:bg-[#FFC107] group-hover:text-black group-hover:border-[#FFC107] transition-all duration-500">
-                                 <ArrowRight className="w-5 h-5" />
-                              </div>
-                           </div>
-                        </div>
-
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                   </div>
                  </div>
                </div>
 
-               {/* Navigation Arrows at Bottom */}
-               <div className="flex items-center justify-between mt-12 border-t border-white/5 pt-12">
-                  <div className="flex items-center gap-6">
-                     <button 
-                       onClick={() => scrollServices('left')}
-                       className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-[#FFC107] bg-white/5 hover:bg-[#FFC107] hover:text-black active:scale-90 transition-all duration-500"
-                       aria-label="Previous services"
-                     >
-                        <ChevronLeft className="w-8 h-8" />
-                     </button>
-                     <button 
-                       onClick={() => scrollServices('right')}
-                       className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-[#FFC107] bg-white/5 hover:bg-[#FFC107] hover:text-black active:scale-90 transition-all duration-500"
-                       aria-label="Next services"
-                     >
-                        <ChevronRight className="w-8 h-8" />
-                     </button>
-                  </div>
+               {/* Navigation Footer */}
+               <div className="flex items-center justify-end mt-12 border-t border-white/5 pt-12">
                   <div className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-500 flex items-center gap-4">
                      <span className="w-12 h-px bg-white/10"></span>
                      EXPLORE CAPABILITIES

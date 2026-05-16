@@ -19,8 +19,18 @@ export default function ContactPage() {
   const contacts = [
     { icon: <Mail size={20} />, label: 'EMAIL', value: 'hello@thesocialbox.in', href: 'mailto:hello@thesocialbox.in' },
     { icon: <Phone size={20} />, label: 'PHONE', value: '+91 97XXXX 4XXX', href: 'tel:+919700004000' },
-    { icon: <MapPin size={20} />, label: 'BASED IN', value: 'Mumbai, India', href: null },
-    { icon: <Globe size={20} />, label: 'SERVING', value: 'Globally', href: null },
+    { 
+      icon: <MapPin size={20} />, 
+      label: 'MUMBAI OFFICE', 
+      value: "Plot 95 - Kala Niketan, Rm 13,\n3rd Flr, Maharshi Karve Rd,\nMarine Lines, Mumbai 400020",
+      href: 'https://maps.google.com/?q=Maharshi+Karve+Road+Marine+Lines+Mumbai' 
+    },
+    { 
+      icon: <MapPin size={20} />, 
+      label: 'JAIPUR OFFICE', 
+      value: "TSB Creatives Pvt Ltd,\n401 Alokik Heights, Subhash Marg,\nAshok Nagar, Jaipur 302001",
+      href: 'https://maps.google.com/?q=Ashok+Nagar+Jaipur' 
+    },
   ];
 
   return (
@@ -157,11 +167,11 @@ export default function ContactPage() {
                   <div>
                     <p className="text-technical text-[var(--gold)] mb-1">{c.label}</p>
                     {c.href ? (
-                      <a href={c.href} className="text-white text-xl md:text-2xl font-bold hover:text-white transition-colors tracking-tight">
+                      <a href={c.href} className="text-white text-xl md:text-2xl font-bold hover:text-white transition-colors tracking-tight whitespace-pre-line">
                         {c.value}
                       </a>
                     ) : (
-                      <p className="text-white text-xl md:text-2xl font-bold tracking-tight">{c.value}</p>
+                      <p className="text-white text-xl md:text-2xl font-bold tracking-tight whitespace-pre-line">{c.value}</p>
                     )}
                   </div>
                 </div>
@@ -169,9 +179,9 @@ export default function ContactPage() {
 
               {/* Decorative manifesto */}
               <div className="mt-16 pt-16 border-t border-white/10">
-                <p className="font-space text-7xl md:text-8xl font-black uppercase leading-[0.8] tracking-tighter text-zinc-900 select-none">
+                <p className="font-space text-7xl md:text-8xl font-black uppercase leading-[0.8] tracking-tighter text-white/[0.15] select-none">
                   WE BUILD<br />
-                  <span className="text-[var(--gold)] opacity-40">BRANDS</span><br />
+                  <span className="text-[var(--gold)] opacity-90">BRANDS</span><br />
                   THAT LIVE<br />
                   IN CULTURE.
                 </p>

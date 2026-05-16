@@ -40,8 +40,14 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
         </button>
 
         {/* Brand Icon - Left Anchor (Standalone) */}
-        <Link to="/" className="nav-brand-logo">
+        <Link 
+          to="/about" 
+          className="nav-brand-logo group/brand flex items-center no-underline"
+        >
           <img src="/assets/abou_us_imagepng.png" alt="The Social Box" className="nav-box-icon" />
+          <span className="max-w-0 opacity-0 overflow-hidden group-hover/brand:max-w-[120px] group-hover/brand:opacity-100 group-hover/brand:ml-4 transition-all duration-700 ease-in-out font-heading font-black text-[10px] tracking-[0.3em] text-[var(--gold)] whitespace-nowrap">
+            ABOUT US
+          </span>
         </Link>
 
         {/* Center Logo - Center Anchor */}
@@ -54,7 +60,7 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
         {/* Navigation Wrapper - Links Only */}
         <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <div className="nav-section left">
-            <Link to="/about" className="nav-link">
+            <Link to="/about" className="nav-link desktop-about-hide">
               <span className="nav-text">ABOUT</span>
             </Link>
             <Link to="/services" className="nav-link">

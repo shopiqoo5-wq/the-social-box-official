@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowUpRight, MousePointer2, Sparkles, Box, Radio, Globe, Zap, Megaphone, Palette, Play, Info, ChevronDown } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import { useContact } from '../context/ContactContext';
@@ -110,9 +110,6 @@ export default function HomePage() {
                    SOCIAL <br/>
                    <span className="text-[#F2EC24] italic drop-shadow-[0_0_80px_rgba(242,236,36,0.2)]">DEVELOPMENT</span>
                 </h2>
-                <div className="max-w-md text-[#F2EC24]/40 font-black text-sm md:text-base italic leading-relaxed uppercase tracking-[0.5em] text-right mb-6">
-                   [ THE NEW DIGITAL PARADIGM ]
-                </div>
              </div>
           </Reveal>
           

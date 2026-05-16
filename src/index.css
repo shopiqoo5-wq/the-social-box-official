@@ -304,26 +304,18 @@ body.locked {
 
 .footer-mission-title .title-talk {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-size: clamp(2rem, 8vw, 7rem);
     font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1.5px #000;
-    letter-spacing: -0.05em;
+    color: #000;
+    -webkit-text-stroke: 1px #000;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
-    line-height: 0.8;
+    line-height: 1;
     font-style: italic;
-    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .footer-mission-title:hover .title-talk {
-    color: #000;
-    -webkit-text-stroke: 1.5px #000;
-    transform: scale(1.02);
-}
-
-.footer-mission-title:hover .title-lets {
-    color: #000;
-    -webkit-text-stroke-color: transparent;
+    opacity: 0.8;
 }
 
 .footer-mission-title:hover + .footer-blue-dot {
@@ -704,6 +696,10 @@ body.locked {
     pointer-events: auto;
     color: var(--grey-bright);
     text-transform: uppercase;
+}
+
+.desktop-about-hide {
+    display: none;
 }
 
 /* Hero Section */
@@ -1438,6 +1434,10 @@ body.locked {
 
   .nav-logo-static img {
     width: 110px;
+  }
+
+  .desktop-about-hide {
+    display: flex !important;
   }
 
   .nav-menu {

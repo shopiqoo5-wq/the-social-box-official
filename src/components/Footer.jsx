@@ -16,17 +16,12 @@ export default function Footer() {
           {/* SECTION 1: THE MISSION CALL */}
           <div className="footer-mission">
 
-            <Reveal delay={200} type="fade-3d">
               <div className="footer-mission-main">
-                <Magnetic>
-                  <h2 onClick={openContact} className="footer-mission-title group">
-                    <span className="title-lets">DROP THE BRIEF</span>
-                    <span className="title-talk">WE'LL HANDLE THE REST</span>
-                  </h2>
-                </Magnetic>
-
+                <h2 onClick={openContact} className="footer-mission-title group">
+                  <span className="title-lets">DROP THE BRIEF</span>
+                  <span className="title-talk whitespace-nowrap">WE'LL HANDLE THE REST</span>
+                </h2>
               </div>
-            </Reveal>
           </div>
 
           {/* SECTION 2: DEEP FOOTPRINT */}
@@ -47,17 +42,18 @@ export default function Footer() {
             <div className="footer-col">
               <h4><Globe className="inline-icon" /> Mumbai Coordinate</h4>
               <div className="footer-address">
-                104, Mittal Estate, Bldg 2,<br />
-                Andheri East, Mumbai,<br />
-                MH 400059, India
+                Plot 95 - Kala Niketan, Rm 13,<br />
+                3rd Flr, Maharshi Karve Rd,<br />
+                Marine Lines, Mumbai 400020
               </div>
             </div>
 
             <div className="footer-col">
-              <h4><Globe className="inline-icon" /> Dubai Coordinate</h4>
+              <h4><Globe className="inline-icon" /> Jaipur Coordinate</h4>
               <div className="footer-address">
-                Level 12, Business Bay,<br />
-                Dubai, United Arab Emirates
+                TSB Creatives Pvt Ltd,<br />
+                401 Alokik Heights, Subhash Marg,<br />
+                Ashok Nagar, Jaipur 302001
               </div>
             </div>
 
