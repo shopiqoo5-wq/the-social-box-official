@@ -315,24 +315,13 @@ export default function HomePage() {
             {/* Top Spacing Container - ensures ample breathing room below navbar */}
             <div className="flex-grow flex flex-col items-center justify-center mt-[80px] md:mt-[140px]">
               {/* Main Title Group */}
-              <div className="flex flex-col items-center justify-center cursor-default group text-center w-full leading-[1.05]">
-                <span 
-                  className="block text-white font-space font-bold text-[36px] lg:text-[80px] tracking-widest leading-[1.05] animate-fade-up z-10" 
-                  style={{ animationDelay: '0.15s', opacity: 0 }}
-                >
-                  THE
-                </span>
+              <div className="flex flex-col items-center justify-center cursor-default group text-center w-full leading-[1.05] min-h-[120px]">
                 <h1 
-                  className="font-space font-black uppercase italic text-[#FFB800] text-[52px] md:text-[72px] lg:text-[140px] leading-[1.05] tracking-[-0.04em] w-full animate-fade-up transition-all duration-700 group-hover:drop-shadow-[0_0_40px_rgba(255,184,0,0.6)]" 
-                  style={{ animationDelay: '0.3s', opacity: 0 }}
+                  className="font-space font-black uppercase italic text-[#FFB800] text-[42px] md:text-[64px] lg:text-[90px] leading-[1.05] tracking-[-0.04em] w-full animate-fade-up transition-all duration-700 group-hover:drop-shadow-[0_0_40px_rgba(255,184,0,0.6)]" 
+                  style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}
                 >
-                  Social Box
+                  <TypewriterText text="Make every tap count." delay={300} />
                 </h1>
-              </div>
-
-              {/* Tagline */}
-              <div className="mt-[20px] md:mt-[28px] text-[#999] opacity-90 font-light text-[16px] md:text-[22px] italic tracking-wide text-center min-h-[40px] flex justify-center animate-fade-up w-full" style={{ animationDelay: '0.45s', opacity: 0, animationFillMode: 'forwards' }}>
-                <TypewriterText text="Make every tap count." delay={800} />
               </div>
 
               {/* CTA Buttons */}
