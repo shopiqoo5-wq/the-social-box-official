@@ -62,6 +62,16 @@ export default function ContactModal() {
       {/* Modal - Premium Card */}
       <div className="modal-container">
         
+        {/* Fixed Close Button for entire modal */}
+        <button 
+          onClick={closeContact}
+          className="modal-close-btn"
+          style={{ zIndex: 50 }}
+          aria-label="Close modal"
+        >
+          <X className="close-icon" />
+        </button>
+
         {/* Left Side: Branding/Success State */}
         <div className="modal-left">
           <div className="modal-branding">
@@ -83,12 +93,6 @@ export default function ContactModal() {
                 </div>
                 <p className="info-text">hello@thesocialbox.in</p>
              </div>
-             <div className="info-item">
-                <div className="info-icon-box">
-                   <Phone className="info-icon" />
-                </div>
-                <p className="info-text">+91 97XXXX 4XXX</p>
-             </div>
           </div>
 
           {/* Decorative Elements */}
@@ -99,13 +103,6 @@ export default function ContactModal() {
 
         {/* Right Side: Form */}
         <div className="modal-right">
-          <button 
-            onClick={closeContact}
-            className="modal-close-btn"
-            aria-label="Close modal"
-          >
-            <X className="close-icon" />
-          </button>
 
           {!isSuccess ? (
             <form onSubmit={handleSubmit} className="modal-form">

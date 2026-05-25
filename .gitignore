@@ -6,3 +6,8 @@ dist
 .vscode
 .idea
 .vercel
+
+# Ignore large video assets
+public/videos/*.mov
+public/videos/*.mp4
+

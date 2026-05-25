@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Social Box - Hero Variants</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0d0b;
+            --gold: #FFB800;
+            --white: #ffffff;
+            --grey: #888888;
+            --nav-height: 64px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: var(--white);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Nav (Shared) */
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5vw;
+            z-index: 100;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .nav-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 24px;
+            color: var(--white);
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        /* Shared Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 48px;
+        }
+        .btn {
+            height: 50px;
+            padding: 0 28px;
+            border-radius: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: var(--white);
+            color: var(--bg-dark);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: var(--gold);
+            transform: scale(1.03);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid #444;
+        }
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(255,184,0,0.05);
+            transform: scale(1.03);
+        }
+
+        /* Variant Wrappers */
+        .variant-section {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            min-height: 700px;
+            background: var(--bg-dark);
+            overflow: hidden;
+            border-bottom: 2px solid #222;
+        }
+        
+        .variant-label {
+            position: absolute;
+            top: 100px;
+            left: 5vw;
+            background: var(--gold);
+            color: #000;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 200;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
+           VARIANT 1 — SPLIT SCREEN 
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .v1-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            padding-top: var(--nav-height);
+        }
+        .v1-left {
+            width: 55%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5vw;
+            border-right: 1px solid var(--gold);
+        }
+        .v1-right {
+            width: 45%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .v1-the {
+            font-family: 'Anton', sans-serif;
+            font-size: 64px;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: -10px;
+        }
+        .v1-social {
+            font-size: 120px;
+            font-style: italic;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+        }
+        .v1-tagline {
+            font-size: 18px;
+            color: var(--grey);
+            font-weight: 300;
+        }
+        
+        /* CSS 3D Cube */
+        .cube-container {
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+        }
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 15s infinite linear;
+        }
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,184,0,0.1);
+            border: 2px solid var(--gold);
+            box-shadow: inset 0 0 40px rgba(255,184,0,0.2), 0 0 50px rgba(255,184,0,0.2);
+        }
+        .face-front  { transform: translateZ(100px); }
+        .face-back   { transform: rotateY(180deg) translateZ(100px); }
+        .face-right  { transform: rotateY(90deg) translateZ(100px); }
+        .face-left   { transform: rotateY(-90deg) translateZ(100px); }
+        .face-top    { transform: rotateX(90deg) translateZ(100px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
+           VARIANT 2 — FULL BLEED KINETIC 
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .v2-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(14,13,11,0.95), rgba(14,13,11,0.95)), 
+                        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+            z-index: 0;
+        }
+        .v2-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+        .v2-the {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            margin-bottom: -20px;
+        }
+        .v2-social {
+            width: 90vw;
+            font-size: 15vw;
+            font-weight: 900;
+            font-style: italic;
+            color: var(--gold);
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            cursor: default;
+        }
+        .v2-letter {
+            display: inline-block;
+            animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.3s ease;
+        }
+        
+        .v2-social:hover .v2-letter {
+            animation: rippleGlow 1s ease-in-out infinite;
+        }
+
+        @keyframes slideUpFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes rippleGlow {
+            0%, 100% { text-shadow: 0 0 0 rgba(255,184,0,0); transform: scale(1); }
+            50% { text-shadow: 0 0 40px rgba(255,184,0,0.8); transform: scale(1.05); }
+        }
+
+        .v2-tagline-wrapper {
+            margin-top: -30px;
+            z-index: 20;
+        }
+        .v2-tagline {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-size: 18px;
+            color: var(--grey);
+            font-style: italic;
+        }
+        
+        .v2-container .btn-group {
+            animation: floatUp 1s 1s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes floatUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
+           VARIANT 3 — DARK LUXURY 
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .v3-section {
+            background: #080807;
+        }
+        .v3-spotlight {
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255,184,0,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+            z-index: 0;
+        }
+        .v3-container {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 60%;
+        }
+        .v3-ghost {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 30vw;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 5;
+            white-space: nowrap;
+        }
+        .v3-content {
+            position: relative;
+            z-index: 20;
+            transform: translateX(-50%);
+            width: max-content;
+        }
+        .v3-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 80px;
+            color: var(--white);
+            line-height: 1;
+            white-space: nowrap;
+            margin-bottom: 16px;
+        }
+        .v3-the { font-weight: 300; font-style: italic; }
+        .v3-social { font-weight: 900; color: var(--gold); }
+        .v3-tagline {
+            font-family: 'Cormorant', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--grey);
+            text-align: right;
+        }
+        .v3-content .btn-group {
+            justify-content: flex-end;
+        }
+        
+        /* Infinite Ticker */
+        .v3-ticker-wrap {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            background: rgba(255,184,0,0.05);
+            border-top: 1px solid rgba(255,184,0,0.1);
+            display: flex;
+            align-items: center;
+            z-index: 30;
+        }
+        .v3-ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 20s linear infinite;
+        }
+        .v3-ticker span {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            padding: 0 40px;
+            opacity: 0.8;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .v1-container { flex-direction: column; }
+            .v1-left { width: 100%; height: 60%; padding-top: 80px; border-right: none; border-bottom: 1px solid var(--gold); }
+            .v1-right { width: 100%; height: 40%; }
+            .v1-the { font-size: 40px; }
+            .v1-social { font-size: 72px; }
+            
+            .v2-social { font-size: 18vw; }
+            
+            .v3-container { padding-left: 50%; }
+            .v3-headline { font-size: 40px; }
+            .v3-tagline { font-size: 20px; }
+            
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Shared Nav for all sections (Visual only) -->
+    <nav class="navbar" style="position: fixed;">
+        <div class="nav-links">
+            <a href="#" style="color:white; text-decoration:none;">Services</a>
+        </div>
+        <div class="nav-logo">
+            <img src="/assets/logo.png" alt="Logo" style="height: 32px;" onerror="this.style.display='none'; this.outerHTML='<span style=\'font-family: Anton; font-size: 24px; color: white;\'>THE SOCIAL BOX</span>'">
+        </div>
+        <div class="nav-links">
+            <a href="#" style="color:white; text-decoration:none;">Case Study</a>
+            <a href="#" style="color:white; text-decoration:none;">Contact</a>
+        </div>
+    </nav>
+
+    <!-- VARIANT 1: SPLIT SCREEN EDITORIAL -->
+    <section class="variant-section">
+        <div class="variant-label">Variant 1: Split Screen Editorial</div>
+        <div class="v1-container">
+            <div class="v1-left">
+                <div class="v1-the">THE</div>
+                <div class="v1-social">SOCIAL BOX</div>
+                <div class="v1-tagline">Make every tap count.</div>
+                
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">Start a Project &rarr;</a>
+                    <a href="#" class="btn btn-secondary">Case Studies</a>
+                </div>
+            </div>
+            <div class="v1-right">
+                <div class="cube-container">
+                    <div class="cube">
+                        <div class="face face-front"></div>
+                        <div class="face face-back"></div>
+                        <div class="face face-right"></div>
+                        <div class="face face-left"></div>
+                        <div class="face face-top"></div>
+                        <div class="face face-bottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VARIANT 2: FULL BLEED KINETIC -->
+    <section class="variant-section" style="border-bottom: 2px solid #222;">
+        <div class="variant-label">Variant 2: Full Bleed Kinetic</div>
+        <div class="v2-bg"></div>
+        <div class="v2-container">
+            <div class="v2-the">THE</div>
+            <div class="v2-social" id="v2-social-text">
+                SOCIAL BOX
+            </div>
+            <div class="v2-tagline-wrapper">
+                <div class="v2-tagline">Make every tap count.</div>
+            </div>
+            
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Start a Project &rarr;</a>
+                <a href="#" class="btn btn-secondary">Case Studies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- VARIANT 3: DARK LUXURY ASYMMETRIC -->
+    <section class="variant-section v3-section">
+        <div class="variant-label">Variant 3: Dark Luxury Asymmetric</div>
+        <div class="v3-spotlight" id="v3-spotlight"></div>
+        <div class="v3-ghost" id="v3-ghost">SOCIAL</div>
+        
+        <div class="v3-container">
+            <div class="v3-content" id="v3-content">
+                <div class="v3-headline">
+                    <span class="v3-the">THE</span> <span class="v3-social">SOCIAL BOX</span>
+                </div>
+                <div class="v3-tagline">Make every tap count.</div>
+                
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">Start a Project &rarr;</a>
+                    <a href="#" class="btn btn-secondary">Case Studies</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="v3-ticker-wrap">
+            <div class="v3-ticker">
+                <span>MARICO · LAKMÉ · NYKAA · SACRED GROVE · OLAY ·</span>
+                <span>MARICO · LAKMÉ · NYKAA · SACRED GROVE · OLAY ·</span>
+                <span>MARICO · LAKMÉ · NYKAA · SACRED GROVE · OLAY ·</span>
+                <span>MARICO · LAKMÉ · NYKAA · SACRED GROVE · OLAY ·</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Variant 2: Letter Animation Stagger
+        const v2Social = document.getElementById('v2-social-text');
+        const text = v2Social.innerText.trim();
+        v2Social.innerHTML = '';
+        
+        [...text].forEach((char, i) => {
+            if(char === ' ') {
+                v2Social.innerHTML += '&nbsp;';
+            } else {
+                const span = document.createElement('span');
+                span.className = 'v2-letter';
+                span.innerText = char;
+                span.style.animationDelay = `${i * 60}ms`;
+                v2Social.appendChild(span);
+            }
+        });
+
+        // Variant 3: Mouse Parallax
+        const v3Section = document.querySelector('.v3-section');
+        const v3Spotlight = document.getElementById('v3-spotlight');
+        const v3Ghost = document.getElementById('v3-ghost');
+        const v3Content = document.getElementById('v3-content');
+
+        v3Section.addEventListener('mousemove', (e) => {
+            const rect = v3Section.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            // Move spotlight
+            v3Spotlight.style.transform = `translate(calc(-50% + ${x * 100}px), calc(-50% + ${y * 100}px))`;
+            
+            // Parallax Ghost Text (moves more)
+            v3Ghost.style.transform = `translate(calc(-50% + ${x * -24}px), calc(-50% + ${y * -24}px))`;
+            
+            // Parallax Content (moves less, opposite)
+            v3Content.style.transform = `translate(calc(-50% + ${x * 12}px), ${y * 12}px)`;
+        });
+
+        // Variant 2 Hover Ripple Animation Delay Fix
+        v2Social.addEventListener('mouseenter', () => {
+            const letters = v2Social.querySelectorAll('.v2-letter');
+            letters.forEach((l, i) => {
+                l.style.animationDelay = `${i * 100}ms`;
+            });
+        });
+        v2Social.addEventListener('mouseleave', () => {
+            const letters = v2Social.querySelectorAll('.v2-letter');
+            letters.forEach(l => {
+                l.style.animationDelay = `0s`; // reset
+            });
+        });
+    </script>
+</body>
+</html>

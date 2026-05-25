@@ -18,7 +18,6 @@ export default function ContactPage() {
 
   const contacts = [
     { icon: <Mail size={20} />, label: 'EMAIL', value: 'hello@thesocialbox.in', href: 'mailto:hello@thesocialbox.in' },
-    { icon: <Phone size={20} />, label: 'PHONE', value: '+91 97XXXX 4XXX', href: 'tel:+919700004000' },
     { 
       icon: <MapPin size={20} />, 
       label: 'MUMBAI OFFICE', 
@@ -42,17 +41,13 @@ export default function ContactPage() {
       <div className="max-w-screen-2xl mx-auto relative z-10">
 
         {/* Hero heading */}
-        <section className="mb-24 md:mb-32">
+        <section className="mb-20 md:mb-24">
           <Reveal type="fade-3d">
-            <p className="text-technical text-[var(--gold)] mb-6">
-              [ GET IN TOUCH ]
-            </p>
-            <h1 className="font-space text-[14vw] md:text-[10vw] leading-[0.85] tracking-tighter uppercase mb-8 break-words">
-              RECHECK<br />
-              <span className="text-[var(--gold)] italic">HISTORY.</span>
+            <h1 className="font-space text-6xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tighter uppercase mb-6 break-words">
+              LET'S <span className="text-[var(--gold)] italic">TALK.</span>
             </h1>
-            <p className="text-zinc-500 text-xl md:text-2xl font-light max-w-2xl leading-relaxed italic">
-              Tell us about your brand vision. Our strategists will craft a high-impact plan tailored for you.
+            <p className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed">
+              Have a vision? Let's turn it into culture. Drop us a line and our strategists will get back to you with a tailored plan.
             </p>
           </Reveal>
         </section>
@@ -156,26 +151,26 @@ export default function ContactPage() {
 
           {/* RIGHT — Contact info + decorative */}
           <Reveal type="fade-3d" delay={200}>
-            <div className="space-y-6">
-              {contacts.map((c, i) => (
-                <div 
-                  key={i} 
-                  className="contact-info-card group bg-white/[0.02] border border-white/5 p-8 rounded-3xl hover:border-[var(--gold)]/30 transition-all duration-500 cursor-pointer"
-                  data-cursor="view"
-                >
-                  <div className="contact-info-icon bg-white/5 text-[var(--gold)] group-hover:bg-[var(--gold)] group-hover:text-black transition-all duration-500">{c.icon}</div>
-                  <div>
-                    <p className="text-technical text-[var(--gold)] mb-1">{c.label}</p>
-                    {c.href ? (
-                      <a href={c.href} className="text-white text-xl md:text-2xl font-bold hover:text-white transition-colors tracking-tight whitespace-pre-line">
-                        {c.value}
-                      </a>
-                    ) : (
-                      <p className="text-white text-xl md:text-2xl font-bold tracking-tight whitespace-pre-line">{c.value}</p>
-                    )}
+            <div className="flex flex-col h-full justify-between lg:pl-12">
+              <div className="space-y-12">
+                {contacts.map((c, i) => (
+                  <div key={i} className="group flex items-start gap-6">
+                    <div className="mt-1 bg-white/5 p-4 rounded-2xl text-[var(--gold)] group-hover:bg-[var(--gold)] group-hover:text-black transition-all duration-300 shadow-sm border border-white/5">
+                      {c.icon}
+                    </div>
+                    <div>
+                      <p className="text-technical text-zinc-500 mb-2">{c.label}</p>
+                      {c.href ? (
+                        <a href={c.href} className="text-zinc-200 text-lg md:text-xl hover:text-[var(--gold)] transition-colors leading-relaxed whitespace-pre-line block">
+                          {c.value}
+                        </a>
+                      ) : (
+                        <p className="text-zinc-200 text-lg md:text-xl leading-relaxed whitespace-pre-line">{c.value}</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
 
               {/* Decorative manifesto */}
               <div className="mt-16 pt-16 border-t border-white/10">

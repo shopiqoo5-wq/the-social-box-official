@@ -1,18 +1,18 @@
 import React from 'react';
-import { Radio, Users, Zap, Globe, Video, Sparkles, Palette, ArrowRight } from 'lucide-react';
+import { Share2, Crown, Flame, Monitor, Aperture, Sparkles, Clapperboard, ArrowRight } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import { useContact } from '../context/ContactContext';
 
 export default function ServicesPage() {
   const { openContact } = useContact();
   const services = [
-    { title: "Social Media", icon: <Radio className="w-10 h-10" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
-    { title: "Influencer Marketing", icon: <Users className="w-10 h-10" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
-    { title: "Meme Marketing", icon: <Zap className="w-10 h-10" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
-    { title: "Web", icon: <Globe className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
-    { title: "UGC", subtitle: "(User-Generated Content)", icon: <Video className="w-10 h-10" />, desc: "Authentic, creator-led content that builds trust and relatability." },
+    { title: "Social Media", icon: <Share2 className="w-10 h-10" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
+    { title: "Influencer Marketing", icon: <Crown className="w-10 h-10" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
+    { title: "Meme Marketing", icon: <Flame className="w-10 h-10" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
+    { title: "Web", icon: <Monitor className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { title: "UGC", subtitle: "(User-Generated Content)", icon: <Aperture className="w-10 h-10" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { title: "Personal Brand Building", icon: <Sparkles className="w-10 h-10" />, desc: "Positioning individuals as strong, credible voices in their space." },
-    { title: "Production", icon: <Palette className="w-10 h-10" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
+    { title: "Production", icon: <Clapperboard className="w-10 h-10" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
   ];
 
   return (
@@ -48,8 +48,8 @@ export default function ServicesPage() {
 
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div className="flex justify-between items-start">
-                  <div className="w-20 h-20 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center text-[var(--gold)] group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
-                     {React.cloneElement(service.icon, { className: "w-10 h-10" })}
+                  <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center text-[var(--gold)] group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+                     {React.cloneElement(service.icon, { className: "w-6 h-6" })}
                   </div>
                 </div>
                 

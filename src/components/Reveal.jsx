@@ -12,7 +12,7 @@ const useScrollReveal = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.05, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.01, rootMargin: '0px 0px 200px 0px' } /* Pre-trigger 200px before entering viewport */
     );
 
     const currentRef = ref.current;
@@ -29,8 +29,8 @@ const useScrollReveal = () => {
 const Reveal = ({ children, delay = 0, className = "", type = "fade-up" }) => {
   const [ref, isVisible] = useScrollReveal();
   
-  // High-End Studio Easing (ExpoOut)
-  const baseClasses = "transition-all duration-[1.4s] transform-gpu will-change-transform";
+  // High-End Studio Easing (ExpoOut) - Snappy luxury duration
+  const baseClasses = "transition-all duration-[0.8s] transform-gpu will-change-transform";
   
   const getVariantStyles = () => {
     switch (type) {

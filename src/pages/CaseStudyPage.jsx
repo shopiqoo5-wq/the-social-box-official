@@ -1,14 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import LazyVideo from '../components/LazyVideo';
 import { Play, Zap, Box, Globe, ChevronRight } from 'lucide-react';
 
 export default function CaseStudyPage() {
   const cases = [
-    { id: "01", category: "Social Strategy", title: "THE GOLDEN HOUR", video: "/videos/reel-1.mp4", metric: "2.4M+", label: "Reach" },
-    { id: "02", category: "Influencer Network", title: "CULTURAL SYNERGY", video: "/videos/reel-2.mp4", metric: "150K+", label: "Growth" },
-    { id: "03", category: "Interactive 3D", title: "VIRTUAL PORTAL", video: "/videos/reel-3.mp4", metric: "50+", label: "Conversions" },
-    { id: "04", category: "Content Blast", title: "VIRAL ENGINE", video: "/videos/reel-4.mp4", metric: "10M+", label: "Impressions" },
+    { id: "01", category: "Social Strategy", title: "THE GOLDEN HOUR", video: "/videos/reel-1.mp4", metric: "2.4M+", label: "Reach", desc: "We engineered a seamless cross-platform narrative that drove authentic brand sentiment and measurable growth in under 30 days." },
+    { id: "02", category: "Marketing Ecosystem", title: "BENGALURU STRIKERS", video: "/videos/reel-2.mp4", metric: "150K+", label: "Growth", desc: "Successfully rolled out the complete marketing ecosystem for Bengaluru Strikers, taking the brand from conceptualization to implementation. The process included the creation of the brand identity, which involved logo and apparel design, as well as digital presence and social media marketing, among others, done through consolidated and strategic leadership." },
+    { id: "03", category: "End-To-End Marketing", title: "AHMEDABAD LIONS", video: "/videos/lions_case_study.mp4", metric: "360°", label: "Execution", desc: "Carried out the end-to-end marketing process for Ahmedabad Lions, handling the entire process right from conceptualization to implementation. The project encompassed brand identity creation, which includes the creation of the logo, mascot, and kit designs, along with website development and social media marketing." },
+    { id: "04", category: "Interactive 3D", title: "VIRTUAL PORTAL", video: "/videos/reel-3.mp4", metric: "50+", label: "Conversions", desc: "We engineered a seamless cross-platform narrative that drove authentic brand sentiment and measurable growth in under 30 days." },
+    { id: "05", category: "Content Blast", title: "VIRAL ENGINE", video: "/videos/reel-4.mp4", metric: "10M+", label: "Impressions", desc: "We engineered a seamless cross-platform narrative that drove authentic brand sentiment and measurable growth in under 30 days." },
+    { id: "06", category: "Influencer Campaigns", title: "NYKAA", video: "/videos/nykaa_case_study.mp4", metric: "100+", label: "Influencers", desc: "Managed campaigns for the launch of Nykaa makeup products through beauty and lifestyle influencers to create trendy Gen Z content for lip oils, blushes, lipsticks, and palettes, while managing full campaign execution across platforms." },
+    { id: "07", category: "Full-Funnel Campaign", title: "SACRED GROVE", video: "/videos/sacred_grove_case_study.mp4", metric: "360°", label: "Execution", desc: "Led a full-funnel influencer campaign for Sacred Grove’s hair mask and hair perfume by recruiting aligned creators and crafting culturally relevant scripts and content ideas, and executing campaigns." },
+    { id: "08", category: "360° Campaign", title: "LAKMÉ", video: "/videos/lakme_case_study.mp4", metric: "30", label: "Creators", desc: "For the launch of Lakmé’s Body Shimmer Lotion and Skin Tint, we undertook a 360 influencer campaign involving an exclusive event with five of the best beauty influencers along with a second phase with 25 beauty and lifestyle influencers. Creators created walkthrough videos for the event, explanations for the formulations, wear tests, and GRWM videos to highlight the texture, finish, and ingredients of the products. The campaign positioned the range as aspirational yet everyday, delivering strong awareness, credibility, and engagement across social platforms." },
+    { id: "09", category: "Influencer Campaign", title: "EUREKA FORBES", video: "/videos/eureka_forbes_case_study.mov", metric: "6M+", label: "Reach", desc: "Directed a comprehensive influencer campaign for the Aquaguard Nanopore Filter, involving 26 influencers (including MrMiko 2.0, Naman Kapoor, Noopur Karla, and Avinash Dagar) focusing on water purification. Achieving over 6 million combined reach." },
+    { id: "10", category: "Skincare Content", title: "OLAY", video: "/videos/olay_case_study.mov", metric: "278M+", label: "Views", desc: "Executed influencer campaign for Olay’s newly launched Super Collagen Peptide Moisturizer and 7-in-1 Serum for women who are in their 30s. Working with influencers like Mansi Rajani, Himani Rose, Sanchi Jain, Tanvi, Darshna, and Akanksha Jindal while working with 93 mid-tier influencers and 300 micro influencers and 260 nano influencers. Focused on relatable skincare content and product awareness delivering 278M+ views and 15M+ reach." },
+    { id: "11", category: "Regional Campaign", title: "MARICO", video: "/videos/marico_case_study.mov", metric: "1M+", label: "Views", desc: "Conducted regional influencer marketing campaign for Nihar Almond Coconut Oil in Bengal by creating content strategy and implementing the entire campaign to ensure creation of culturally relevant stories and reach 1 million views with creator like Saachi Basine." },
   ];
 
   return (
@@ -30,7 +38,7 @@ export default function CaseStudyPage() {
       </div>
 
       {/* Case Studies Grid - Shader.se Style Large Perspective */}
-      <div className="max-w-screen-2xl mx-auto space-y-40 md:space-y-64 pb-64">
+      <div className="max-w-screen-2xl mx-auto space-y-40 md:space-y-64 pb-12 md:pb-24">
         {cases.map((cs, i) => (
           <Reveal key={i} delay={i * 100} type="fade-3d">
              <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24 items-center">
@@ -67,7 +75,7 @@ export default function CaseStudyPage() {
                    </div>
 
                    <p className="text-zinc-500 text-xl font-light italic leading-snug">
-                      We engineered a seamless cross-platform narrative that drove authentic brand sentiment and measurable growth in under 30 days.
+                      {cs.desc}
                    </p>
                 </div>
              </div>
@@ -76,13 +84,19 @@ export default function CaseStudyPage() {
       </div>
 
       {/* Narrative Footer */}
-      <div className="mt-32 pt-32 border-t border-white/10 text-center">
-         <Reveal delay={200} type="fade-3d">
-            <h2 className="font-space text-[10vw] md:text-[7vw] font-black text-[#FFC107] uppercase tracking-tighter shadow-2xl hover:italic transition-all duration-500 leading-none">
-               WE'RE THE <br/>
-               <span className="text-white underline decoration-[#FFC107]">PLOT TWIST</span>
+      <div className="mt-12 pt-16 md:mt-24 md:pt-24 border-t border-white/10 text-center pb-12">
+         <div className="flex flex-col items-center justify-center space-y-8">
+            <h2 className="font-space text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-tight">
+               Ready to scale <br/>
+               <span className="text-[#FFC107] italic">your brand?</span>
             </h2>
-         </Reveal>
+            <Link 
+               to="/contact" 
+               className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-[#FFC107] text-black font-black uppercase tracking-widest text-sm hover:scale-105 active:scale-95 transition-transform duration-300 shadow-[0_0_40px_rgba(255,193,7,0.3)]"
+            >
+               Let's Talk <ChevronRight className="w-5 h-5" />
+            </Link>
+         </div>
       </div>
 
     </div>

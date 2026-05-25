@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram, Linkedin } from 'lucide-react';
 
 const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
   const [localScrolled, setLocalScrolled] = useState(false);
@@ -17,12 +17,10 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
   // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
-    document.body.style.overflow = 'auto';
   }, [location]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    document.body.style.overflow = !menuOpen ? 'hidden' : 'auto';
   };
 
   const scrolledState = parentScrolled !== undefined ? parentScrolled : localScrolled;
@@ -57,7 +55,7 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
           </Link>
         </div>
 
-        {/* Navigation Wrapper - Links Only */}
+        {/* Navigation Wrapper - Links & Socials */}
         <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <div className="nav-section left">
             <Link to="/about" className="nav-link desktop-about-hide">
@@ -75,6 +73,28 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
             <Link to="/contact" className="nav-link">
               <span className="nav-text">CONTACT</span>
             </Link>
+          </div>
+
+          {/* Mobile Social Buttons */}
+          <div className="mobile-menu-socials">
+            <a 
+              href="https://instagram.com/thesocialbox.in" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mobile-social-btn instagram"
+            >
+              <Instagram size={18} />
+              <span>INSTAGRAM</span>
+            </a>
+            <a 
+              href="https://linkedin.com/company/the-social-boxin" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mobile-social-btn linkedin"
+            >
+              <Linkedin size={18} />
+              <span>LINKEDIN</span>
+            </a>
           </div>
         </nav>
       </div>

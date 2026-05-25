@@ -12,7 +12,7 @@ const LazyVideo = ({ src, className, ...props }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01, rootMargin: '300px' } /* Pre-trigger video stream download 300px before entering viewport */
     );
 
     if (videoRef.current) {
