@@ -439,10 +439,8 @@ export default function HomePage() {
                   { src: "/reel for social box/reel 14 celio.mp4", brand: "Celio", reach: "6.7M Reach" },
                 ].map((reel, i) => (
                   <div key={i} className="px-2 flex-shrink-0">
-                    <Link
-                      to="/case-study"
+                    <div
                       className="relative block overflow-hidden bg-black border border-white/5 group hover:border-[var(--gold)]/60 transition-all duration-700 will-change-transform"
-                      data-cursor="view"
                       style={{
                         width: '175px',
                         height: '310px',
@@ -452,7 +450,7 @@ export default function HomePage() {
                       }}
                     >
                       <LazyVideo src={reel.src} className="w-full h-full object-cover scale-[1.06] group-hover:scale-[1.01] transition-transform duration-[2.5s]" />
-                    </Link>
+                    </div>
                   </div>
                 ))}
               </div>
