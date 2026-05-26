@@ -19,7 +19,7 @@ const BrandCard = ({ brand }) => {
       <img
         src={src}
         alt={brand.name}
-        className="relative z-10 w-24 h-8 md:w-40 md:h-14 object-contain transition-all duration-500 opacity-90 group-hover:opacity-100 group-hover:scale-110"
+        className={`relative z-10 w-24 h-8 md:w-40 md:h-14 object-contain transition-all duration-500 opacity-90 group-hover:opacity-100 ${brand.scaleUp ? 'scale-150 md:scale-[1.8] group-hover:scale-[1.6] md:group-hover:scale-[1.9]' : 'group-hover:scale-110'}`}
         style={{
           ...(brand.invert ? { filter: 'brightness(0) invert(1)' } : {}),
           ...(brand.shadow ? { filter: 'drop-shadow(0 0 2px rgba(255,255,255,0.8))' } : {}),
@@ -54,8 +54,9 @@ const ALL_BRANDS = [
   { name: 'Nykaa', manualUrl: '/images/client-logos/logo4.png' },
   { name: 'Glow & Lovely', manualUrl: '/images/client-logos/logo5.png' },
   { name: 'Veet', manualUrl: '/images/client-logos/logo6.png' },
+  { name: 'NIVEA', manualUrl: '/images/client-logos/logo7.png' },
   { name: 'Episoft', manualUrl: '/images/client-logos/logo8.png' },
-  { name: 'Dabur', manualUrl: '/images/client-logos/logo9.png' },
+  { name: 'Dabur', manualUrl: '/images/client-logos/logo9.png', scaleUp: true },
   { name: 'Fair and Handsome', manualUrl: '/images/client-logos/logo10.png', invert: true },
   { name: 'Lifestyle', manualUrl: '/images/client-logos/logo11.png', invert: true },
   { name: 'GO COLORS', manualUrl: '/images/client-logos/logo12.png', invert: true },
@@ -78,13 +79,13 @@ const ALL_BRANDS = [
   { name: 'Snapchat', manualUrl: '/images/client-logos/logo29.png' },
   { name: 'YouTube', manualUrl: '/images/client-logos/logo30.png' },
   { name: 'Sony LIV', manualUrl: '/images/client-logos/logo31.png' },
-  { name: 'Prime Video', manualUrl: '/images/client-logos/logo32.png', shadow: true },
-  { name: 'Amazon miniTV', manualUrl: '/images/client-logos/logo33.png' },
+  { name: 'Prime Video', manualUrl: '/images/client-logos/prime-video-new.png', shadow: true },
+  { name: 'Amazon miniTV', manualUrl: '/images/client-logos/amazon-minitv-new.png' },
   { name: 'Netflix', manualUrl: '/images/client-logos/logo34.png' },
-  { name: 'Tata Neu', manualUrl: '/images/client-logos/logo35.png' },
+  { name: 'Tata Neu', manualUrl: '/images/client-logos/tata-neu-new.png' },
   { name: 'Flipkart', manualUrl: '/images/client-logos/logo36.png' },
   { name: 'Samsung', manualUrl: '/images/client-logos/logo37.png' },
-  { name: 'Eureka Forbes', manualUrl: '/images/client-logos/logo38.png' },
+  { name: 'Eureka Forbes', manualUrl: '/images/client-logos/logo38.png', scaleUp: true },
 ];
 
 const BRAND_ROWS = [
