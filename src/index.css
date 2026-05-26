@@ -1756,6 +1756,11 @@ body.locked {
     background-size: 16px;
 }
 
+.contact-select option, .modal-select option {
+    background-color: #0d0d0d;
+    color: #ffffff;
+}
+
 .contact-textarea-wrap {
     align-items: flex-start;
 }

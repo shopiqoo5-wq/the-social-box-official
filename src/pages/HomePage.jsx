@@ -269,7 +269,7 @@ export default function HomePage() {
     { title: "Web", icon: <Monitor className="w-6 h-6" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
     { title: "UGC", subtitle: "(User-Generated Content)", icon: <Aperture className="w-6 h-6" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { title: "Personal Brand Building", icon: <Sparkles className="w-6 h-6" />, desc: "Positioning individuals as strong, credible voices in their space." },
-    { title: "Production", icon: <Clapperboard className="w-6 h-6" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
+    { title: "Production", icon: <Clapperboard className="w-6 h-6" />, desc: "From ideation to execution high-quality content built for digital-first platforms" },
   ];
 
   return (
@@ -280,13 +280,13 @@ export default function HomePage() {
           
           {/* Animated Aurora / Gradient Mesh Background */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-[#FFB800]/20 rounded-full blur-[140px] animate-mesh-1" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] max-w-[900px] max-h-[900px] bg-[#b85b0b]/20 rounded-full blur-[150px] animate-mesh-2" />
-            <div className="absolute top-[40%] left-[30%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-[#0047FF]/15 rounded-full blur-[120px] animate-mesh-3" />
+            <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] bg-[#FFB800]/20 rounded-full blur-[100px] md:blur-[140px] md:animate-mesh-1" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] max-w-[900px] max-h-[900px] bg-[#b85b0b]/20 rounded-full blur-[100px] md:blur-[150px] md:animate-mesh-2" />
+            <div className="absolute top-[40%] left-[30%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-[#0047FF]/15 rounded-full blur-[80px] md:blur-[120px] md:animate-mesh-3" />
           </div>
 
-          {/* Floating Golden Particles (Embers) */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+          {/* Floating Golden Particles (Embers) - Hidden on mobile for performance */}
+          <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden z-10">
             {Array.from({ length: 25 }).map((_, i) => (
               <div
                 key={i}
@@ -302,9 +302,9 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* CSS Noise / Grain Texture Overlay & Vignette */}
+          {/* CSS Noise / Grain Texture Overlay & Vignette - Hidden on mobile for performance */}
           <div
-            className="absolute inset-0 opacity-[0.08] pointer-events-none mix-blend-overlay z-20"
+            className="hidden md:block absolute inset-0 opacity-[0.08] pointer-events-none mix-blend-overlay z-20"
             style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundSize: '200px 200px' }}
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0d0d0d_100%)] z-20 opacity-90 pointer-events-none" />
@@ -324,32 +324,7 @@ export default function HomePage() {
                 </h1>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="mt-[32px] md:mt-[48px] flex flex-col sm:flex-row items-center justify-center gap-[12px] md:gap-[16px] animate-fade-up w-[90%] sm:w-auto mx-auto" style={{ animationDelay: '0.6s', opacity: 0, animationFillMode: 'forwards' }}>
-                <Link to="/contact" className="group relative w-full sm:w-auto h-[56px] min-w-[200px] bg-white text-[#0d0d0d] font-space font-bold uppercase tracking-[0.2em] text-[12px] md:text-[13px] overflow-hidden rounded-full transition-all duration-200 ease-in hover:bg-[#FFB800] hover:scale-[1.03] flex justify-center items-center text-center">
-                  {/* Shimmer Sweep Animation */}
-                  <div className="absolute top-0 bottom-0 w-[50px] bg-white/40 skew-x-[-20deg] group-hover:animate-[sweep_1.5s_ease-in-out_infinite]" style={{ left: '-100%' }} />
-                  <span className="relative z-10 flex items-center gap-3">
-                    Start a Project <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-                
-                <Link to="/case-study" className="group w-full sm:w-auto h-[56px] min-w-[200px] bg-[#050505] border border-[#444] text-white font-space font-bold uppercase tracking-[0.2em] text-[12px] md:text-[13px] rounded-full transition-all duration-200 ease-in hover:border-[#FFB800] hover:text-[#FFB800] hover:scale-[1.03] flex justify-center text-center items-center gap-3">
-                  Case Studies
-                </Link>
-              </div>
 
-              {/* Social Proof */}
-              <div className="mt-[42px] md:mt-[64px] animate-fade-up flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity w-full" style={{ animationDelay: '0.75s', opacity: 0, animationFillMode: 'forwards' }}>
-                 <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#666] mb-[12px]">Trusted By</span>
-                 <div className="flex flex-wrap justify-center items-center gap-[24px] md:gap-[40px] text-[14px] md:text-[18px] uppercase font-mono tracking-[0.15em] text-[#888]">
-                    <span>Marico</span>
-                    <span>Lakmé</span>
-                    <span>Nykaa</span>
-                    <span>Sacred Grove</span>
-                    <span>Olay</span>
-                 </div>
-              </div>
             </div>
 
             {/* Scroll indicator - Forced spacing below social proof */}
@@ -376,20 +351,20 @@ export default function HomePage() {
               </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start mt-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start mt-10 lg:mt-20">
               <Reveal delay={200} type="fade-3d">
                 <div className="space-y-12">
                   <p className="text-zinc-200 text-3xl md:text-6xl font-light leading-[1] max-w-3xl tracking-tighter italic">
                     Helping brands <span className="text-white font-black">Go Viral</span> through <span className="text-[#FFC107] font-black underline decoration-[4px] underline-offset-[0.2em]">Creative Strategy</span>.
                   </p>
-                  <div className="h-px w-40 bg-[#FFC107]/30"></div>
+
                 </div>
               </Reveal>
 
-              <div className="flex flex-col gap-16 pt-10">
+              <div className="flex flex-col gap-12 lg:gap-16 pt-0 lg:pt-10">
                 <Reveal delay={300} className="space-y-10">
                   <p className="text-zinc-500 text-xl md:text-2xl font-medium leading-relaxed max-w-xl">
-                    Not Just an Agency, but an Extension of your brand. Operating where high-end technology meets raw internet culture.
+                    Not Just an Agency, but an Extension of your brand.
                   </p>
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-6 group cursor-default">
@@ -434,32 +409,34 @@ export default function HomePage() {
                 className="flex w-max will-change-transform items-end cursor-grab active:cursor-grabbing px-12 gap-4"
               >
                 {[
-                  { src: "/videos/reel-1.mp4", brand: "Red Bull", reach: "4.2M Reach" },
-                  { src: "/videos/reel-2.mp4", brand: "Bengaluru Strikers", reach: "Ecosystem" },
-                  { src: "/videos/lions_case_study.mp4", brand: "Ahmedabad Lions", reach: "End-to-End" },
-                  { src: "/videos/reel-3.mp4", brand: "Puma", reach: "2.8M Reach" },
-                  { src: "/videos/reel-4.mp4", brand: "Netflix", reach: "11M Views" },
-                  { src: "/videos/nykaa_case_study.mp4", brand: "Nykaa", reach: "Gen Z Content" },
-                  { src: "/videos/sacred_grove_case_study.mp4", brand: "Sacred Grove", reach: "Full-Funnel" },
-                  { src: "/videos/lakme_case_study.mp4", brand: "Lakmé", reach: "360° Campaign" },
-                  { src: "/videos/eureka_forbes_case_study.mov", brand: "Eureka Forbes", reach: "6M+ Reach" },
-                  { src: "/videos/olay_case_study.mov", brand: "Olay", reach: "278M+ Views" },
-                  { src: "/videos/marico_case_study.mov", brand: "Marico", reach: "1M+ Views" },
-                  { src: "/videos/reel-5.mp4", brand: "Amazon", reach: "5.5M Reach" },
-                  { src: "/videos/reel-6.mp4", brand: "ZEE5", reach: "3.3M Views" },
-                  { src: "/videos/reel-7.mp4", brand: "Adidas", reach: "6.7M Reach" },
-                  { src: "/videos/reel-8.mp4", brand: "Reliance", reach: "9.1M Views" },
-                  { src: "/videos/reel-1.mp4", brand: "Red Bull", reach: "4.2M Reach" },
-                  { src: "/videos/reel-2.mp4", brand: "Bengaluru Strikers", reach: "Ecosystem" },
-                  { src: "/videos/lions_case_study.mp4", brand: "Ahmedabad Lions", reach: "End-to-End" },
-                  { src: "/videos/reel-3.mp4", brand: "Puma", reach: "2.8M Reach" },
-                  { src: "/videos/reel-4.mp4", brand: "Netflix", reach: "11M Views" },
-                  { src: "/videos/nykaa_case_study.mp4", brand: "Nykaa", reach: "Gen Z Content" },
-                  { src: "/videos/sacred_grove_case_study.mp4", brand: "Sacred Grove", reach: "Full-Funnel" },
-                  { src: "/videos/lakme_case_study.mp4", brand: "Lakmé", reach: "360° Campaign" },
-                  { src: "/videos/eureka_forbes_case_study.mov", brand: "Eureka Forbes", reach: "6M+ Reach" },
-                  { src: "/videos/olay_case_study.mov", brand: "Olay", reach: "278M+ Views" },
-                  { src: "/videos/marico_case_study.mov", brand: "Marico", reach: "1M+ Views" },
+                  { src: "/reel for social box/reel 1 ispl.mp4", brand: "ISPL", reach: "4.2M Reach" },
+                  { src: "/reel for social box/reel 2 olay.mp4", brand: "Olay", reach: "Ecosystem" },
+                  { src: "/reel for social box/reel 3 Eureka Forbes.mp4", brand: "Eureka Forbes", reach: "End-to-End" },
+                  { src: "/reel for social box/reel 4 olay x partner.mp4", brand: "Olay x Partner", reach: "2.8M Reach" },
+                  { src: "/reel for social box/reel 5 bl.mp4", brand: "BL", reach: "11M Views" },
+                  { src: "/reel for social box/reel 6 bisleri.mp4", brand: "Bisleri", reach: "Gen Z Content" },
+                  { src: "/reel for social box/reel 7 lakme.mp4", brand: "Lakmé", reach: "Full-Funnel" },
+                  { src: "/reel for social box/reel 8 olay x un brand.mp4", brand: "Olay x UN Brand", reach: "360° Campaign" },
+                  { src: "/reel for social box/reel 9 olay x new partner.mp4", brand: "Olay x New Partner", reach: "6M+ Reach" },
+                  { src: "/reel for social box/reel 10 bs.mp4", brand: "BS", reach: "278M+ Views" },
+                  { src: "/reel for social box/reel 11 bisleri.mp4", brand: "Bisleri", reach: "1M+ Views" },
+                  { src: "/reel for social box/reel 12 broadway.mp4", brand: "Broadway", reach: "5.5M Reach" },
+                  { src: "/reel for social box/reel 13 al.mp4", brand: "AL", reach: "3.3M Views" },
+                  { src: "/reel for social box/reel 14 celio.mp4", brand: "Celio", reach: "6.7M Reach" },
+                  { src: "/reel for social box/reel 1 ispl.mp4", brand: "ISPL", reach: "4.2M Reach" },
+                  { src: "/reel for social box/reel 2 olay.mp4", brand: "Olay", reach: "Ecosystem" },
+                  { src: "/reel for social box/reel 3 Eureka Forbes.mp4", brand: "Eureka Forbes", reach: "End-to-End" },
+                  { src: "/reel for social box/reel 4 olay x partner.mp4", brand: "Olay x Partner", reach: "2.8M Reach" },
+                  { src: "/reel for social box/reel 5 bl.mp4", brand: "BL", reach: "11M Views" },
+                  { src: "/reel for social box/reel 6 bisleri.mp4", brand: "Bisleri", reach: "Gen Z Content" },
+                  { src: "/reel for social box/reel 7 lakme.mp4", brand: "Lakmé", reach: "Full-Funnel" },
+                  { src: "/reel for social box/reel 8 olay x un brand.mp4", brand: "Olay x UN Brand", reach: "360° Campaign" },
+                  { src: "/reel for social box/reel 9 olay x new partner.mp4", brand: "Olay x New Partner", reach: "6M+ Reach" },
+                  { src: "/reel for social box/reel 10 bs.mp4", brand: "BS", reach: "278M+ Views" },
+                  { src: "/reel for social box/reel 11 bisleri.mp4", brand: "Bisleri", reach: "1M+ Views" },
+                  { src: "/reel for social box/reel 12 broadway.mp4", brand: "Broadway", reach: "5.5M Reach" },
+                  { src: "/reel for social box/reel 13 al.mp4", brand: "AL", reach: "3.3M Views" },
+                  { src: "/reel for social box/reel 14 celio.mp4", brand: "Celio", reach: "6.7M Reach" },
                 ].map((reel, i) => (
                   <div key={i} className="px-2 flex-shrink-0">
                     <Link
@@ -475,17 +452,6 @@ export default function HomePage() {
                       }}
                     >
                       <LazyVideo src={reel.src} className="w-full h-full object-cover scale-[1.06] group-hover:scale-[1.01] transition-transform duration-[2.5s]" />
-
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-5">
-                        <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                          <p className="text-white font-space text-base font-black uppercase tracking-tight leading-none mb-2">{reel.brand}</p>
-                          <div className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#FFC107]"></span>
-                            <p className="text-[#FFC107] font-mono text-[10px] font-black tracking-[0.2em] uppercase">{reel.reach}</p>
-                          </div>
-                        </div>
-                      </div>
                     </Link>
                   </div>
                 ))}

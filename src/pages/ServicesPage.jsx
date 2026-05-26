@@ -12,7 +12,7 @@ export default function ServicesPage() {
     { title: "Web", icon: <Monitor className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
     { title: "UGC", subtitle: "(User-Generated Content)", icon: <Aperture className="w-10 h-10" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { title: "Personal Brand Building", icon: <Sparkles className="w-10 h-10" />, desc: "Positioning individuals as strong, credible voices in their space." },
-    { title: "Production", icon: <Clapperboard className="w-10 h-10" />, desc: "From ideation to execution— high-quality content built for digital-first platforms" },
+    { title: "Production", icon: <Clapperboard className="w-10 h-10" />, desc: "From ideation to execution high-quality content built for digital-first platforms" },
   ];
 
   return (

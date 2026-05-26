@@ -177,8 +177,8 @@ export default function ContactPage() {
                 <p className="font-space text-7xl md:text-8xl font-black uppercase leading-[0.8] tracking-tighter text-white/[0.15] select-none">
                   WE BUILD<br />
                   <span className="text-[var(--gold)] opacity-90">BRANDS</span><br />
-                  THAT LIVE<br />
-                  IN CULTURE.
+                  THAT LIVE IN<br />
+                  <span className="text-[var(--gold)] opacity-90">CULTURE.</span>
                 </p>
               </div>
             </div>

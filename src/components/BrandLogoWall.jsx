@@ -15,11 +15,16 @@ const BrandCard = ({ brand }) => {
       );
 
   return (
-    <div className="flex-shrink-0 min-w-[80px] md:min-w-[140px] h-16 md:h-24 flex items-center justify-center relative cursor-default transition-all duration-500 group">
+    <div className="flex-shrink-0 min-w-[85px] md:min-w-[150px] h-16 md:h-24 flex items-center justify-center relative cursor-default transition-all duration-500 group">
       <img
         src={src}
         alt={brand.name}
-        className="relative z-10 h-8 md:h-12 w-auto object-contain transition-all duration-500 opacity-90 group-hover:opacity-100 group-hover:scale-110"
+        className="relative z-10 w-24 h-8 md:w-40 md:h-14 object-contain transition-all duration-500 opacity-90 group-hover:opacity-100 group-hover:scale-110"
+        style={{
+          ...(brand.invert ? { filter: 'brightness(0) invert(1)' } : {}),
+          ...(brand.shadow ? { filter: 'drop-shadow(0 0 2px rgba(255,255,255,0.8))' } : {}),
+          ...(brand.bgWhite ? { backgroundColor: 'white', borderRadius: '50%' } : {})
+        }}
         loading="lazy"
         draggable={false}
         onError={() => setFailed(true)}
@@ -30,54 +35,62 @@ const BrandCard = ({ brand }) => {
 
 /* ─── Brand Data ──────────────────────────────────────────────────── */
 const ALL_BRANDS = [
-  { name: 'Glow & Lovely', domain: 'glowandlovely.in', manualUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/52/Glow_%26_Lovely_Logo.svg/1200px-Glow_%26_Lovely_Logo.svg.png' },
-  { name: 'Ponds', domain: 'ponds.in' },
-  { name: 'Lakme', domain: 'lakmeindia.com' },
-  { name: 'Nykaa', domain: 'nykaa.com' },
-  { name: 'Veet', domain: 'veet.co.in' },
-  { name: 'Nivea', domain: 'nivea.com' },
-  { name: 'Dabur', domain: 'dabur.com' },
-  { name: 'Van Heusen', domain: 'vanheusenindia.com' },
-  { name: 'Myntra', domain: 'myntra.com' },
-  { name: 'Enamor', domain: 'enamor.co.in' },
-  { name: 'Jockey', domain: 'jockey.in' },
-  { name: 'Mochi', domain: 'mochishoes.com', manualUrl: 'https://cdn.brandfetch.io/idUQBW3WXI/w/250/h/74/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1777805870160' },
-  { name: 'Alpenliebe', domain: 'perfettivanmelle.com' },
-  { name: 'Burger King', domain: 'bk.com' },
-  { name: 'Coca-Cola', domain: 'coca-cola.com' },
-  { name: 'Britannia', domain: 'britannia.co.in' },
-  { name: 'Mentos', domain: 'perfettivanmelle.com' },
-  { name: 'Center Fresh', domain: 'perfettivanmelle.com' },
-  { name: 'Tedhe Medhe', domain: 'itcportal.com' },
-  { name: 'Ching\'s', domain: 'chingssecret.com' },
-  { name: 'Instagram', domain: 'instagram.com' },
-  { name: 'Snapchat', domain: 'snapchat.com' },
-  { name: 'YouTube', domain: 'youtube.com' },
-  { name: 'Sony Liv', domain: 'sonyliv.com' },
-  { name: 'Prime Video', domain: 'primevideo.com' },
-  { name: 'Netflix', domain: 'netflix.com' },
-  { name: 'Tata Neu', domain: 'tataneu.com' },
-  { name: 'Flipkart', domain: 'flipkart.com' },
-  { name: 'Samsung', domain: 'samsung.com' },
-  { name: 'Eureka Forbes', domain: 'eurekaforbes.com' },
-  { name: 'Philips', domain: 'philips.com' },
-  { name: 'Croma', domain: 'croma.com' },
-  { name: 'Sony Music', domain: 'sonymusic.com' },
-  { name: 'Warner Music India', domain: 'warnermusic.com' },
-  { name: 'Canon', domain: 'canon.com' },
-  { name: 'Skoda', domain: 'skoda-auto.com' },
-  { name: 'Lego', domain: 'lego.com' },
-  { name: 'P&G', domain: 'pg.com' },
-  { name: 'Zomaland', domain: 'zomato.com' },
-  { name: 'Huggies', domain: 'huggies.com' },
-  { name: 'Sleepwell', domain: 'mysleepwell.com' },
+  { name: 'Sleepwell', manualUrl: '/images/client-logos/sleepwell.png' },
+  { name: 'Zomaland', manualUrl: '/images/client-logos/zomaland.png' },
+  { name: 'Skoda Auto', manualUrl: '/images/client-logos/skoda.png' },
+  { name: 'LEGO', manualUrl: '/images/client-logos/lego.png' },
+  { name: 'P&G', manualUrl: '/images/client-logos/pandg.png' },
+  { name: 'Kamiliant', manualUrl: '/images/client-logos/kamiliant.png', invert: true },
+  { name: 'Huggies', manualUrl: '/images/client-logos/huggies.png' },
+  { name: 'Imagine', manualUrl: '/images/client-logos/imagine.png', invert: true },
+  { name: 'Canon', manualUrl: '/images/client-logos/canon.png' },
+  { name: 'Warner Music Group', manualUrl: '/images/client-logos/wmg.png' },
+  { name: 'Sony', manualUrl: '/images/client-logos/sony.png' },
+  { name: 'Croma', manualUrl: '/images/client-logos/croma.png' },
+  { name: 'Philips', manualUrl: '/images/client-logos/philips.png' },
+  { name: 'Ponds', manualUrl: '/images/client-logos/logo1.png', invert: true },
+  { name: 'WOW Skin Science', manualUrl: '/images/client-logos/logo2.png', invert: true },
+  { name: 'Lakme', manualUrl: '/images/client-logos/logo3.png', invert: true },
+  { name: 'Nykaa', manualUrl: '/images/client-logos/logo4.png' },
+  { name: 'Glow & Lovely', manualUrl: '/images/client-logos/logo5.png' },
+  { name: 'Veet', manualUrl: '/images/client-logos/logo6.png' },
+  { name: 'Episoft', manualUrl: '/images/client-logos/logo8.png' },
+  { name: 'Dabur', manualUrl: '/images/client-logos/logo9.png' },
+  { name: 'Fair and Handsome', manualUrl: '/images/client-logos/logo10.png', invert: true },
+  { name: 'Lifestyle', manualUrl: '/images/client-logos/logo11.png', invert: true },
+  { name: 'GO COLORS', manualUrl: '/images/client-logos/logo12.png', invert: true },
+  { name: 'VanHeusen', manualUrl: '/images/client-logos/logo13.png', invert: true },
+  { name: 'Enamor', manualUrl: '/images/client-logos/logo14.png' },
+  { name: 'Myntra', manualUrl: '/images/client-logos/logo15.png' },
+  { name: 'SOKTAS', manualUrl: '/images/client-logos/logo16.png' },
+  { name: 'JOCKEY', manualUrl: '/images/client-logos/logo17.png', invert: true },
+  { name: 'MOCHI', manualUrl: '/images/client-logos/logo18_cropped.png' },
+  { name: 'Burger King', manualUrl: '/images/client-logos/logo19.png' },
+  { name: 'Coca-Cola', manualUrl: '/images/client-logos/logo20.png' },
+  { name: 'Britannia', manualUrl: '/images/client-logos/logo21.png' },
+  { name: 'Alpenliebe', manualUrl: '/images/client-logos/logo22.png' },
+  { name: 'mentos', manualUrl: '/images/client-logos/logo23.png' },
+  { name: 'Kingfisher', manualUrl: '/images/client-logos/logo24.png' },
+  { name: 'Bingo', manualUrl: '/images/client-logos/logo25.png' },
+  { name: 'Chings Secret', manualUrl: '/images/client-logos/logo26.png', invert: true },
+  { name: 'Center fresh', manualUrl: '/images/client-logos/logo27.png' },
+  { name: 'Instagram', manualUrl: '/images/client-logos/logo28.png' },
+  { name: 'Snapchat', manualUrl: '/images/client-logos/logo29.png' },
+  { name: 'YouTube', manualUrl: '/images/client-logos/logo30.png' },
+  { name: 'Sony LIV', manualUrl: '/images/client-logos/logo31.png' },
+  { name: 'Prime Video', manualUrl: '/images/client-logos/logo32.png', shadow: true },
+  { name: 'Amazon miniTV', manualUrl: '/images/client-logos/logo33.png' },
+  { name: 'Netflix', manualUrl: '/images/client-logos/logo34.png' },
+  { name: 'Tata Neu', manualUrl: '/images/client-logos/logo35.png' },
+  { name: 'Flipkart', manualUrl: '/images/client-logos/logo36.png' },
+  { name: 'Samsung', manualUrl: '/images/client-logos/logo37.png' },
+  { name: 'Eureka Forbes', manualUrl: '/images/client-logos/logo38.png' },
 ];
 
 const BRAND_ROWS = [
-  { duration: 40, reverse: false, brands: ALL_BRANDS.slice(0, 10) },
-  { duration: 55, reverse: true, brands: ALL_BRANDS.slice(10, 21) },
-  { duration: 48, reverse: false, brands: ALL_BRANDS.slice(21, 31) },
-  { duration: 60, reverse: true, brands: ALL_BRANDS.slice(31) },
+  { duration: 15, reverse: false, brands: ALL_BRANDS.slice(0, 16) },
+  { duration: 22, reverse: true, brands: ALL_BRANDS.slice(16, 32) },
+  { duration: 18, reverse: false, brands: ALL_BRANDS.slice(32) },
 ];
 
 export default function BrandLogoWall() {
@@ -112,11 +125,11 @@ export default function BrandLogoWall() {
         </Reveal>
       </div>
 
-      <div className="space-y-3 md:space-y-4 relative">
+      <div className="space-y-6 md:space-y-8 relative pt-6 pb-6">
         {BRAND_ROWS.map((row, rowIndex) => (
-          <div key={rowIndex} className="overflow-hidden brand-row-wrapper">
+          <div key={rowIndex} className="overflow-hidden brand-row-wrapper py-2">
             <div
-              className="brand-row flex flex-nowrap items-center gap-6 md:gap-8 w-max"
+              className="brand-row flex flex-nowrap items-center gap-12 md:gap-20 px-6 md:px-12 w-max"
               style={{
                 animation: `brand-marquee ${row.duration}s linear infinite`,
                 animationDirection: row.reverse ? 'reverse' : 'normal',

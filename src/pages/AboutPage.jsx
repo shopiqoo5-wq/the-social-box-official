@@ -44,7 +44,7 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={300} className="space-y-12">
                 <p className="text-zinc-500 text-xl md:text-2xl font-light leading-relaxed">
-                   The Social Box is Not Just an Agency, but an Extension of your brand. Built for partners that want to stay relevant, not just visible. We operate at the intersection of culture, creativity, and strategy — helping brands show up in ways that people actually care about.
+                   The Social Box is Not Just an Agency, but an Extension of your brand. Built for partners that want to stay relevant, not just visible. We operate at the intersection of culture, creativity, and strategy helping brands show up in ways that people actually care about.
                 </p>
                 <p className="text-zinc-500 text-xl md:text-2xl font-light leading-relaxed">
                    With a strong focus on creative brand building and influencer-led ecosystems, we craft narratives that move seamlessly across platforms and communities, reaching audiences across India. Our approach is simple: if it doesn’t feel native to the feed, it doesn’t belong there.

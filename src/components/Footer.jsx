@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-bottom">
-            <span>ALL RIGHTS RESERVED — 2026</span>
+            <span>ALL RIGHTS RESERVED 2026</span>
             <span className="footer-divider">///</span>
 
           </div>
