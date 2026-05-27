@@ -285,8 +285,8 @@ export default function HomePage() {
             <div className="absolute top-[40%] left-[30%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] bg-[#0047FF]/15 rounded-full blur-[80px] md:blur-[120px] md:animate-mesh-3" />
           </div>
 
-          {/* Floating Golden Particles (Embers) - Hidden on mobile for performance */}
-          <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden z-10">
+          {/* Floating Golden Particles (Embers) */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
             {Array.from({ length: 25 }).map((_, i) => (
               <div
                 key={i}

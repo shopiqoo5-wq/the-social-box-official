@@ -58,7 +58,7 @@ export default function CaseStudyPage() {
                    <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-10">
                       <div className="space-y-2">
                         <div className="text-[#FFC107] font-space text-4xl md:text-5xl lg:text-6xl font-black italic whitespace-nowrap">{cs.metric}</div>
-                        <div className="text-zinc-500 font-black uppercase text-[10px] tracking-[0.4em]">{cs.label}</div>
+                        <div className="text-[#FFC107] font-black uppercase text-[10px] tracking-[0.4em]">{cs.label}</div>
                       </div>
 
                    </div>
