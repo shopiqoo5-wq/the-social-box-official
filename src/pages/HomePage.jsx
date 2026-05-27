@@ -409,38 +409,42 @@ export default function HomePage() {
                 className="flex w-max will-change-transform items-end cursor-grab active:cursor-grabbing px-12 gap-4"
               >
                 {[
-                  { src: "/reel for social box/reel 1 ispl.mp4", brand: "ISPL", reach: "4.2M Reach" },
-                  { src: "/reel for social box/reel 2 olay.mp4", brand: "Olay", reach: "Ecosystem" },
-                  { src: "/reel for social box/reel 3 Eureka Forbes.mp4", brand: "Eureka Forbes", reach: "End-to-End" },
-                  { src: "/reel for social box/reel 4 olay x partner.mp4", brand: "Olay x Partner", reach: "2.8M Reach" },
-                  { src: "/reel for social box/reel 5 bl.mp4", brand: "BL", reach: "11M Views" },
-                  { src: "/reel for social box/reel 6 bisleri.mp4", brand: "Bisleri", reach: "Gen Z Content" },
-                  { src: "/reel for social box/reel 7 lakme.mp4", brand: "Lakmé", reach: "Full-Funnel" },
-                  { src: "/reel for social box/reel 8 olay x un brand.mp4", brand: "Olay x UN Brand", reach: "360° Campaign" },
-                  { src: "/reel for social box/reel 9 olay x new partner.mp4", brand: "Olay x New Partner", reach: "6M+ Reach" },
-                  { src: "/reel for social box/reel 10 bs.mp4", brand: "BS", reach: "278M+ Views" },
-                  { src: "/reel for social box/reel 11 bisleri.mp4", brand: "Bisleri", reach: "1M+ Views" },
-                  { src: "/reel for social box/reel 12 broadway.mp4", brand: "Broadway", reach: "5.5M Reach" },
-                  { src: "/reel for social box/reel 13 al.mp4", brand: "AL", reach: "3.3M Views" },
-                  { src: "/reel for social box/reel 14 celio.mp4", brand: "Celio", reach: "6.7M Reach" },
-                  { src: "/reel for social box/reel 1 ispl.mp4", brand: "ISPL", reach: "4.2M Reach" },
-                  { src: "/reel for social box/reel 2 olay.mp4", brand: "Olay", reach: "Ecosystem" },
-                  { src: "/reel for social box/reel 3 Eureka Forbes.mp4", brand: "Eureka Forbes", reach: "End-to-End" },
-                  { src: "/reel for social box/reel 4 olay x partner.mp4", brand: "Olay x Partner", reach: "2.8M Reach" },
-                  { src: "/reel for social box/reel 5 bl.mp4", brand: "BL", reach: "11M Views" },
-                  { src: "/reel for social box/reel 6 bisleri.mp4", brand: "Bisleri", reach: "Gen Z Content" },
-                  { src: "/reel for social box/reel 7 lakme.mp4", brand: "Lakmé", reach: "Full-Funnel" },
-                  { src: "/reel for social box/reel 8 olay x un brand.mp4", brand: "Olay x UN Brand", reach: "360° Campaign" },
-                  { src: "/reel for social box/reel 9 olay x new partner.mp4", brand: "Olay x New Partner", reach: "6M+ Reach" },
-                  { src: "/reel for social box/reel 10 bs.mp4", brand: "BS", reach: "278M+ Views" },
-                  { src: "/reel for social box/reel 11 bisleri.mp4", brand: "Bisleri", reach: "1M+ Views" },
-                  { src: "/reel for social box/reel 12 broadway.mp4", brand: "Broadway", reach: "5.5M Reach" },
-                  { src: "/reel for social box/reel 13 al.mp4", brand: "AL", reach: "3.3M Views" },
-                  { src: "/reel for social box/reel 14 celio.mp4", brand: "Celio", reach: "6.7M Reach" },
+                  { src: "/reel for social box/reel 1 ispl.mp4", brand: "ISPL", reach: "4.2M Reach", link: "https://www.instagram.com/p/DRO-60RiOv7/" },
+                  { src: "/reel for social box/reel 2 olay.mp4", brand: "Olay", reach: "Ecosystem", link: "https://www.instagram.com/p/DVtINFgAWgh/" },
+                  { src: "/reel for social box/reel 3 Eureka Forbes.mp4", brand: "Eureka Forbes", reach: "End-to-End", link: "https://www.instagram.com/reels/DBoNr_0KfRs/" },
+                  { src: "/reel for social box/reel 4 olay x partner.mp4", brand: "Olay x Partner", reach: "2.8M Reach", link: "https://www.instagram.com/p/DWWksYMkZBN/" },
+                  { src: "/reel for social box/reel 5 bl.mp4", brand: "BL", reach: "11M Views", link: "https://www.instagram.com/p/DT428FpDCJT/" },
+                  { src: "/reel for social box/reel 6 bisleri.mp4", brand: "Bisleri", reach: "Gen Z Content", link: "https://www.instagram.com/reels/C2PZyWUIatj/" },
+                  { src: "/reel for social box/reel 7 lakme.mp4", brand: "Lakmé", reach: "Full-Funnel", link: "https://www.instagram.com/p/C9bjXS7p_sM/" },
+                  { src: "/reel for social box/reel 8 olay x un brand.mp4", brand: "Olay x UN Brand", reach: "360° Campaign", link: "https://www.instagram.com/p/DVqv5UpjMhU/" },
+                  { src: "/reel for social box/reel 9 olay x new partner.mp4", brand: "Olay x New Partner", reach: "6M+ Reach", link: "https://www.instagram.com/p/DXq5ksKDbjb/" },
+                  { src: "/reel for social box/reel 10 bs.mp4", brand: "BS", reach: "278M+ Views", link: "https://www.instagram.com/p/DSureBMjHfI/" },
+                  { src: "/reel for social box/reel 11 bisleri.mp4", brand: "Bisleri", reach: "1M+ Views", link: "https://www.instagram.com/reels/C22ExoRPr0u/" },
+                  { src: "/reel for social box/reel 12 broadway.mp4", brand: "Broadway", reach: "5.5M Reach", link: "https://www.instagram.com/p/DBY0pQuxuaH/" },
+                  { src: "/reel for social box/reel 13 al.mp4", brand: "AL", reach: "3.3M Views", link: "https://www.instagram.com/reels/DTyAUT0DIPs/" },
+                  { src: "/reel for social box/reel 14 celio.mp4", brand: "Celio", reach: "6.7M Reach", link: "https://www.instagram.com/p/C9RsVlGJ3BQ/" },
+                  { src: "/reel for social box/reel 1 ispl.mp4", brand: "ISPL", reach: "4.2M Reach", link: "https://www.instagram.com/p/DRO-60RiOv7/" },
+                  { src: "/reel for social box/reel 2 olay.mp4", brand: "Olay", reach: "Ecosystem", link: "https://www.instagram.com/p/DVtINFgAWgh/" },
+                  { src: "/reel for social box/reel 3 Eureka Forbes.mp4", brand: "Eureka Forbes", reach: "End-to-End", link: "https://www.instagram.com/reels/DBoNr_0KfRs/" },
+                  { src: "/reel for social box/reel 4 olay x partner.mp4", brand: "Olay x Partner", reach: "2.8M Reach", link: "https://www.instagram.com/p/DWWksYMkZBN/" },
+                  { src: "/reel for social box/reel 5 bl.mp4", brand: "BL", reach: "11M Views", link: "https://www.instagram.com/p/DT428FpDCJT/" },
+                  { src: "/reel for social box/reel 6 bisleri.mp4", brand: "Bisleri", reach: "Gen Z Content", link: "https://www.instagram.com/reels/C2PZyWUIatj/" },
+                  { src: "/reel for social box/reel 7 lakme.mp4", brand: "Lakmé", reach: "Full-Funnel", link: "https://www.instagram.com/p/C9bjXS7p_sM/" },
+                  { src: "/reel for social box/reel 8 olay x un brand.mp4", brand: "Olay x UN Brand", reach: "360° Campaign", link: "https://www.instagram.com/p/DVqv5UpjMhU/" },
+                  { src: "/reel for social box/reel 9 olay x new partner.mp4", brand: "Olay x New Partner", reach: "6M+ Reach", link: "https://www.instagram.com/p/DXq5ksKDbjb/" },
+                  { src: "/reel for social box/reel 10 bs.mp4", brand: "BS", reach: "278M+ Views", link: "https://www.instagram.com/p/DSureBMjHfI/" },
+                  { src: "/reel for social box/reel 11 bisleri.mp4", brand: "Bisleri", reach: "1M+ Views", link: "https://www.instagram.com/reels/C22ExoRPr0u/" },
+                  { src: "/reel for social box/reel 12 broadway.mp4", brand: "Broadway", reach: "5.5M Reach", link: "https://www.instagram.com/p/DBY0pQuxuaH/" },
+                  { src: "/reel for social box/reel 13 al.mp4", brand: "AL", reach: "3.3M Views", link: "https://www.instagram.com/reels/DTyAUT0DIPs/" },
+                  { src: "/reel for social box/reel 14 celio.mp4", brand: "Celio", reach: "6.7M Reach", link: "https://www.instagram.com/p/C9RsVlGJ3BQ/" },
                 ].map((reel, i) => (
                   <div key={i} className="px-2 flex-shrink-0">
-                    <div
-                      className="relative block overflow-hidden bg-black border border-white/5 group hover:border-[var(--gold)]/60 transition-all duration-700 will-change-transform"
+                    <a
+                      href={reel.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      draggable={false}
+                      className="relative block overflow-hidden bg-black border border-white/5 group hover:border-[var(--gold)]/60 transition-all duration-700 will-change-transform cursor-pointer"
                       style={{
                         width: '175px',
                         height: '310px',
@@ -450,7 +454,7 @@ export default function HomePage() {
                       }}
                     >
                       <LazyVideo src={reel.src} className="w-full h-full object-cover scale-[1.06] group-hover:scale-[1.01] transition-transform duration-[2.5s]" />
-                    </div>
+                    </a>
                   </div>
                 ))}
               </div>
