@@ -12,7 +12,13 @@ const XLogo = ({ className }) => (
   </svg>
 );
 
-const icons = [Instagram, Youtube, XLogo, Facebook, Linkedin];
+const icons = [
+  { Component: Instagram, color: '#E1306C', shadow: 'rgba(225,48,108,0.8)' },
+  { Component: Youtube, color: '#FF0000', shadow: 'rgba(255,0,0,0.8)' },
+  { Component: XLogo, color: '#FFFFFF', shadow: 'rgba(255,255,255,0.8)' },
+  { Component: Facebook, color: '#1877F2', shadow: 'rgba(24,119,242,0.8)' },
+  { Component: Linkedin, color: '#0A66C2', shadow: 'rgba(10,102,194,0.8)' }
+];
 
 const Preloader = ({ tvFading }) => {
   const [iconIndex, setIconIndex] = useState(0);
@@ -31,11 +37,15 @@ const Preloader = ({ tvFading }) => {
   return (
     <div id="preloader" className="transition-colors duration-1000">
       <div className="animation-wrapper relative flex justify-center items-center">
-        {icons.map((Icon, index) => (
-          <Icon 
+        {icons.map(({ Component, color, shadow }, index) => (
+          <Component 
             key={index}
             strokeWidth={1.5}
-            className={`absolute w-24 h-24 md:w-32 md:h-32 text-[#FFC107] drop-shadow-[0_0_40px_rgba(255,193,7,0.8)] will-change-transform
+            style={{ 
+              color: color, 
+              filter: `drop-shadow(0 0 40px ${shadow})` 
+            }}
+            className={`absolute w-24 h-24 md:w-32 md:h-32 will-change-transform
               ${index === iconIndex && !tvFading ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-90 blur-sm'}
               ${tvFading ? 'scale-[2.5] opacity-0 blur-xl duration-700 ease-out' : 'duration-[100ms]'} transition-all
             `}
