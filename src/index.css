@@ -1692,13 +1692,13 @@ body.locked {
   }
 
   #main-logo {
-    width: 80px; /* Final mobile size */
+    width: 100px; /* Final mobile size */
     top: 50%; /* Start exactly in the center of mobile screen */
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(2.0);
   }
 
   #main-logo.reveal {
-    transform: translate(-50%, -50%) scale(1.4);
+    transform: translate(-50%, -50%) scale(2.3);
   }
 
   #main-logo.move-up {
