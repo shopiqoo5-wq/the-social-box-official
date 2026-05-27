@@ -545,12 +545,12 @@ body.locked {
 }
 
 #main-logo {
-    width: 100px; /* Base size is the final desktop size to prevent Layout reflows */
+    width: 160px; /* Base size is the final desktop size to prevent Layout reflows */
     position: fixed;
     left: 50%;
     top: 50%; /* Start exactly in the center of the viewport */
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1.5); /* Perfect center scaling */
+    transform: translate(-50%, -50%) scale(2.0); /* Perfect center scaling */
     transform-origin: center center;
     will-change: transform, opacity, top;
     transition: 
@@ -573,7 +573,7 @@ body.locked {
 
 #main-logo.reveal { 
     opacity: 1; 
-    transform: translate(-50%, -50%) scale(1.8); /* Fully centered and scaled */
+    transform: translate(-50%, -50%) scale(2.2); /* Fully centered and scaled */
     pointer-events: auto;
 }
 
@@ -591,7 +591,7 @@ body.locked {
 
 #main-logo.move-up.scrolled {
     top: 40px;
-    width: 80px;
+    width: 120px;
 }
 
 @media (max-width: 768px) {
@@ -673,7 +673,7 @@ body.locked {
 }
 
 .nav-logo-static img {
-    width: 100px; /* Match animated logo size */
+    width: 160px; /* Match animated logo size */
     height: auto;
     object-fit: contain;
     display: block;
@@ -681,7 +681,7 @@ body.locked {
 }
 
 #site-header.scrolled .nav-logo-static img {
-    width: 80px; /* Shrink logo on scroll */
+    width: 120px; /* Shrink logo on scroll */
 }
 
 .nav-logo-static:hover img {
