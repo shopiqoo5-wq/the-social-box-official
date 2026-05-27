@@ -545,12 +545,12 @@ body.locked {
 }
 
 #main-logo {
-    width: 180px; /* Base size is the final desktop size to prevent Layout reflows */
+    width: 100px; /* Base size is the final desktop size to prevent Layout reflows */
     position: fixed;
     left: 50%;
     top: 50%; /* Start exactly in the center of the viewport */
     opacity: 0;
-    transform: translate(-50%, -50%) scale(2.5); /* Perfect center scaling */
+    transform: translate(-50%, -50%) scale(1.5); /* Perfect center scaling */
     transform-origin: center center;
     will-change: transform, opacity, top;
     transition: 
@@ -567,12 +567,13 @@ body.locked {
 #main-logo img {
     width: 100%;
     height: auto;
+    object-fit: contain;
     display: block;
 }
 
 #main-logo.reveal { 
     opacity: 1; 
-    transform: translate(-50%, -50%) scale(2.77); /* Fully centered and scaled */
+    transform: translate(-50%, -50%) scale(1.8); /* Fully centered and scaled */
     pointer-events: auto;
 }
 
@@ -590,7 +591,16 @@ body.locked {
 
 #main-logo.move-up.scrolled {
     top: 40px;
-    width: 140px;
+    width: 80px;
+}
+
+@media (max-width: 768px) {
+    #main-logo {
+        transform: translate(-50%, -50%) scale(1.0); /* Reduce center scale on mobile to prevent blur */
+    }
+    #main-logo.reveal {
+        transform: translate(-50%, -50%) scale(1.1); /* Reduce reveal scale on mobile */
+    }
 }
 
 /* Navigation */
@@ -663,14 +673,15 @@ body.locked {
 }
 
 .nav-logo-static img {
-    width: 180px; /* Match animated logo size */
+    width: 100px; /* Match animated logo size */
     height: auto;
+    object-fit: contain;
     display: block;
     transition: width 0.4s ease, opacity 0.3s ease;
 }
 
 #site-header.scrolled .nav-logo-static img {
-    width: 140px; /* Shrink logo on scroll */
+    width: 80px; /* Shrink logo on scroll */
 }
 
 .nav-logo-static:hover img {
@@ -1681,13 +1692,13 @@ body.locked {
   }
 
   #main-logo {
-    width: 110px; /* Final mobile size */
+    width: 80px; /* Final mobile size */
     top: 50%; /* Start exactly in the center of mobile screen */
-    transform: translate(-50%, -50%) scale(3.0);
+    transform: translate(-50%, -50%) scale(1.2);
   }
 
   #main-logo.reveal {
-    transform: translate(-50%, -50%) scale(3.3);
+    transform: translate(-50%, -50%) scale(1.4);
   }
 
   #main-logo.move-up {
