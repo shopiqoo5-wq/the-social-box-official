@@ -320,7 +320,7 @@ export default function HomePage() {
                   className="font-space font-black uppercase italic text-[#FFB800] text-[42px] md:text-[64px] lg:text-[90px] leading-[1.05] tracking-[-0.04em] w-full animate-fade-up transition-all duration-700 group-hover:drop-shadow-[0_0_40px_rgba(255,184,0,0.6)]" 
                   style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}
                 >
-                  <TypewriterText text="Make every tap count." delay={300} />
+                  <TypewriterText text="Make every tap count" delay={300} />
                 </h1>
               </div>
 
