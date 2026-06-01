@@ -7,7 +7,4 @@ dist
 .idea
 .vercel
 
-# Ignore large video assets
-public/videos/*.mov
-public/videos/*.mp4
-
+# Allow videos, but note GitHub has a 100MB file limit.
