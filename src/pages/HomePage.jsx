@@ -266,7 +266,7 @@ export default function HomePage() {
     { title: "Social Media", icon: <Share2 className="w-6 h-6" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
     { title: "Influencer Marketing", icon: <Crown className="w-6 h-6" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
     { title: "Meme Marketing", icon: <Flame className="w-6 h-6" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
-    { title: "Web", icon: <Monitor className="w-6 h-6" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { title: "Website", icon: <Monitor className="w-6 h-6" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
     { title: "UGC", subtitle: "(User-Generated Content)", icon: <Aperture className="w-6 h-6" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { title: "Personal Brand Building", icon: <Sparkles className="w-6 h-6" />, desc: "Positioning individuals as strong, credible voices in their space." },
     { title: "Production", icon: <Clapperboard className="w-6 h-6" />, desc: "From ideation to execution high-quality content built for digital-first platforms" },
@@ -355,7 +355,7 @@ export default function HomePage() {
               <Reveal delay={200} type="fade-3d">
                 <div className="space-y-12">
                   <p className="text-zinc-200 text-3xl md:text-6xl font-light leading-[1] max-w-3xl tracking-tighter italic">
-                    Helping brands <span className="text-white font-black">Go Viral</span> through <span className="text-[#FFC107] font-black underline decoration-[4px] underline-offset-[0.2em]">Creative Strategy</span>.
+                    Helping brands <span className="text-white font-black">Go Viral</span> through <span className="text-[#FFC107] font-black">Creative Strategy.</span>
                   </p>
 
                 </div>
@@ -363,7 +363,7 @@ export default function HomePage() {
 
               <div className="flex flex-col gap-12 lg:gap-16 pt-0 lg:pt-10">
                 <Reveal delay={300} className="space-y-10">
-                  <p className="text-zinc-500 text-xl md:text-2xl font-medium leading-relaxed max-w-xl">
+                  <p className="text-white hover:text-[#FFC107] transition-colors duration-300 cursor-default text-xl md:text-2xl font-medium leading-relaxed max-w-xl">
                     Not Just an Agency, but an Extension of your brand.
                   </p>
                   <div className="flex flex-col gap-4">
@@ -371,7 +371,7 @@ export default function HomePage() {
                       <span className="w-4 h-4 rounded-full border border-[#FFC107] group-hover:bg-[#FFC107] transition-colors"></span>
                       <span className="flex flex-col gap-1 transition-all">
                         <span className="text-3xl md:text-5xl font-black text-[#FFC107] drop-shadow-[0_0_20px_rgba(255,193,7,0.3)]">
-                          <RollingNumber end={"10,000"} suffix="+" />
+                          <RollingNumber end={"50,000"} suffix="+" />
                         </span>
                         <span className="text-[9px] font-black tracking-[0.4em] uppercase text-zinc-600 group-hover:text-zinc-400 transition-colors">Influencers</span>
                       </span>
@@ -380,7 +380,7 @@ export default function HomePage() {
                       <span className="w-4 h-4 rounded-full border border-[#FFC107] group-hover:bg-[#FFC107] transition-colors"></span>
                       <span className="flex flex-col gap-1 transition-all">
                         <span className="text-3xl md:text-5xl font-black text-[#FFC107] drop-shadow-[0_0_20px_rgba(255,193,7,0.3)]">
-                          <RollingNumber end={30} suffix="+" />
+                          <RollingNumber end={300} suffix="+" />
                         </span>
                         <span className="text-[9px] font-black tracking-[0.4em] uppercase text-zinc-600 group-hover:text-zinc-400 transition-colors">Brand Partners</span>
                       </span>
@@ -478,7 +478,7 @@ export default function HomePage() {
                   </h2>
                 </div>
                 <div className="flex flex-col md:items-end gap-8">
-                  <div className="max-w-xs text-zinc-500 font-mono text-[10px] tracking-[0.6em] uppercase leading-relaxed md:text-right pb-2">
+                  <div className="max-w-xs text-white hover:text-[#FFC107] transition-colors duration-300 cursor-default font-mono text-[10px] tracking-[0.6em] uppercase leading-relaxed md:text-right pb-2">
                     Scaling digital influence through geometric precision
                   </div>
                 </div>
@@ -578,8 +578,8 @@ export default function HomePage() {
 
             {/* Navigation Footer */}
             <div className="flex items-center justify-end mt-12 border-t border-white/5 pt-12">
-              <div className="text-[10px] font-mono uppercase tracking-[0.5em] text-zinc-500 flex items-center gap-4">
-                <span className="w-12 h-px bg-white/10"></span>
+              <div className="text-[10px] font-mono uppercase tracking-[0.5em] text-white hover:text-[#FFC107] transition-colors duration-300 cursor-pointer flex items-center gap-4 group">
+                <span className="w-12 h-px bg-white/30 group-hover:bg-[#FFC107] transition-colors duration-300"></span>
                 EXPLORE CAPABILITIES
               </div>
             </div>

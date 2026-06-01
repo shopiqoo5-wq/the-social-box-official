@@ -8,7 +8,7 @@ export default function CaseStudyPage() {
   const cases = [
     { id: "01", category: "Marketing Ecosystem", title: "BENGALURU STRIKERS", video: "/videos/reel-2.mp4", metric: "360°", label: "Execution", desc: "Successfully rolled out the complete marketing ecosystem for Bengaluru Strikers, taking the brand from conceptualization to implementation. The process included the creation of the brand identity, which involved logo and apparel design, as well as digital presence and social media marketing, among others, done through consolidated and strategic leadership." },
     { id: "02", category: "Influencer Campaign", title: "EUREKA FORBES", video: "/videos/eureka_forbes_case_study.mov", metric: "6M+", label: "Reach", desc: "Directed a comprehensive influencer campaign for the Aquaguard Nanopore Filter, involving 26 influencers (including MrMiko 2.0, Naman Kapoor, Noopur Karla, and Avinash Dagar) focusing on water purification. Achieving over 6 million combined reach." },
-    { id: "03", category: "Skincare Content", title: "OLAY", video: "/videos/olay_case_study.mov", metric: "500+", label: "Creators", desc: "Executed influencer campaign for Olay’s newly launched Super Collagen Peptide Moisturizer and 7-in-1 Serum for women who are in their 30s. Working with influencers like Mansi Rajani, Himani Rose, Sanchi Jain, Tanvi, Darshna, and Akanksha Jindal while working with 93 mid-tier influencers and 300 micro influencers and 260 nano influencers. Focused on relatable skincare content and product awareness delivering 278M+ views and 15M+ reach." },
+    { id: "03", category: "Skincare Content", title: "OLAY", video: "/videos/olay_case_study.mov", metric: "1000+", label: "Creators", desc: "Executed influencer campaign for Olay’s newly launched Super Collagen Peptide Moisturizer and 7-in-1 Serum for women who are in their 30s. Working with influencers like Mansi Rajani, Himani Rose, Sanchi Jain, Tanvi, Darshna, and Akanksha Jindal. Focused on relatable skincare content and product awareness delivering 278M+ views and 15M+ reach." },
     { id: "04", category: "Regional Campaign", title: "MARICO", video: "/videos/marico_case_study.mov", metric: "1M+", label: "Views", desc: "Conducted regional influencer marketing campaign for Nihar Almond Coconut Oil in Bengal by creating content strategy and implementing the entire campaign to ensure creation of culturally relevant stories and reach 1 million views with creator like Saachi Basine." },
     { id: "05", category: "Influencer Campaigns", title: "NYKAA", video: "/videos/nykaa_case_study.mp4", metric: "100+", label: "Creators", desc: "Managed campaigns for the launch of Nykaa makeup products through beauty and lifestyle influencers to create trendy Gen Z content for lip oils, blushes, lipsticks, and palettes, while managing full campaign execution across platforms." },
     { id: "06", category: "End-To-End Marketing", title: "AHMEDABAD LIONS", video: "/videos/lions_case_study.mp4", metric: "End-to-End", label: "Marketing", desc: "Carried out the end-to-end marketing process for Ahmedabad Lions, handling the entire process right from conceptualization to implementation. The project encompassed brand identity creation, which includes the creation of the logo, mascot, and kit designs, along with website development and social media marketing." },
@@ -20,7 +20,7 @@ export default function CaseStudyPage() {
     <div className="min-h-[100dvh] pt-32 md:pt-64 px-6 md:px-14 pb-32 relative z-10 selection:bg-[#FFC107] selection:text-black">
       
       {/* Header Narrative */}
-      <div className="max-w-screen-2xl mx-auto mb-64 flex flex-col md:flex-row justify-between items-end gap-16 border-b border-white/10 pb-24">
+      <div className="max-w-screen-2xl mx-auto mb-20 md:mb-64 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 md:gap-16 border-b border-white/10 pb-12 md:pb-24">
         <Reveal type="fade-3d">
           <h1 className="font-space text-[18vw] md:text-[12vw] leading-[0.8] tracking-tighter uppercase">
              SELECTED <br/>
@@ -28,14 +28,14 @@ export default function CaseStudyPage() {
           </h1>
         </Reveal>
         <Reveal delay={200} type="fade-3d">
-           <div className="max-w-md text-zinc-500 font-light text-xl md:text-2xl italic leading-tight uppercase tracking-widest text-right mb-6">
+           <div className="max-w-md text-white hover:text-[#FFC107] transition-colors duration-300 cursor-default font-light text-xl md:text-2xl italic leading-tight uppercase tracking-widest text-left md:text-right mb-6">
               [ High performance, executive-level execution ]
            </div>
         </Reveal>
       </div>
 
       {/* Case Studies Grid - Shader.se Style Large Perspective */}
-      <div className="max-w-screen-2xl mx-auto space-y-40 md:space-y-64 pb-12 md:pb-24">
+      <div className="max-w-screen-2xl mx-auto space-y-20 md:space-y-64 pb-12 md:pb-24">
         {cases.map((cs, i) => (
           <Reveal key={i} delay={i * 100} type="fade-3d">
              <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24 items-center">

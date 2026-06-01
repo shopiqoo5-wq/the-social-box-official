@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, User, MessageSquare, Send, X, Globe, Zap, CheckCircle } from 'lucide-react';
+import { Mail, Phone, User, MessageSquare, Send, X, Globe, Zap, CheckCircle, Briefcase } from 'lucide-react';
 import { useContact } from '../context/ContactContext';
 
 export default function ContactModal() {
@@ -91,7 +91,7 @@ export default function ContactModal() {
                 <div className="info-icon-box">
                    <Mail className="info-icon" />
                 </div>
-                <p className="info-text">hello@thesocialbox.in</p>
+                <p className="info-text">bd@thesocialbox.in</p>
              </div>
           </div>
 

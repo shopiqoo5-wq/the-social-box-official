@@ -41,7 +41,7 @@ const LazyVideo = ({ src, className, ...props }) => {
       preload="none"
       {...props}
     >
-      {isIntersecting && <source src={src} type="video/mp4" />}
+      {isIntersecting && <source src={src} />}
     </video>
   );
 };

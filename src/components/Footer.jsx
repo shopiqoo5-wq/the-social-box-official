@@ -66,7 +66,7 @@ export default function Footer() {
                 <a href="https://linkedin.com/company/the-social-boxin" target="_blank" rel="noopener noreferrer" className="hover-underline">
                   LinkedIn
                 </a>
-                <a href="mailto:hello@thesocialbox.in" className="hover-underline">
+                <a href="mailto:bd@thesocialbox.in" className="hover-underline">
                   Email Ops
                 </a>
               </nav>

@@ -9,7 +9,7 @@ export default function ServicesPage() {
     { title: "Social Media", icon: <Share2 className="w-10 h-10" />, desc: "Strategy, content, and management designed to build a consistent, engaging brand presence." },
     { title: "Influencer Marketing", icon: <Crown className="w-10 h-10" />, desc: "End-to-end influencer collaborations that drive both reach and relevance." },
     { title: "Meme Marketing", icon: <Flame className="w-10 h-10" />, desc: "Culture-driven content that taps into trends and conversations in real time." },
-    { title: "Web", icon: <Monitor className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
+    { title: "Website", icon: <Monitor className="w-10 h-10" />, desc: "Clean, functional, and design-forward websites that reflect your brand." },
     { title: "UGC", subtitle: "(User-Generated Content)", icon: <Aperture className="w-10 h-10" />, desc: "Authentic, creator-led content that builds trust and relatability." },
     { title: "Personal Brand Building", icon: <Sparkles className="w-10 h-10" />, desc: "Positioning individuals as strong, credible voices in their space." },
     { title: "Production", icon: <Clapperboard className="w-10 h-10" />, desc: "From ideation to execution high-quality content built for digital-first platforms" },
@@ -21,7 +21,7 @@ export default function ServicesPage() {
       {/* Ambient glow */}
       <div className="cinematic-glow -top-20 -left-20" />
 
-      <div className="max-w-screen-2xl mx-auto mb-32 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
+      <div className="max-w-screen-2xl mx-auto mb-32 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 relative z-10">
         <Reveal type="fade-3d">
           <h1 className="font-space text-[12vw] md:text-[9vw] leading-[0.8] tracking-tighter uppercase break-words">
              OUR <br/>
@@ -29,7 +29,7 @@ export default function ServicesPage() {
           </h1>
         </Reveal>
         <Reveal delay={200} type="fade-3d">
-           <div className="max-w-md text-zinc-500 font-light text-xl md:text-2xl italic leading-tight uppercase tracking-widest text-right mb-6">
+           <div className="max-w-md text-white hover:text-[var(--gold)] transition-colors duration-300 cursor-default font-light text-xl md:text-2xl italic leading-tight uppercase tracking-widest text-left md:text-right mb-6">
               [ Plugged into every digital vertical ]
            </div>
         </Reveal>

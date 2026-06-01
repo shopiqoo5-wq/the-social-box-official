@@ -37,16 +37,8 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Brand Icon - Left Anchor (Standalone) */}
-        <Link 
-          to="/about" 
-          className="nav-brand-logo group/brand flex items-center no-underline"
-        >
-          <img src="/assets/abou_us_imagepng.png" alt="The Social Box" className="nav-box-icon" />
-          <span className="max-w-0 opacity-0 overflow-hidden group-hover/brand:max-w-[120px] group-hover/brand:opacity-100 group-hover/brand:ml-4 transition-all duration-700 ease-in-out font-heading font-black text-[10px] tracking-[0.3em] text-[var(--gold)] whitespace-nowrap">
-            ABOUT US
-          </span>
-        </Link>
+
+
 
         {/* Center Logo - Center Anchor */}
         <div className="header-center">
@@ -57,21 +49,27 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
 
         {/* Navigation Wrapper - Links & Socials */}
         <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-          <div className="nav-section left">
-            <Link to="/about" className="nav-link desktop-about-hide">
-              <span className="nav-text">ABOUT</span>
-            </Link>
+          <div className="nav-section right w-full" style={{ flex: 1, justifyContent: 'flex-end' }}>
             <Link to="/services" className="nav-link">
               <span className="nav-text">SERVICES</span>
             </Link>
-          </div>
-
-          <div className="nav-section right">
             <Link to="/case-study" className="nav-link">
               <span className="nav-text">CASE STUDY</span>
             </Link>
+            <Link to="/about" className="nav-link desktop-about-hide">
+              <span className="nav-text">ABOUT</span>
+            </Link>
             <Link to="/contact" className="nav-link">
               <span className="nav-text">CONTACT</span>
+            </Link>
+            <Link 
+              to="/about" 
+              className="nav-brand-logo group/brand flex items-center no-underline ml-4"
+            >
+              <img src="/assets/abou_us_imagepng.png" alt="The Social Box" className="nav-box-icon" />
+              <span className="max-w-0 opacity-0 overflow-hidden group-hover/brand:max-w-[120px] group-hover/brand:opacity-100 group-hover/brand:ml-4 transition-all duration-700 ease-in-out font-heading font-black text-[10px] tracking-[0.3em] text-white group-hover/brand:text-[var(--gold)] whitespace-nowrap">
+                ABOUT US
+              </span>
             </Link>
           </div>
 

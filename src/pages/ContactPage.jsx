@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, User, MessageSquare, Send, Globe, CheckCircle, MapPin, Instagram, Zap } from 'lucide-react';
+import { Mail, Phone, User, MessageSquare, Send, Globe, CheckCircle, MapPin, Instagram, Zap, Briefcase } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import Magnetic from '../components/Magnetic';
 
@@ -17,7 +17,8 @@ export default function ContactPage() {
   };
 
   const contacts = [
-    { icon: <Mail size={20} />, label: 'EMAIL', value: 'hello@thesocialbox.in', href: 'mailto:hello@thesocialbox.in' },
+    { icon: <Mail size={20} />, label: 'EMAIL', value: 'bd@thesocialbox.in', href: 'mailto:bd@thesocialbox.in' },
+    { icon: <Briefcase size={20} />, label: 'CAREER AT TSB', value: 'hr@thesocialbox.in', href: 'mailto:hr@thesocialbox.in' },
     { 
       icon: <MapPin size={20} />, 
       label: 'MUMBAI OFFICE', 

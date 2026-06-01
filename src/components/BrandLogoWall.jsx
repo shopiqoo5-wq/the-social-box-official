@@ -119,7 +119,7 @@ export default function BrandLogoWall() {
               TRUSTED<br />
               <span className="text-[#FFC107] italic">PARTNERS</span>
             </h2>
-            <div className="text-[#FFC107]/60 font-mono text-[12px] font-black tracking-[0.5em] uppercase pb-4">
+            <div className="text-white hover:text-[#FFC107] transition-colors duration-300 cursor-pointer font-mono text-[12px] font-black tracking-[0.5em] uppercase pb-4">
               Brands We've Powered
             </div>
           </div>
