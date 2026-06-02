@@ -26,6 +26,10 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
   const scrolledState = parentScrolled !== undefined ? parentScrolled : localScrolled;
   const visible = !onHome || isVisible;
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header
       id="site-header"
@@ -42,7 +46,7 @@ const Navigation = ({ isVisible, isHome, isScrolled: parentScrolled }) => {
 
         {/* Center Logo - Center Anchor */}
         <div className="header-center">
-          <Link to="/" className="nav-logo-static">
+          <Link to="/" className="nav-logo-static" onClick={handleLogoClick}>
             <img src="/assets/logo.png" alt="THE SOCIAL BOX" />
           </Link>
         </div>
