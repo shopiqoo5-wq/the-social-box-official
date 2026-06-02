@@ -29,7 +29,7 @@ export default function CaseStudyPage() {
         </Reveal>
         <Reveal delay={200} type="fade-3d">
            <div className="max-w-md text-white hover:text-[#FFC107] transition-colors duration-300 cursor-default font-light text-base md:text-2xl italic leading-tight uppercase tracking-widest text-left md:text-right mb-6">
-              [ High performance, executive-level execution ]
+              [ High performance,<br/> executive-level<br/> execution ]
            </div>
         </Reveal>
       </div>
