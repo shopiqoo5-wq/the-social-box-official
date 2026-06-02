@@ -6,6 +6,10 @@ import Magnetic from '../components/Magnetic';
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  
+  const [isCareerFormOpen, setIsCareerFormOpen] = useState(false);
+  const [isCareerSubmitting, setIsCareerSubmitting] = useState(false);
+  const [isCareerSuccess, setIsCareerSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,6 +17,15 @@ export default function ContactPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
+    }, 1500);
+  };
+
+  const handleCareerSubmit = (e) => {
+    e.preventDefault();
+    setIsCareerSubmitting(true);
+    setTimeout(() => {
+      setIsCareerSubmitting(false);
+      setIsCareerSuccess(true);
     }, 1500);
   };
 
@@ -58,7 +71,7 @@ export default function ContactPage() {
 
           {/* LEFT — Form */}
           <Reveal type="fade-3d" delay={100}>
-            {!isSuccess ? (
+              {!isSuccess ? (
               <form onSubmit={handleSubmit} className="contact-page-form bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[2.5rem] backdrop-blur-3xl shadow-2xl">
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -185,6 +198,109 @@ export default function ContactPage() {
             </div>
           </Reveal>
 
+        </section>
+
+        {/* FULL WIDTH CAREERS SECTION */}
+        <section className="mt-16 md:mt-24">
+          <Reveal type="fade-3d" delay={150}>
+            <div className="bg-white/[0.02] border border-white/20 p-8 md:p-12 rounded-none backdrop-blur-3xl shadow-2xl flex flex-col items-center text-center">
+              {!isCareerFormOpen ? (
+                <>
+                  <div className="bg-white/5 p-4 text-[var(--gold)] mb-6">
+                    <Briefcase size={32} />
+                  </div>
+                  <h3 className="font-space text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-4">
+                    Career at <span className="text-[var(--gold)] italic">TSB</span>
+                  </h3>
+                  <p className="text-zinc-400 mb-8 max-w-sm">
+                    We're always looking for creative minds to build culture-defining brands with us.
+                  </p>
+                  <Magnetic>
+                    <button 
+                      onClick={() => setIsCareerFormOpen(true)}
+                      className="bg-[var(--gold)] text-black hover:bg-white px-8 py-3 rounded-full font-medium transition-colors flex items-center gap-2"
+                    >
+                      Apply Now
+                    </button>
+                  </Magnetic>
+                </>
+              ) : !isCareerSuccess ? (
+                <form onSubmit={handleCareerSubmit} className="w-full max-w-3xl mx-auto text-left">
+                  <h3 className="font-space text-2xl font-bold uppercase tracking-tighter mb-8 text-center">
+                    Career at <span className="text-[var(--gold)] italic">TSB</span>
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                    <div className="contact-field">
+                      <label className="text-technical mb-3 block text-zinc-500">Full Name</label>
+                      <div className="contact-input-wrap group">
+                        <User size={16} className="contact-input-icon group-focus-within:text-[var(--gold)] transition-colors" />
+                        <input type="text" required placeholder="John Doe" className="contact-input focus:border-[var(--gold)]/50 transition-all" />
+                      </div>
+                    </div>
+
+                    <div className="contact-field">
+                      <label className="text-technical mb-3 block text-zinc-500">Email Address</label>
+                      <div className="contact-input-wrap group">
+                        <Mail size={16} className="contact-input-icon group-focus-within:text-[var(--gold)] transition-colors" />
+                        <input type="email" required placeholder="john@example.com" className="contact-input focus:border-[var(--gold)]/50 transition-all" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="contact-field mb-8">
+                    <label className="text-technical mb-3 block text-zinc-500">Position of Interest</label>
+                    <div className="contact-input-wrap group">
+                      <Briefcase size={16} className="contact-input-icon group-focus-within:text-[var(--gold)] transition-colors" />
+                      <input type="text" required placeholder="e.g. Social Media Manager" className="contact-input focus:border-[var(--gold)]/50 transition-all" />
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <button 
+                      type="button"
+                      onClick={() => setIsCareerFormOpen(false)}
+                      className="flex-1 bg-white/5 hover:bg-white/10 text-white px-6 py-3 rounded-full font-medium transition-all"
+                    >
+                      Cancel
+                    </button>
+                    <button 
+                      type="submit"
+                      disabled={isCareerSubmitting}
+                      className="flex-1 bg-[var(--gold)] text-black hover:bg-white px-6 py-3 rounded-full font-medium transition-colors flex justify-center items-center"
+                    >
+                      {isCareerSubmitting ? (
+                        <div className="contact-spinner border-black/20 border-t-black" />
+                      ) : (
+                        'Submit'
+                      )}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="py-8 text-center flex flex-col items-center">
+                  <div className="text-[var(--gold)] mb-6">
+                    <CheckCircle size={48} />
+                  </div>
+                  <h3 className="font-space text-3xl font-bold uppercase tracking-tighter mb-4">
+                    Application <span className="text-[var(--gold)] italic">Received</span>
+                  </h3>
+                  <p className="text-zinc-400">
+                    We'll review your profile and get back to you soon.
+                  </p>
+                  <button 
+                    onClick={() => {
+                      setIsCareerSuccess(false);
+                      setIsCareerFormOpen(false);
+                    }}
+                    className="mt-8 bg-white/5 hover:bg-white/10 text-white px-8 py-3 rounded-full font-medium transition-all"
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
+            </div>
+          </Reveal>
         </section>
       </div>
     </div>
