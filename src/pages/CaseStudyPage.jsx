@@ -22,13 +22,13 @@ export default function CaseStudyPage() {
       {/* Header Narrative */}
       <div className="max-w-screen-2xl mx-auto mb-20 md:mb-64 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 md:gap-16 border-b border-white/10 pb-12 md:pb-24">
         <Reveal type="fade-3d">
-          <h1 className="font-space text-[18vw] md:text-[12vw] leading-[0.8] tracking-tighter uppercase">
-             SELECTED <br/>
-             <span className="text-[#FFC107] italic">WORK</span>
+          <h1 className="font-space text-[13vw] sm:text-[15vw] md:text-[12vw] leading-[0.85] tracking-tighter uppercase">
+             THE <br/>
+             <span className="text-[#FFC107] italic">SHOWCASE</span>
           </h1>
         </Reveal>
         <Reveal delay={200} type="fade-3d">
-           <div className="max-w-md text-white hover:text-[#FFC107] transition-colors duration-300 cursor-default font-light text-xl md:text-2xl italic leading-tight uppercase tracking-widest text-left md:text-right mb-6">
+           <div className="max-w-md text-white hover:text-[#FFC107] transition-colors duration-300 cursor-default font-light text-base md:text-2xl italic leading-tight uppercase tracking-widest text-left md:text-right mb-6">
               [ High performance, executive-level execution ]
            </div>
         </Reveal>
@@ -41,7 +41,7 @@ export default function CaseStudyPage() {
              <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24 items-center">
                 
                 {/* Visual Section - Large Video/Image */}
-                <div className="lg:col-span-7 relative h-[30rem] md:h-[45rem] rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/5 transition-all duration-1000 group-hover:scale-[1.02] active:scale-95 shadow-2xl group-hover:border-[#FFC107]/50 will-change-transform">
+                <div className="lg:col-span-7 relative h-72 sm:h-96 md:h-[45rem] rounded-[2rem] md:rounded-[4rem] overflow-hidden bg-zinc-900 border border-white/5 transition-all duration-1000 group-hover:scale-[1.02] active:scale-95 shadow-2xl group-hover:border-[#FFC107]/50 will-change-transform">
                     <LazyVideo 
                       src={cs.video} 
                       className="w-full h-full object-cover scale-[1.05] group-hover:scale-100 group-hover:opacity-100 transition-all duration-[2s] opacity-60" 
@@ -50,8 +50,8 @@ export default function CaseStudyPage() {
                 </div>
 
                 {/* Content Section - Bold Typography */}
-                <div className="lg:col-span-5 flex flex-col justify-center space-y-10 px-4 md:px-0">
-                   <div className="font-space text-[12vw] md:text-[6vw] font-black leading-none tracking-tighter uppercase grayscale group-hover:grayscale-0 transition-all duration-1000">
+                <div className="lg:col-span-5 flex flex-col justify-center space-y-6 md:space-y-10 px-4 md:px-0">
+                   <div className="font-space text-4xl sm:text-5xl md:text-[6vw] font-black leading-none tracking-tighter uppercase grayscale group-hover:grayscale-0 transition-all duration-1000 break-words">
                       {cs.title}
                    </div>
                    
